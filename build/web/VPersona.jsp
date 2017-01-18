@@ -12,8 +12,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
     </head>
     <body>
         <%
@@ -21,7 +23,7 @@
             ArrayList<CPersona> datos=new ArrayList();
         %>
         <form name="fpersona" method="POST" action="PersonaController">
-            <input type="text" name="id" placeholder="id" ><br>
+            <input class="form-control" type="text" name="id" placeholder="id" ><br>
             <input type="text" name="nombre" placeholder="nombre" ><br>
             <input type="text" name="apellidos" placeholder="apellidos" ><br>
             <input type="text" name="fecha_nacimiento" placeholder="fecha_nacimiento" ><br>
@@ -46,25 +48,7 @@
                     <td>sexo</td>
                 </tr>
                 <tr>
-                    <%
-                        datos=dp.consultar();
-                        for(CPersona p: datos){
-                            %>
-                <tr>
-                    <td><%=p.getId()%></td>                   
-                    <td><%=p.getNombre()%></td>                   
-                    <td><%=p.getApellidos()%></td>                   
-                    <td><%=p.getFecha_nacimiento()%></td>                   
-                    <td><%=p.getDireccion()%></td>                   
-                    <td><%=p.getTipo_documento()%></td>                   
-                    <td><%=p.getNro_documento()%></td>                   
-                    <td><%=p.getEmail()%></td>                   
-                    <td><%=p.getSexo()%></td>                   
-
-                </tr>
-                    <%
-                        }
-                    %>
+                    
                 </tr>
             </table>
         </form>
