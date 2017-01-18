@@ -22,35 +22,37 @@
             DPersona dp=new DPersona();
             ArrayList<CPersona> datos=new ArrayList();
         %>
-        <form name="fpersona" method="POST" action="PersonaController">
-            <input class="form-control" type="text" name="id" placeholder="id" ><br>
-            <input type="text" name="nombre" placeholder="nombre" ><br>
-            <input type="text" name="apellidos" placeholder="apellidos" ><br>
-            <input type="text" name="fecha_nacimiento" placeholder="fecha_nacimiento" ><br>
-            <input type="text" name="direccion" placeholder="direccion" ><br>
-            <input type="text" name="tipo_documento" placeholder="tipo_documento" ><br>
-            <input type="text" name="nro_documento" placeholder="nro_documento" ><br>
-            <input type="text" name="email" placeholder="email" ><br>
-            <input type="text" name="sexo" placeholder="sexo" ><br>
-            <input type="submit" name="insertar" value="insertar">     
-            <input type="submit" value="eliminar">     
-            <input type="submit" value="modificar">     
-            <table border ="1px">
-                <tr>
-                    <td>id</td>
-                    <td>nombres</td>
-                    <td>apellidos</td>
-                    <td>fecha_nacimieto</td>
-                    <td>direccion</td>
-                    <td>tipo_documento</td>
-                    <td>nro_documento</td>
-                    <td>email</td>
-                    <td>sexo</td>
-                </tr>
-                <tr>
-                    
-                </tr>
-            </table>
-        </form>
+        <div class="col-md-6">
+            <form name="fpersona" method="POST" action="PersonaController">
+                <input class="form-control" type="text" name="id" placeholder="id" ><br>
+                <input class="form-control" type="text" name="nombre" placeholder="nombre" ><br>
+                <input class="form-control" type="text" name="apellidos" placeholder="apellidos" ><br>
+                <input class="form-control" type="text" name="fecha_nacimiento" placeholder="fecha_nacimiento" ><br>
+                <input class="form-control" type="text" name="direccion" placeholder="direccion" ><br>
+                <input class="form-control" type="text" name="tipo_documento" placeholder="tipo_documento" ><br>
+                <input class="form-control" type="text" name="nro_documento" placeholder="nro_documento" ><br>
+                <input class="form-control" type="text" name="email" placeholder="email" ><br>
+                <input class="form-control" type="text" name="sexo" placeholder="sexo" ><br>
+                <input class="btn btn-primary" type="submit" name="insertar" value="insertar">     
+                <input class="btn btn-danger" type="submit" value="eliminar">     
+                <input class="btn btn-success" type="submit" value="modificar">     
+                <table border ="1px">
+                    <tr>
+                        <td>id</td>
+                        <td>nombres</td>
+                        <td>apellidos</td>
+                        <td>fecha_nacimieto</td>
+                        <td>direccion</td>
+                        <td>tipo_documento</td>
+                        <td>nro_documento</td>
+                        <td>email</td>
+                        <td>sexo</td>
+                    </tr>
+                    <tr>
+
+                    </tr>
+                </table>
+            </form>
+        </div>
     </body>
 </html>
