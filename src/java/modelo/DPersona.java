@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package modelo;
-
 import clases.CPersona;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
