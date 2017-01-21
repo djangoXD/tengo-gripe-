@@ -21,11 +21,9 @@ import modelo.DPersona;
  * @author WARREN
  */
 public class PersonaController extends HttpServlet {
-
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
+     * methods.     *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
@@ -35,24 +33,37 @@ public class PersonaController extends HttpServlet {
         throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+           response.setStatus(307); //this makes the redirection keep your requesting method as is.
+           response.addHeader("Location", "prueba.jsp");
            DPersona dp=new DPersona();
            CPersona cp=new CPersona();
            String res="";
            RequestDispatcher rd=null;
             try{
-                    cp.setId(request.getParameter("id"));
-                    JOptionPane.showMessageDialog(null, "hola");
-                    cp.setId(request.getParameter("nombre"));
-                    cp.setId(request.getParameter("apellidos"));
-                    cp.setId(request.getParameter("fecha_nacimiento"));
-                    cp.setId(request.getParameter("direccion"));
-                    cp.setId(request.getParameter("tipo_documento"));
-                    cp.setId(request.getParameter("nro_documento"));
-                    cp.setId(request.getParameter("email"));
-                    cp.setId(request.getParameter("sexo"));
-                    
+                cp.setId(request.getParameter("d1"));
+                cp.setNombre(request.getParameter("d2"));
+                cp.setApellidos(request.getParameter("d3"));
+                cp.setFecha_nacimiento(request.getParameter("d4"));
+                cp.setDireccion(request.getParameter("d5"));
+                cp.setTipo_documento(request.getParameter("d6"));
+                cp.setNro_documento(request.getParameter("d7"));
+                cp.setEmail(request.getParameter("d8"));
+                cp.setSexo(request.getParameter("d9"));
+                out.println(request.getParameter("insertar")+"-<br>");
+                out.println(request.getParameter("modificar")+"-<br>");
+                out.println(request.getParameter("eliminar")+"-<br>");
+                if(request.getParameter("insertar")!=null){                   
                     res=dp.insertar(cp);                  
-     
+                    out.println(res);
+                }else 
+                if(request.getParameter("modificar")!=null){                   
+                    res=dp.modificar(cp);                  
+                    out.println(res);
+                }else 
+                if(request.getParameter("eliminar")!=null){                   
+                    res=dp.eliminar(cp);                  
+                    out.println(res);
+                }
         }catch(Exception e){}
             
         }
