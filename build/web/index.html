@@ -1,254 +1,426 @@
-<%-- 
-    Document   : index
-    Created on : 19/01/2017, 03:17:36 PM
-    Author     : WARREN
---%>
-
-<%@page import="clases.CPersona"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="modelo.DPersona"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!-- 
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
-    <link rel="shortcut icon" href="#" /> 
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-            <link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/responsive.bootstrap.css">
-	
-	<script type="text/javascript" language="javascript" src="js/jquery.js">	</script>
-	<script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
-	<script type="text/javascript" language="javascript" src="js/dataTables.bootstrap.js"></script>
-	<script type="text/javascript" language="javascript" src="js/dataTables.responsive.js">	</script>
-	<script type="text/javascript" language="javascript" src="js/responsive.bootstrap.js"></script>
-	
-        <script type="text/javascript" language="javascript" class="init">	
-        $(document).ready(function() {
-                $('#example').DataTable();
-        } );
-	</script>  </head>
-      <body>
-              <table id="example" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                  
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>NOMBRE</th>
-                    <th>APELLIDOS</th>
-                    <th>FECHA NACIMIENTO    </th>
-                    <th>DIRECCION</th>
-                    <th>TIPO DOCUMENTO</th>
-                    <th>NRO DOCUMENTO</th>
-                    <th>EMAIL</th>
-                    <th>SEXO</th>
-                    <th>Operaciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <%
-                    DPersona dp=new DPersona();
-                    ArrayList<CPersona> datos=dp.consultar();
-                for(CPersona p: datos){
-                    %>
-                    <tr>
-           
-                        <td> <%=p.getId()%></td>
-                        <td> <%=p.getNombre()%></td>
-                        <td> <%=p.getApellidos()%></td>
-                        <td> <%=p.getFecha_nacimiento()%></td>
-                        <td> <%=p.getDireccion()%></td>
-                        <td> <%=p.getTipo_documento()%></td>
-                        <td> <%=p.getNro_documento()%></td>
-                        <td> <%=p.getEmail()%></td>
-                        <td> <%=p.getSexo()%></td>
- 
-                   
-                    </tr>
-
-                <%
-                }
-                %>
-            </tbody>
-        </table>
-       </div>
-            
-        <div class="col-md-6">
-            <%for(int i=0;i<1000;i++)out.println("s");%>
-        </div>
-        
-        
-        
-        
-       <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-      
-  </div>
-</div>
-    
-   </body>
-
+<head>
+<title>Alpaca Fuxion Moda y Más</title>
+<!-- meta-tags -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Wool Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //meta-tags -->
+<!-- Custom Theme files -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/font-awesome.css" rel="stylesheet"> 			<!-- font-awesome icons --> 
+<!-- //Custom Theme files -->
+<!-- js -->
+<script src="js/jquery-1.11.1.min.js"></script>
+<!-- //js -->
+<!-- web-font -->
+<link href='//fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+<!-- //web-font -->
+</head>
+<body>
+	<!-- header -->
+	<div class="header">
+		<div class="container">
+			<div class="header-nav">
+				<nav class="navbar navbar-default">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					   <h1><a class="navbar-brand" href="index.html"><span>A</span>lpaca <span>F</span>uxion</a></h1>
+					</div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav">
+							<li class="hvr-bounce-to-bottom active"><a href="index.html">Home</a></li>
+							<li class="hvr-bounce-to-bottom"><a href="about.html">Artesanias</a></li>
+							<li><a href="#" class="dropdown-toggle hvr-bounce-to-bottom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Moda<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li class="hvr-bounce-to-bottom"><a href="icons.html">Chompas</a></li>
+									<li class="hvr-bounce-to-bottom"><a href="codes.html">Ponchos</a></li>     
+								</ul>
+							</li>   
+							<li class="hvr-bounce-to-bottom"><a href="blog.html">Ofertas</a></li>
+							<li class="hvr-bounce-to-bottom"><a href="contact.html">Contactanos</a></li>
+                                                	<li class="hvr-bounce-to-bottom"><a href="admin/usuarios.html">Loing</a></li>
+						</ul>
+					</div><!-- //navbar-collapse -->
+				</nav>
+			</div>
+		</div>
+	</div>
+	<!-- //header -->
+	<!-- banner -->
+	<div class="banner"> 
+		<!-- Slider-starts-Here --> 
+		<script src="js/responsiveslides.min.js"></script>
+		<script>
+			// You can also use "$(window).load(function() {"
+			$(function () {
+			  // Slideshow 3
+			  $("#slider3").responsiveSlides({
+				auto: true,
+				pager: true,
+				nav: false,
+				speed: 500,
+				namespace: "callbacks",
+				before: function () {
+				  $('.events').append("<li>before event fired.</li>");
+				},
+				after: function () {
+				  $('.events').append("<li>after event fired.</li>");
+				}
+			  });
+		
+			});
+		</script>
+		<!-- //End-slider-script -->
+		<div  id="top" class="callbacks_container">
+			<ul class="rslides" id="slider3">
+				<li>
+					<div class="banner-info">
+						<div class="baner-w3text">
+							<h3>Hola!</h3>
+							<p>La Mejor Calidad en Alpaca</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="banner-info1">
+						<div class="baner-w3text">
+							<h3>Sheep Farm</h3>
+							<p>Temporibus autem quibusdam aut</p>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="banner-info2">
+						<div class="baner-w3text">
+							<h3>Wool</h3>
+							<p>Necessitatibus saepe eveniet ut et.</p>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="banner-bottom-grids">
+			<div class="container">
+				<div class="col-md-3 banner-bottom-grid">
+					<div class="banner-bottom-grd w3-agile-back">
+						<h4>01</h4>
+						<p>fugiat quo<span> voluptas</span></p>
+						<div class="clearfix"> </div>
+					</div>
+					<p class="w3ltext">Temporibus autem quibusdam et aut officiis debitis aut 
+						rerum necessitatibus saepe eveniet ut et voluptates.</p>
+					<div class="more more4">
+						<a href="single.html">Read More</a>
+					</div>
+				</div>
+				<div class="col-md-3 banner-bottom-grid">
+					<div class="banner-bottom-grd w3-agile-back1">
+						<h4>02</h4>
+						<p>voluptas <span> fugiat quo </span></p>
+						<div class="clearfix"> </div>
+					</div>
+					<p class="w3ltext">Temporibus autem quibusdam et aut officiis debitis aut 
+						rerum necessitatibus saepe eveniet ut et voluptates.</p>
+					<div class="more more1">
+						<a href="single.html">Read More</a>
+					</div>
+				</div>
+				<div class="col-md-3 banner-bottom-grid">
+					<div class="banner-bottom-grd w3-agile-back2">
+						<h4>03</h4>
+						<p>officiis aut <span> debitis </span></p>
+						<div class="clearfix"> </div>
+					</div>
+					<p class="w3ltext">Temporibus autem quibusdam et aut officiis debitis aut 
+						rerum necessitatibus saepe eveniet ut et voluptates.</p>
+					<div class="more more2">
+						<a href="single.html">Read More</a>
+					</div>
+				</div>
+				<div class="col-md-3 banner-bottom-grid">
+					<div class="banner-bottom-grd w3-agile-back3">
+						<h4>04</h4>
+						<p>saepe utet <span> eveniet</span></p>
+						<div class="clearfix"> </div>
+					</div>
+					<p class="w3ltext">Temporibus autem quibusdam et aut officiis debitis aut 
+						rerum necessitatibus saepe eveniet ut et voluptates.</p>
+					<div class="more more3">
+						<a href="single.html">Read More</a>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //banner -->
+	<!-- welcome -->
+	<div class="welcome w3-agileits">
+		<div class="container">
+			<h2>Welcome !</h2>
+			<div class="banner-agileits-w3layouts">
+				<div class="col-md-4 welcome-grid">
+					<img src="images/1.jpg" alt=" " class="img-responsive" />
+				</div>
+				<div class="col-md-8 welcome-grid">
+					<h4>voluptatibus maiores alias consequatur aut perferendis aliquid ex ea commodi consequatur</h4>
+					<p> Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis
+						suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur 
+						vel illum qui dolorem eum fugiat quo voluptas.</p>
+					<div class="more">
+						<a href="single.html">Read More</a>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //welcome -->
+	<!-- newsletter -->
+	<div class="newsletter">
+		<div class="container">
+			<div class="get-in-grids">
+				<div class="get-in-grid-left">
+					<p>Newsletter</p>
+				</div>
+				<div class="get-in-grid-right">
+					<form action="#" method="post">
+						<input type="email" name="email" Placeholder="Enter Your Mail..." required="">
+						<input type="submit" value="Subscribe" >
+					</form>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //newsletter -->
+	<!-- news -->
+	<div class="news">
+		<div class="container">
+			<h3>News & Events</h3>
+			<p class="news-wthreetext">Vel illum qui dolorem eum aliquid ex ea commodi consequatur 
+				vel illum qui dolorem eum fugiat quo voluptas</p>
+			<div class="news-agileinfo">
+				<div class="col-md-6 news-grid">
+					<div class="col-xs-4 news-grid-left">
+						<p>22nd<span>Sept</span></p>
+					</div>
+					<div class="col-xs-8 news-grid-right">
+						<p>Itaque earum rerum hic tenetur a sapiente 
+							delectus, ut aut reiciendis voluptatibus maiores alias consequatur 
+							aut perferendis doloribus asperiores repellat.</p>
+						<div class="more">
+							<a href="single.html">Read More</a>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="col-md-6 news-grid">
+					<div class="col-xs-4 news-grid-left">
+						<p>28th<span>Sept</span></p>
+					</div>
+					<div class="col-xs-8 news-grid-right">
+						<p>Itaque earum rerum hic tenetur a sapiente 
+							delectus, ut aut reiciendis voluptatibus maiores alias consequatur 
+							aut perferendis doloribus asperiores repellat.</p>
+						<div class="more">
+							<a href="single.html">Read More</a>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="news-agileinfo">
+				<div class="col-md-6 news-grid">
+					<div class="col-xs-4 news-grid-left">
+						<p>11th<span>Oct</span></p>
+					</div>
+					<div class="col-xs-8 news-grid-right">
+						<p>Itaque earum rerum hic tenetur a sapiente 
+							delectus, ut aut reiciendis voluptatibus maiores alias consequatur 
+							aut perferendis doloribus asperiores repellat.</p>
+						<div class="more">
+							<a href="single.html">Read More</a>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="col-md-6 news-grid">
+					<div class="col-xs-4 news-grid-left">
+						<p>25th<span>Oct</span></p>
+					</div>
+					<div class="col-xs-8 news-grid-right">
+						<p>Itaque earum rerum hic tenetur a sapiente 
+							delectus, ut aut reiciendis voluptatibus maiores alias consequatur 
+							aut perferendis doloribus asperiores repellat.</p>
+						<div class="more">
+							<a href="single.html">Read More</a>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	<!-- //news -->
+	<!-- customer -->
+	<div class="customer">
+		<div class="container">
+			<h3>Customer Says</h3>
+			<div class="customer-w3layoutsgrids">
+				<ul id="flexiselDemo1">			
+					<li>
+						<div class="customer-grid">
+							<p> Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
+								consectetur, adipisci velit, sed quia non numquam eius modi tempora 
+								incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+							<h4>John Smith</h4>
+						</div>
+					</li>
+					<li>
+						<div class="customer-grid">
+							<p> Sed quia non numquam eius modi tempora neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
+								consectetur, adipisci velit, 
+								incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+							<h4>Micheal Robert</h4>
+						</div>
+					</li>
+					<li>
+						<div class="customer-grid">
+							<p> Qui dolorem ipsum quia dolor sit amet, veque porro quisquam est, 
+								consectetur, adipisci velit, sed quia non numquam eius modi tempora 
+								incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+							<h4>Williumson</h4>
+						</div>
+					</li>
+				</ul>
+				<script type="text/javascript">
+					$(window).load(function() {
+						$("#flexiselDemo1").flexisel({
+							visibleItems: 3,
+							animationSpeed: 1000,
+							autoPlay: true,
+							autoPlaySpeed: 3000,    		
+							pauseOnHover: true,
+							enableResponsiveBreakpoints: true,
+							responsiveBreakpoints: { 
+								portrait: { 
+									changePoint:480,
+									visibleItems: 1
+								}, 
+								landscape: { 
+									changePoint:640,
+									visibleItems:2
+								},
+								tablet: { 
+									changePoint:768,
+									visibleItems: 2
+								}
+							}
+						});
+						
+					});
+				</script>
+				<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+			</div>
+		</div>
+	</div>
+	<!-- //customer -->
+	<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-agileitsrow">
+				<div class="col-md-3 footer-grid">
+					<h3>Extras</h3>
+					<p>Ut rutrum neque a mollis laoreet diam enim feuiat dui nec ulacoper quam felis id diam. Nunc ut tortor ligula eu petiu risus. Pelleesque conquat dignissim lacus quis altrcies.</p>
+				</div>
+				<div class="col-md-3 footer-grid">
+					<h3>Social Media</h3>
+					<ul>
+						<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a></li>
+						<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+						<li><a href="#"><i class="fa fa-google" aria-hidden="true"></i> Google+</a></li>
+						<li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i> Dribbble</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 footer-grid">
+					<h3>Useful Info</h3>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 footer-grid">
+					<h3>Contact Us</h3>
+					<p>Pelleesque conquat dignissim lacus quis altrcies.</p>
+					<div class="footer-grid-address">
+						<p>Tel.800-255-9999</p>
+						<p>Fax: 1234 568</p>
+						<p>Email: <a class="email-link" href="mailto:info@example.com">Example.com</a></p>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div> 
+	<div class="copy-right">
+		<p>© 2017 Wool. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+	</div>
+	<!-- //footer -->
+	<!-- start-smooth-scrolling -->
+	<script type="text/javascript" src="js/move-top.js"></script>
+	<script type="text/javascript" src="js/easing.js"></script>	
+	<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+			
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+	</script>
+	<!-- //end-smooth-scrolling -->	
+	<!-- smooth-scrolling-of-move-up -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+			};
+			*/
+			
+			$().UItoTop({ easingType: 'easeOutQuart' });
+			
+		});
+	</script>
+	<!-- //smooth-scrolling-of-move-up --> 
+	<!-- for bootstrap working -->
+	<script src="js/bootstrap.js"> </script>
+	<!-- //for bootstrap working -->
+</body>
 </html>
-
-<div class="panel panel-body"> 
-                    <div class="dataTable_wrapper table-responsive">
-			<div id="example_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="dataTables_length" id="example_length">
-                                        <label>Show 
-                                            <select name="example_length" aria-controls="example" class="form-control input-sm">
-                                                <option value="10">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select> entries
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div id="example_filter" class="dataTables_filter">
-                                        <label>Search:
-                                            <input type="search" class="form-control input-sm" placeholder="" aria-controls="example">
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <table id="example" class="table table-striped table-bordered table-hover table-condensed dt-responsive nowrap dataTable no-footer dtr-inline collapsed" cellspacing="0" width="100%" role="grid" aria-describedby="example_info" style="width: 100%;">
-				<thead>
-					<tr role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 12.0909px;" aria-sort="ascending" aria-label="Id: activate to sort column descending">Id</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 61.0909px;" aria-label="Nombres: activate to sort column ascending">Nombres</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 62.0909px;" aria-label="Apellidos: activate to sort column ascending">Apellidos</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 195.091px;" aria-label="Fecha de los dias Nacimiento: activate to sort column ascending">Fecha de los dias Nacimiento</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 64.0909px;" aria-label="Direccion: activate to sort column ascending">Direccion</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 76.0909px;" aria-label="TipoDocumento: activate to sort column ascending">Tipo<br>Documento</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 76.0909px;" aria-label="NroDocumento: activate to sort column ascending">Nro<br>Documento</th><th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 37.0909px; display: none;" aria-label="Email: activate to sort column ascending">Email</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 34px; display: none;" aria-label="Sexo: activate to sort column ascending">Sexo</th></tr>
-				</thead>
-				<tbody>                            
-				<tr role="row" class="odd">
-                                        <td tabindex="0" class="sorting_1"> 1</td>
-                                        <td> 1</td>
-                                        <td> e</td>
-                                        <td> ee</td>
-                                        <td> a</td>
-                                        <td> v</td>
-                                        <td> c</td>
-                                        <td style="display: none;"> d</td>
-                                        <td style="display: none;"> e</td>
-                                    </tr><tr role="row" class="even">
-                                        <td tabindex="0" class="sorting_1"> 10</td>
-                                        <td> 1</td>
-                                        <td> e</td>
-                                        <td> ee</td>
-                                        <td> a</td>
-                                        <td> v</td>
-                                        <td> c</td>
-                                        <td style="display: none;"> d</td>
-                                        <td style="display: none;"> e</td>
-                                    </tr><tr role="row" class="odd">
-                                        <td class="sorting_1" tabindex="0"> 10</td>
-                                        <td> 1</td>
-                                        <td> e</td>
-                                        <td> ee</td>
-                                        <td> a</td>
-                                        <td> v</td>
-                                        <td> c</td>
-                                        <td style="display: none;"> d</td>
-                                        <td style="display: none;"> e</td>
-                                    </tr><tr role="row" class="even">
-                                        <td tabindex="0" class="sorting_1"> 11</td>
-                                        <td> 1</td>
-                                        <td> e</td>
-                                        <td> ee</td>
-                                        <td> a</td>
-                                        <td> v</td>
-                                        <td> c</td>
-                                        <td style="display: none;"> d</td>
-                                        <td style="display: none;"> e</td>
-                                    </tr><tr role="row" class="odd">
-                                        <td class="sorting_1" tabindex="0"> 11</td>
-                                        <td> 1</td>
-                                        <td> e</td>
-                                        <td> ee</td>
-                                        <td> a</td>
-                                        <td> v</td>
-                                        <td> c</td>
-                                        <td style="display: none;"> d</td>
-                                        <td style="display: none;"> e</td>
-                                    </tr><tr role="row" class="even">
-                                        <td tabindex="0" class="sorting_1"> 12</td>
-                                        <td> 1</td>
-                                        <td> e</td>
-                                        <td> ee</td>
-                                        <td> a</td>
-                                        <td> v</td>
-                                        <td> c</td>
-                                        <td style="display: none;"> d</td>
-                                        <td style="display: none;"> e</td>
-                                    </tr><tr role="row" class="odd">
-                                        <td class="sorting_1" tabindex="0"> 12</td>
-                                        <td> 1</td>
-                                        <td> e</td>
-                                        <td> ee</td>
-                                        <td> a</td>
-                                        <td> v</td>
-                                        <td> c</td>
-                                        <td style="display: none;"> d</td>
-                                        <td style="display: none;"> e</td>
-                                    </tr><tr role="row" class="even">
-                                        <td tabindex="0" class="sorting_1"> 13</td>
-                                        <td> 1</td>
-                                        <td> e</td>
-                                        <td> ee</td>
-                                        <td> a</td>
-                                        <td> v</td>
-                                        <td> c</td>
-                                        <td style="display: none;"> d</td>
-                                        <td style="display: none;"> e</td>
-                                    </tr><tr role="row" class="odd">
-                                        <td class="sorting_1" tabindex="0"> 13</td>
-                                        <td> 1</td>
-                                        <td> e</td>
-                                        <td> ee</td>
-                                        <td> a</td>
-                                        <td> v</td>
-                                        <td> c</td>
-                                        <td style="display: none;"> d</td>
-                                        <td style="display: none;"> e</td>
-                                    </tr><tr role="row" class="even">
-                                        <td tabindex="0" class="sorting_1"> 14</td>
-                                        <td> 1</td>
-                                        <td> e</td>
-                                        <td> ee</td>
-                                        <td> a</td>
-                                        <td> v</td>
-                                        <td> c</td>
-                                        <td style="display: none;"> d</td>
-                                        <td style="display: none;"> e</td>
-                                    </tr></tbody>
-			</table></div></div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="example_info" role="status" aria-live="polite">Showing 1 to 10 of 31 entries</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="example_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="example_previous"><a href="#" aria-controls="example" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="#" aria-controls="example" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="example" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="example" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="example" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button next" id="example_next"><a href="#" aria-controls="example" data-dt-idx="5" tabindex="0">Next</a></li></ul></div></div></div></div>	
-                                                </div>
-
-                     </div>
