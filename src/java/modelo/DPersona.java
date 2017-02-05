@@ -21,7 +21,7 @@ import org.bson.types.ObjectId;
  */
 public class DPersona implements Operaciones{
     private String database="ferreteria";
-    private String tabla="cliente";
+    private String tabla="personas";
     private String url="127.0.0.1";
     @Override
     public String insertar(Object o) {

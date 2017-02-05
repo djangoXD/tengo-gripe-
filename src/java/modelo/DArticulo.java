@@ -32,7 +32,7 @@ public class DArticulo implements Operaciones {
 
     public DArticulo() {
         this.database="ferreteria";
-        this.tabla="articulo ";
+        this.tabla="articulo";
         this.url="127.0.0.1";
     }
 

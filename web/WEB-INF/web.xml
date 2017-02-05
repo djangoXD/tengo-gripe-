@@ -4,9 +4,25 @@
         <servlet-name>PersonaController</servlet-name>
         <servlet-class>controlador.PersonaController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PersonasController</servlet-name>
+        <servlet-class>controlador.PersonasController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ContactoController</servlet-name>
+        <servlet-class>controlador.ContactoController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PersonaController</servlet-name>
         <url-pattern>/PersonaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PersonasController</servlet-name>
+        <url-pattern>/admin/PersonasController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ContactoController</servlet-name>
+        <url-pattern>/admin/ContactoController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
