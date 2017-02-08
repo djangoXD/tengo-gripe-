@@ -77,9 +77,10 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                           <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_personas.jsp');">Persona</a></li>
                           <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_contacto.jsp');">Contactos</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_contacto.jsp');">Persona</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_contacto.jsp');">Persona</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_contacto.jsp');">Persona</a></li>
+                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_usuario.jsp');">Usuario</a></li>
+                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_direcciones.jsp');">Direcciones</a></li>
+                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_proveedores.jsp');">Proveedores</a></li>
+                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_compras.jsp');">Compras</a></li>
 
                           <li role="separator" class="divider"></li>
                           <li><a href="#">Separated link</a></li>

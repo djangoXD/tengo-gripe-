@@ -12,6 +12,18 @@
         <servlet-name>ContactoController</servlet-name>
         <servlet-class>controlador.ContactoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UsuarioController</servlet-name>
+        <servlet-class>controlador.UsuarioController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProveedoresController</servlet-name>
+        <servlet-class>controlador.ProveedoresController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ComprasController</servlet-name>
+        <servlet-class>controlador.ComprasController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PersonaController</servlet-name>
         <url-pattern>/PersonaController</url-pattern>
@@ -23,6 +35,18 @@
     <servlet-mapping>
         <servlet-name>ContactoController</servlet-name>
         <url-pattern>/admin/ContactoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UsuarioController</servlet-name>
+        <url-pattern>/admin/UsuarioController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProveedoresController</servlet-name>
+        <url-pattern>/admin/ProveedoresController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ComprasController</servlet-name>
+        <url-pattern>/admin/ComprasController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
