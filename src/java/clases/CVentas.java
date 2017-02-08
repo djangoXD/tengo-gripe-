@@ -7,31 +7,31 @@ package clases;
 
 /**
  *
- * @author Dennys
+ * @author WARREN
  */
-public class CUsuario {
-public String clave[]={
+public class CVentas {
+    public String clave[]={
     "_id",
-    "usuario",
-    "contraseña",
-    "permisos",
-    "id_persona"
+    "fecha_hora",
+    "tipo",
+    "id_vendedor",
+    "id_personal_reparto",
+    "id_cliente",
             };
 
-    public int n=5;
+    public int n=6;
     public String valor[];
     
-    public CUsuario(){        
+    public CVentas(){        
         valor=new String[n];
     }
-    public CUsuario(String Valor[]){
+    public CVentas(String Valor[]){
         this.valor=Valor;
     }
 
     @Override
     public String toString() {
-        return valor[1];
+        return valor[0]+" "+valor[1]+" "+valor[2]+" "+valor[3]+" "+valor[4]+" "+valor[5];
     }
-    
-    
+
 }

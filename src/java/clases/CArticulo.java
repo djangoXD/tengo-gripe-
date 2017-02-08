@@ -15,17 +15,24 @@ public class CArticulo {
     "nombre",
     "descripcion",
     "costo",
-    "imagen"
+    "stok",
+    "material",
+    "categoria"
             };
 
-    public int n=5;
+    public int n=7;
     public String valor[];
     
     public CArticulo(){        
-        valor=new String[5];
+        valor=new String[n];
     }
     public CArticulo(String Valor[]){
         this.valor=Valor;
+    }
+
+    @Override
+    public String toString() {
+        return valor[0]+" "+valor[1]+" "+valor[2]+" "+valor[3]+" "+valor[4]+" "+valor[5];
     }
 
 }

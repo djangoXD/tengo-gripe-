@@ -25,11 +25,17 @@ public class CPersonas {
     public int n=9;
     public String valor[];
     
-    public CPersonas(){        
+    public CPersonas(){     
+        
         valor=new String[n];
     }
     public CPersonas(String Valor[]){
         this.valor=Valor;
     }
 
+    @Override
+    public String toString() {
+        return valor[2]+" "+valor[3]+" "+valor[4];
+    }
+    
 }

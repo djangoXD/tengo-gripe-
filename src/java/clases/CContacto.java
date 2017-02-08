@@ -27,5 +27,10 @@ public class CContacto {
         this.valor=Valor;
     }
 
+    @Override
+    public String toString() {
+        return valor[1]+" "+valor[2];
+    }
+
     
 }

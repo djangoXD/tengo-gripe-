@@ -5,8 +5,7 @@
  */
 package controlador;
 
-import clases.CArticulo;
-import static java.awt.SystemColor.window;
+import clases.CVentas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -14,13 +13,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.DArticulo;
+import modelo.DVentas;
 
 /**
  *
  * @author WARREN
  */
-public class ArticuloController extends HttpServlet {
+public class VentasController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,39 +33,37 @@ public class ArticuloController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-                      response.setStatus(307); //this makes the redirection keep your requesting method as is.
+                try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+  
+                                response.setStatus(307); //this makes the redirection keep your requesting method as is.
            response.addHeader("Location", "prueba.jsp");
-           DArticulo dp=new DArticulo();
-           CArticulo cp=new CArticulo();
+           DVentas dp=new DVentas();
+           CVentas cp=new CVentas();
            String res="";
            RequestDispatcher rd=null;
             try{
                 for(int i=0;i<cp.clave.length;i++){
-                    cp.valor[i]=request.getParameter(cp.clave[i]);
-                   
-               }
-                out.println(cp);
+                    cp.valor[i]=request.getParameter(cp.clave[i]);                   
+                }
+                
                 if(request.getParameter("insertar")!=null){                   
                     res=dp.insertar(cp);                  
-                        out.println(res);
+//                    out.println(res);
                 }else 
                 if(request.getParameter("modificar")!=null){                   
                     res=dp.modificar(cp);                  
-                    out.println(res);
+  //                  out.println(res);
                 }else 
                 if(request.getParameter("eliminar")!=null){                   
                     res=dp.eliminar(cp);                  
-                    out.println(res);
+    //                out.println(res);
                 }
-                
         }catch(Exception e){
-            out.println(e.getMessage());
-        }
             
-        }
+        }}
     }
- 
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

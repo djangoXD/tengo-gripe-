@@ -1,4 +1,9 @@
 
+<%@page import="modelo.DCategoria"%>
+<%@page import="clases.CCategoria"%>
+<%@page import="modelo.DPersonas"%>
+<%@page import="clases.CPersonas"%>
+<%@page import="clases.CPersonas"%>
 <%@page import="clases.CArticulo"%>
 <%@page import="modelo.DArticulo"%>
 <%@page import="java.util.ArrayList"%>
@@ -25,6 +30,7 @@
                 document.getElementById("dm2").value=data[2];
                 document.getElementById("dm3").value=data[3];
                 document.getElementById("dm4").value=data[4];
+                document.getElementById("dm5").value=data[5];
                 $('#modal_modificar').modal('show');
             } );
     } );
@@ -47,19 +53,24 @@
 						<th>Nombre</th>
 						<th>Descripcion</th>
                                                 <th>Costo Unitario</th>
-						<th>Foto</th>
+                                                <th>Stock</th>
+                                                <th>Material</th>
+                                                <th>Categoria</th>
 					</tr>
 				</thead>
 				<tbody>
                 <%
                     DArticulo d1=new DArticulo();
                     ArrayList<CArticulo> datos=d1.consultar();
-                    CArticulo x=new CArticulo();
+                    int  n=new CArticulo().n;
                 for(CArticulo p: datos){
                    out.print("<tr>");
-                   for(int i=0;i<x.n;i++){
+                   for(int i=0;i<n-1;i++){
                       out.print("<td>"+p.valor[i]+"</td>");
                    }
+                   CCategoria cat1=new DCategoria().buscar_id(p.valor[n-1]);
+                   out.print("<td>"+cat1.toString()+"</td>");
+
                    out.print("</tr>");                   
                 }
                 %>
@@ -99,17 +110,36 @@
                       <input type="text" class="form-control" name="costo" id="d3"/>
                     </div>
                   </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon">Stock</span>
+                      <input type="text" class="form-control" name="stok" id="d3"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon">Material</span>
+                      <input type="text" class="form-control" name="material" id="d3"/>
+                    </div>
+                  </div>
+                <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon">Categoria</span>
+                      <select class="form-control" name="categoria" id="con4" required>
+                          <%
+                          ArrayList<CCategoria> datos_categoria=new DCategoria().consultar();
+                          for(CCategoria x:datos_categoria){
+                              %>
+                              <option value="<%=x.valor[0]%>"> <%=x.toString()%></option>
+                          <%
+                          }
+                          %>
+                      </select>
+
+                    </div>
+                  </div>   
                 
-                        <input id="imagen" name="input4[]" type="file" multiple class="file-loading">
-                        <script>
-                        $(document).on('ready', function() {
-                            $("#imagen").fileinput({
-                                showCaption: false,
-                                 showUpload: false,
-                                 browseLabel: "Imagen",
-                            });
-                        });
-                        </script>
+
             </div>
             <div class="modal-footer">
               <button  type="text" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -156,11 +186,32 @@
                   </div>
                   <div class="form-group">
                     <div class="input-group">
-                      <span class="input-group-addon">Foto</span>
-                      <input type="text" class="form-control" name="imagen" id="dm4"/>
+                      <span class="input-group-addon">Stock</span>
+                      <input type="text" class="form-control" name="stok" id="dm4"/>
                     </div>
                   </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon">Material</span>
+                      <input type="text" class="form-control" name="material" id="dm5"/>
+                    </div>
+                  </div>
+                <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon">Categoria</span>
+                      <select class="form-control" name="categoria" id="con4" required>
+                          <%
+                         datos_categoria=new DCategoria().consultar();
+                          for(CCategoria x:datos_categoria){
+                              %>
+                              <option value="<%=x.valor[0]%>"> <%=x.toString()%></option>
+                          <%
+                          }
+                          %>
+                      </select>
 
+                    </div>
+                  </div>  
 
             <div class="modal-footer">
               <button  type="text" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

@@ -5,8 +5,8 @@
  */
 package modelo;
 
-import clases.CArticulo;
-import clases.CArticulo;
+import clases.CVentas;
+import clases.CVentas;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -21,7 +21,7 @@ import org.bson.types.ObjectId;
  *
  * @author WARREN
  */ 
-public class DArticulo implements Operaciones {
+public class DVentas implements Operaciones {
 //    private String database="ferreteria";
  //   private String tabla="articulo";
   //  private String url="127.0.0.1";
@@ -30,13 +30,13 @@ public class DArticulo implements Operaciones {
     private String tabla;
     private String url;
 
-    public DArticulo() {
+    public DVentas() {
         this.database="ferreteria";
-        this.tabla="articuloss";
+        this.tabla="ventas";
         this.url="127.0.0.1";
     }
 
-    public DArticulo(String database, String tabla, String url) {
+    public DVentas(String database, String tabla, String url) {
         this.database = database;
         this.tabla = tabla;
         this.url = url;
@@ -46,7 +46,7 @@ public class DArticulo implements Operaciones {
     @Override
     public String insertar(Object o) {
         
-        CArticulo x=(CArticulo)o;       
+        CVentas x=(CVentas)o;       
         String res="";
         MongoClient mongo=null;
            try{
@@ -68,7 +68,7 @@ public class DArticulo implements Operaciones {
 
     @Override
     public String eliminar(Object o) {
-        CArticulo x=(CArticulo)o;
+        CVentas x=(CVentas)o;
         String res="";
         MongoClient mongo=null;
            try{
@@ -90,7 +90,7 @@ public class DArticulo implements Operaciones {
 
     @Override
     public String modificar(Object o) {
-        CArticulo x=(CArticulo)o;
+        CVentas x=(CVentas)o;
         String res="";
         MongoClient mongo=null;
            try{
@@ -117,7 +117,7 @@ public class DArticulo implements Operaciones {
     @Override
     public ArrayList consultar() {
         String res="";
-        CArticulo x=new CArticulo();
+        CVentas x=new CVentas();
         ArrayList datos=new ArrayList();
         MongoClient mongo=null;
         try{
@@ -142,7 +142,7 @@ public class DArticulo implements Operaciones {
                     for(int i=0;i<x.n;i++)
                         k[i]=( agg.get(x.clave[i])!=null)?agg.get(x.clave[i]).toString():"";
                     
-                    datos.add(new CArticulo(k));                                           
+                    datos.add(new CVentas(k));                                           
             }
         } finally{
             cursor.close();

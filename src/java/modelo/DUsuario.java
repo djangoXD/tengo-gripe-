@@ -149,5 +149,36 @@ public class DUsuario implements Operaciones{
     public List<?> filtrar(String campo, String criterio) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    public CUsuario buscar_id(String id){
+        String res="";
+        CUsuario x=new CUsuario();
+        ArrayList datos=new ArrayList();
+        MongoClient mongo=null;
+        try{
+             mongo=new MongoClient(url,27017);
+           }
+         catch(Exception err){
+             res=("Error");            
+         }
+        DB db=mongo.getDB(database);
+        DBCollection coll=db.getCollection(tabla);
+        BasicDBObject dato = new BasicDBObject();
+        DBObject id1 = new BasicDBObject("_id",id );
+
+        DBCursor cursor=coll.find(id1);
+        try{
+            while(cursor.hasNext()){               
+                       String k[]=new String[x.clave.length];
   
+                BasicDBObject agg=(BasicDBObject)cursor.next();  
+                    for(int i=0;i<x.n;i++)
+                        k[i]=( agg.get(x.clave[i])!=null)?agg.get(x.clave[i]).toString():"";
+                    
+                    datos.add(new CUsuario(k));                                           
+            }
+        } finally{
+            cursor.close();
+        }                  
+        return (CUsuario) datos.get(0);
+    }
 }

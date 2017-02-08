@@ -5,8 +5,8 @@
  */
 package modelo;
 
-import clases.CArticulo;
-import clases.CArticulo;
+import clases.CCategoria;
+import clases.CCategoria;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -21,7 +21,7 @@ import org.bson.types.ObjectId;
  *
  * @author WARREN
  */ 
-public class DArticulo implements Operaciones {
+public class DCategoria implements Operaciones {
 //    private String database="ferreteria";
  //   private String tabla="articulo";
   //  private String url="127.0.0.1";
@@ -30,13 +30,13 @@ public class DArticulo implements Operaciones {
     private String tabla;
     private String url;
 
-    public DArticulo() {
+    public DCategoria() {
         this.database="ferreteria";
-        this.tabla="articuloss";
+        this.tabla="categoria";
         this.url="127.0.0.1";
     }
 
-    public DArticulo(String database, String tabla, String url) {
+    public DCategoria(String database, String tabla, String url) {
         this.database = database;
         this.tabla = tabla;
         this.url = url;
@@ -46,7 +46,7 @@ public class DArticulo implements Operaciones {
     @Override
     public String insertar(Object o) {
         
-        CArticulo x=(CArticulo)o;       
+        CCategoria x=(CCategoria)o;       
         String res="";
         MongoClient mongo=null;
            try{
@@ -68,7 +68,7 @@ public class DArticulo implements Operaciones {
 
     @Override
     public String eliminar(Object o) {
-        CArticulo x=(CArticulo)o;
+        CCategoria x=(CCategoria)o;
         String res="";
         MongoClient mongo=null;
            try{
@@ -90,7 +90,7 @@ public class DArticulo implements Operaciones {
 
     @Override
     public String modificar(Object o) {
-        CArticulo x=(CArticulo)o;
+        CCategoria x=(CCategoria)o;
         String res="";
         MongoClient mongo=null;
            try{
@@ -117,7 +117,7 @@ public class DArticulo implements Operaciones {
     @Override
     public ArrayList consultar() {
         String res="";
-        CArticulo x=new CArticulo();
+        CCategoria x=new CCategoria();
         ArrayList datos=new ArrayList();
         MongoClient mongo=null;
         try{
@@ -142,7 +142,7 @@ public class DArticulo implements Operaciones {
                     for(int i=0;i<x.n;i++)
                         k[i]=( agg.get(x.clave[i])!=null)?agg.get(x.clave[i]).toString():"";
                     
-                    datos.add(new CArticulo(k));                                           
+                    datos.add(new CCategoria(k));                                           
             }
         } finally{
             cursor.close();
@@ -154,5 +154,38 @@ public class DArticulo implements Operaciones {
     public List<?> filtrar(String campo, String criterio) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+    public CCategoria buscar_id(String id){
+        String res="";
+        CCategoria x=new CCategoria();
+        ArrayList datos=new ArrayList();
+        MongoClient mongo=null;
+        try{
+             mongo=new MongoClient(url,27017);
+           }
+         catch(Exception err){
+             res=("Error");            
+         }
+        DB db=mongo.getDB(database);
+        DBCollection coll=db.getCollection(tabla);
+        BasicDBObject dato = new BasicDBObject();
+
+        DBObject id1 = new BasicDBObject("_id",new ObjectId(id) );
+
+        DBCursor cursor=coll.find(id1);
+        try{
+            while(cursor.hasNext()){               
+                       String k[]=new String[x.clave.length];
+  
+                BasicDBObject agg=(BasicDBObject)cursor.next();  
+                    for(int i=0;i<x.n;i++)
+                        k[i]=( agg.get(x.clave[i])!=null)?agg.get(x.clave[i]).toString():"";
+                    
+                    datos.add(new CCategoria(k));                                           
+            }
+        } finally{
+            cursor.close();
+        }                  
+        if(datos.size()==0)return new CCategoria();
+        return (CCategoria) datos.get(0);
+    }
 }

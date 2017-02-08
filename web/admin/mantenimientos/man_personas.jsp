@@ -10,7 +10,7 @@
         var table = $('#personas').DataTable( {
         "columnDefs": [
             {
-                "targets": [ 0   ],
+                "targets": [ 1  ],
                 "visible": false,
                 "searchable": false
             }

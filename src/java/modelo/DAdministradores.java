@@ -5,8 +5,7 @@
  */
 package modelo;
 
-import clases.CArticulo;
-import clases.CArticulo;
+import clases.CAdministradores;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -20,23 +19,19 @@ import org.bson.types.ObjectId;
 /**
  *
  * @author WARREN
- */ 
-public class DArticulo implements Operaciones {
-//    private String database="ferreteria";
- //   private String tabla="articulo";
-  //  private String url="127.0.0.1";
-
+ */
+public class DAdministradores implements Operaciones{
     private String database;
     private String tabla;
     private String url;
 
-    public DArticulo() {
+    public DAdministradores() {
         this.database="ferreteria";
-        this.tabla="articuloss";
+        this.tabla="administradores";
         this.url="127.0.0.1";
     }
 
-    public DArticulo(String database, String tabla, String url) {
+    public DAdministradores(String database, String tabla, String url) {
         this.database = database;
         this.tabla = tabla;
         this.url = url;
@@ -46,7 +41,7 @@ public class DArticulo implements Operaciones {
     @Override
     public String insertar(Object o) {
         
-        CArticulo x=(CArticulo)o;       
+        CAdministradores x=(CAdministradores)o;       
         String res="";
         MongoClient mongo=null;
            try{
@@ -68,7 +63,7 @@ public class DArticulo implements Operaciones {
 
     @Override
     public String eliminar(Object o) {
-        CArticulo x=(CArticulo)o;
+        CAdministradores x=(CAdministradores)o;
         String res="";
         MongoClient mongo=null;
            try{
@@ -90,7 +85,7 @@ public class DArticulo implements Operaciones {
 
     @Override
     public String modificar(Object o) {
-        CArticulo x=(CArticulo)o;
+        CAdministradores x=(CAdministradores)o;
         String res="";
         MongoClient mongo=null;
            try{
@@ -117,7 +112,7 @@ public class DArticulo implements Operaciones {
     @Override
     public ArrayList consultar() {
         String res="";
-        CArticulo x=new CArticulo();
+        CAdministradores x=new CAdministradores();
         ArrayList datos=new ArrayList();
         MongoClient mongo=null;
         try{
@@ -142,7 +137,7 @@ public class DArticulo implements Operaciones {
                     for(int i=0;i<x.n;i++)
                         k[i]=( agg.get(x.clave[i])!=null)?agg.get(x.clave[i]).toString():"";
                     
-                    datos.add(new CArticulo(k));                                           
+                    datos.add(new CAdministradores(k));                                           
             }
         } finally{
             cursor.close();
@@ -154,5 +149,4 @@ public class DArticulo implements Operaciones {
     public List<?> filtrar(String campo, String criterio) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }

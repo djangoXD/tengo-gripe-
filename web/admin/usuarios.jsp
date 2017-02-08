@@ -81,6 +81,7 @@
                           <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_direcciones.jsp');">Direcciones</a></li>
                           <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_proveedores.jsp');">Proveedores</a></li>
                           <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_compras.jsp');">Compras</a></li>
+                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_administradores.jsp');">Administradores</a></li>
 
                           <li role="separator" class="divider"></li>
                           <li><a href="#">Separated link</a></li>

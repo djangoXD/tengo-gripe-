@@ -14,10 +14,11 @@ public class CProveedores {
     "_id",
     "ruc",
     "razon_social",
-    "descripcion"
+    "descripcion",
+    "id_persona"
             };
 
-    public int n=4;
+    public int n=5;
     public String valor[];
     
     public CProveedores(){        

@@ -1,4 +1,6 @@
 
+<%@page import="clases.CPersonas"%>
+<%@page import="modelo.DPersonas"%>
 <%@page import="clases.CProveedores"%>
 <%@page import="modelo.DProveedores"%>
 <%@page import="java.util.ArrayList"%>
@@ -47,18 +49,21 @@
 						<th>RUC</th>
 						<th>Razon Social</th>	
                                                 <th>Descripcion</th>
+                                                <th>Persona</th>
 					</tr>
 				</thead>
 				<tbody>
                 <%
                     DProveedores provc=new DProveedores();
                     ArrayList<CProveedores> con_datos=provc.consultar();
-                    CProveedores provc1=new CProveedores();
+                    int n=new CProveedores().n;
                 for(CProveedores p: con_datos){
                    out.print("<tr>");
-                   for(int i=0;i<provc1.n;i++){
+                   for(int i=0;i<n-1;i++){
                       out.print("<td>"+p.valor[i]+"</td>");
                    }
+                   CPersonas per1=new DPersonas().buscar_id(p.valor[n-1]);
+                   out.print("<td>"+per1.toString()+"</td>");
                    out.print("</tr>");                   
                 }
                 %>
@@ -99,7 +104,22 @@
                     </div>
                   </div>
 
-                 
+                 <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon">Id Persona</span>
+                      <select class="form-control" name="id_persona" id="con3" required>
+                          <%
+                          ArrayList<CPersonas>datos_personas=new DPersonas().consultar();
+                          for(CPersonas x:datos_personas){
+                              %>
+                              <option value="<%=x.valor[0]%>"> <%=x.toString()%></option>
+                          <%
+                          }
+                          %>
+                      </select>
+
+                    </div>
+                  </div> 
             </div>
             <div class="modal-footer">
               <button  type="text" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -146,7 +166,22 @@
                     </div>
                   </div>
 
-            
+            <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon">Id Persona</span>
+                      <select class="form-control" name="id_persona" id="con3" required>
+                          <%
+                          datos_personas=new DPersonas().consultar();
+                          for(CPersonas x:datos_personas){
+                              %>
+                              <option value="<%=x.valor[0]%>"> <%=x.toString()%></option>
+                          <%
+                          }
+                          %>
+                      </select>
+
+                    </div>
+                  </div>
             <div class="modal-footer">
               <button  type="text" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
               <button  type="submit" class="btn btn-primary" name="modificar" >Modificar</button>

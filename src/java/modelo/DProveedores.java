@@ -27,7 +27,7 @@ public class DProveedores implements Operaciones {
 
     public DProveedores() {
         this.database="ferreteria";
-        this.tabla="proveedores";
+        this.tabla="proveedoresa";
         this.url="127.0.0.1";
     }
 

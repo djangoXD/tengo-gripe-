@@ -5,33 +5,31 @@
  */
 package clases;
 
+import modelo.DPersonas;
+
 /**
  *
- * @author Dennys
+ * @author WARREN
  */
-public class CUsuario {
-public String clave[]={
+public class CCliente {
+        public String clave[]={
     "_id",
-    "usuario",
-    "contraseña",
-    "permisos",
-    "id_persona"
-            };
+    "estado",
+    "id_persona",
+        };
 
-    public int n=5;
+    public int n=3;
     public String valor[];
     
-    public CUsuario(){        
+    public CCliente(){        
         valor=new String[n];
     }
-    public CUsuario(String Valor[]){
+    public CCliente(String Valor[]){
         this.valor=Valor;
     }
 
     @Override
     public String toString() {
-        return valor[1];
-    }
-    
-    
+     return (new DPersonas().buscar_id(valor[n-1])).toString();
+    }    
 }

@@ -154,5 +154,38 @@ public class DPersonas implements Operaciones {
     public List<?> filtrar(String campo, String criterio) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+    public CPersonas buscar_id(String id){
+        String res="";
+        CPersonas x=new CPersonas();
+        ArrayList datos=new ArrayList();
+        MongoClient mongo=null;
+        try{
+             mongo=new MongoClient(url,27017);
+           }
+         catch(Exception err){
+             res=("Error");            
+         }
+        DB db=mongo.getDB(database);
+        DBCollection coll=db.getCollection(tabla);
+        BasicDBObject dato = new BasicDBObject();
+
+        DBObject id1 = new BasicDBObject("_id",new ObjectId(id) );
+
+        DBCursor cursor=coll.find(id1);
+        try{
+            while(cursor.hasNext()){               
+                       String k[]=new String[x.clave.length];
+  
+                BasicDBObject agg=(BasicDBObject)cursor.next();  
+                    for(int i=0;i<x.n;i++)
+                        k[i]=( agg.get(x.clave[i])!=null)?agg.get(x.clave[i]).toString():"";
+                    
+                    datos.add(new CPersonas(k));                                           
+            }
+        } finally{
+            cursor.close();
+        }                  
+        if(datos.size()==0)return new CPersonas();
+        return (CPersonas) datos.get(0);
+    }
 }

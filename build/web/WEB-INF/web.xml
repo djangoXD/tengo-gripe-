@@ -5,6 +5,10 @@
         <servlet-class>controlador.PersonaController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ArticuloController</servlet-name>
+        <servlet-class>controlador.ArticuloController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>PersonasController</servlet-name>
         <servlet-class>controlador.PersonasController</servlet-class>
     </servlet>
@@ -23,6 +27,30 @@
     <servlet>
         <servlet-name>ComprasController</servlet-name>
         <servlet-class>controlador.ComprasController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdministradoresController</servlet-name>
+        <servlet-class>controlador.AdministradoresController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VendedoresController</servlet-name>
+        <servlet-class>controlador.VendedoresController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClienteController</servlet-name>
+        <servlet-class>controlador.ClienteController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Personal_repartoController</servlet-name>
+        <servlet-class>controlador.Personal_repartoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CategoriaController</servlet-name>
+        <servlet-class>controlador.CategoriaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VentasController</servlet-name>
+        <servlet-class>controlador.VentasController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PersonaController</servlet-name>
@@ -47,6 +75,34 @@
     <servlet-mapping>
         <servlet-name>ComprasController</servlet-name>
         <url-pattern>/admin/ComprasController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdministradoresController</servlet-name>
+        <url-pattern>/admin/AdministradoresController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VendedoresController</servlet-name>
+        <url-pattern>/admin/VendedoresController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClienteController</servlet-name>
+        <url-pattern>/admin/ClienteController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Personal_repartoController</servlet-name>
+        <url-pattern>/admin/Personal_repartoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CategoriaController</servlet-name>
+        <url-pattern>/admin/CategoriaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ArticuloController</servlet-name>
+        <url-pattern>/admin/ArticuloController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VentasController</servlet-name>
+        <url-pattern>/admin/VentasController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

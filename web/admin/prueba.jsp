@@ -25,8 +25,7 @@
        
     
 </head>
- <body>
-    
-     <%@include file="mantenimientos/man_personas.jsp"%>
+ <body>    
+     <%@include file="mantenimientos/man_ventas.jsp"%>
  </body>
 </html>         
