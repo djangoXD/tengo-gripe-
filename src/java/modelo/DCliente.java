@@ -27,16 +27,12 @@ public class DCliente implements Operaciones{
     private String url;
 
     public DCliente() {
-        this.database="ferreteria";
-        this.tabla="clientee";
-        this.url="127.0.0.1";
-    }
+       ADcon gg=new ADcon();
+        this.database=gg.getDatabase();
+        this.tabla="cliente";
+        this.url=gg.getUrl();
+     }
 
-    public DCliente(String database, String tabla, String url) {
-        this.database = database;
-        this.tabla = tabla;
-        this.url = url;
-    }
    
     
     @Override

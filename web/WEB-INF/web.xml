@@ -52,6 +52,22 @@
         <servlet-name>VentasController</servlet-name>
         <servlet-class>controlador.VentasController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Ventas_detalleController</servlet-name>
+        <servlet-class>controlador.Ventas_detalleController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Compras_detalleController</servlet-name>
+        <servlet-class>controlador.Compras_detalleController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ImagenesController</servlet-name>
+        <servlet-class>controlador.ImagenesController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Imagengg</servlet-name>
+        <servlet-class>controlador.Imagengg</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PersonaController</servlet-name>
         <url-pattern>/PersonaController</url-pattern>
@@ -103,6 +119,22 @@
     <servlet-mapping>
         <servlet-name>VentasController</servlet-name>
         <url-pattern>/admin/VentasController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Ventas_detalleController</servlet-name>
+        <url-pattern>/admin/Ventas_detalleController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Compras_detalleController</servlet-name>
+        <url-pattern>/admin/Compras_detalleController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ImagenesController</servlet-name>
+        <url-pattern>/admin/ImagenesController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Imagengg</servlet-name>
+        <url-pattern>/admin/Imagengg</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

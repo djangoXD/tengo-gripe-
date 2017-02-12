@@ -46,17 +46,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav">
-							<li class="hvr-bounce-to-bottom active"><a href="index.html">Home</a></li>
+							<li class="hvr-bounce-to-bottom active"><a href="index.html">Inicio</a></li>
 							<li class="hvr-bounce-to-bottom"><a href="about.html">Artesanias</a></li>
-							<li><a href="#" class="dropdown-toggle hvr-bounce-to-bottom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Moda<span class="caret"></span></a>
+							<li><a href="moda.html" class="dropdown-toggle hvr-bounce-to-bottom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Moda<span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li class="hvr-bounce-to-bottom"><a href="icons.html">Chompas</a></li>
-									<li class="hvr-bounce-to-bottom"><a href="codes.html">Ponchos</a></li>     
+									<li class="hvr-bounce-to-bottom"><a href="moda.html">Chompas</a></li>
+									<li class="hvr-bounce-to-bottom"><a href="moda.html">Ponchos</a></li> 
+                                                                        <li class="hvr-bounce-to-bottom"><a href="moda.html">Mantas</a></li> 
+                                                                        <li class="hvr-bounce-to-bottom"><a href="moda.html">Chullos</a></li>
+                                                                        <li class="hvr-bounce-to-bottom"><a href="moda.html">Accesorios</a></li> 
 								</ul>
 							</li>   
 							<li class="hvr-bounce-to-bottom"><a href="blog.html">Ofertas</a></li>
 							<li class="hvr-bounce-to-bottom"><a href="contact.html">Contactanos</a></li>
-                                                	<li class="hvr-bounce-to-bottom"><a href="admin/usuarios.jsp">Loing</a></li>
+                                                	<li class="hvr-bounce-to-bottom"><a href="#" data-toggle="modal" data-target="#myModal4"><span class="glyphicon glyphicon-user"></span>Inicias sesión</a></li>
 						</ul>
 					</div><!-- //navbar-collapse -->
 				</nav>
@@ -64,6 +67,41 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</div>
 	<!-- //header -->
+        <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-info">
+                    <div class="mymodal">
+                        <div class="modal-header">
+                            <label><a>Ingrese con su cuenta</a></label>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><br>
+                        </div>
+                        <div class="modal-body modal-spa">
+                            <div class="login-grids">
+                                <div class="login-right">
+                                        <form method="POST" action="admin/check.jsp">
+                                                <div class="collapse navbar-collapse nav-wil">
+                                                    <label for="text" class="col-md-4 control-label" ><a>Usuario</a></label>
+                                                    <div class="col-md-6">
+                                                        <input id="email" type="text" class="form-control" maxlength="10" name="usuario" required autofocus>
+                                                    </div>
+                                                </div><br>
+                                                <div class="collapse navbar-collapse nav-wil">
+                                                    <label for="password" class="col-md-4 control-label"><a>Contraseña</a></label>
+                                                    <div class="col-md-6">
+                                                        <input id="password" type="password" class="form-control" name="clave" required>
+                                                    </div>
+                                                </div>
+                                                <div class="sing-in">
+                                                    <input type="submit" value="Iniciar sesión" >
+                                                </div>
+                                        </form>
+                                </div>                  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 	<!-- banner -->
 	<div class="banner"> 
 		<!-- Slider-starts-Here --> 
@@ -121,50 +159,42 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="container">
 				<div class="col-md-3 banner-bottom-grid">
 					<div class="banner-bottom-grd w3-agile-back">
-						<h4>01</h4>
-						<p>fugiat quo<span> voluptas</span></p>
-						<div class="clearfix"> </div>
+                                                <img src="images/chompa1.jpg" class="img-no-padding img-responsive">
+						<div class="clearfix"></div>
 					</div>
-					<p class="w3ltext">Temporibus autem quibusdam et aut officiis debitis aut 
-						rerum necessitatibus saepe eveniet ut et voluptates.</p>
+					<p class="w3ltext">Colección otoño.</p>
 					<div class="more more4">
-						<a href="single.html">Read More</a>
+						<a href="single.html">S/.50.00</a>
 					</div>
 				</div>
 				<div class="col-md-3 banner-bottom-grid">
 					<div class="banner-bottom-grd w3-agile-back1">
-						<h4>02</h4>
-						<p>voluptas <span> fugiat quo </span></p>
+						<img src="images/poncho1.jpg" class="img-no-padding img-responsive">
 						<div class="clearfix"> </div>
 					</div>
-					<p class="w3ltext">Temporibus autem quibusdam et aut officiis debitis aut 
-						rerum necessitatibus saepe eveniet ut et voluptates.</p>
+					<p class="w3ltext">Nueva temporada.</p>
 					<div class="more more1">
-						<a href="single.html">Read More</a>
+						<a href="single.html">S/.70.00</a>
 					</div>
 				</div>
 				<div class="col-md-3 banner-bottom-grid">
 					<div class="banner-bottom-grd w3-agile-back2">
-						<h4>03</h4>
-						<p>officiis aut <span> debitis </span></p>
+						<img src="images/chompa2.jpg" class="img-no-padding img-responsive">
 						<div class="clearfix"> </div>
 					</div>
-					<p class="w3ltext">Temporibus autem quibusdam et aut officiis debitis aut 
-						rerum necessitatibus saepe eveniet ut et voluptates.</p>
+					<p class="w3ltext">Colección invierno.</p>
 					<div class="more more2">
-						<a href="single.html">Read More</a>
+						<a href="single.html">S/.40.00</a>
 					</div>
 				</div>
 				<div class="col-md-3 banner-bottom-grid">
 					<div class="banner-bottom-grd w3-agile-back3">
-						<h4>04</h4>
-						<p>saepe utet <span> eveniet</span></p>
+						<img src="images/poncho2.jpg" class="img-no-padding img-responsive">
 						<div class="clearfix"> </div>
 					</div>
-					<p class="w3ltext">Temporibus autem quibusdam et aut officiis debitis aut 
-						rerum necessitatibus saepe eveniet ut et voluptates.</p>
+					<p class="w3ltext">Colección invierno.</p>
 					<div class="more more3">
-						<a href="single.html">Read More</a>
+						<a href="single.html">S/.80.00</a>
 					</div>
 				</div>
 				<div class="clearfix"> </div>
@@ -175,7 +205,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- welcome -->
 	<div class="welcome w3-agileits">
 		<div class="container">
-			<h2>Welcome !</h2>
+			<h2>Bienvenido !</h2>
 			<div class="banner-agileits-w3layouts">
 				<div class="col-md-4 welcome-grid">
 					<img src="images/1.jpg" alt=" " class="img-responsive" />
@@ -199,7 +229,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="container">
 			<div class="get-in-grids">
 				<div class="get-in-grid-left">
-					<p>Newsletter</p>
+					<p>Preguntar</p>
 				</div>
 				<div class="get-in-grid-right">
 					<form action="#" method="post">
@@ -215,7 +245,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- news -->
 	<div class="news">
 		<div class="container">
-			<h3>News & Events</h3>
+			<h3>Noticias y Eventos</h3>
 			<p class="news-wthreetext">Vel illum qui dolorem eum aliquid ex ea commodi consequatur 
 				vel illum qui dolorem eum fugiat quo voluptas</p>
 			<div class="news-agileinfo">
@@ -286,7 +316,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- customer -->
 	<div class="customer">
 		<div class="container">
-			<h3>Customer Says</h3>
+			<h3>Comentarios de nustros clientes</h3>
 			<div class="customer-w3layoutsgrids">
 				<ul id="flexiselDemo1">			
 					<li>
@@ -355,7 +385,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<p>Ut rutrum neque a mollis laoreet diam enim feuiat dui nec ulacoper quam felis id diam. Nunc ut tortor ligula eu petiu risus. Pelleesque conquat dignissim lacus quis altrcies.</p>
 				</div>
 				<div class="col-md-3 footer-grid">
-					<h3>Social Media</h3>
+					<h3>Redes Sociales</h3>
 					<ul>
 						<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a></li>
 						<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
@@ -364,7 +394,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</ul>
 				</div>
 				<div class="col-md-3 footer-grid">
-					<h3>Useful Info</h3>
+					<h3>Info</h3>
 					<ul>
 						<li><a href="index.html">Home</a></li>
 						<li><a href="about.html">About</a></li>
@@ -373,7 +403,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</ul>
 				</div>
 				<div class="col-md-3 footer-grid">
-					<h3>Contact Us</h3>
+					<h3>Contactanos</h3>
 					<p>Pelleesque conquat dignissim lacus quis altrcies.</p>
 					<div class="footer-grid-address">
 						<p>Tel.800-255-9999</p>
@@ -385,9 +415,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 		</div>
 	</div> 
-	<div class="copy-right">
-		<p>© 2017 Wool. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
-	</div>
 	<!-- //footer -->
 	<!-- start-smooth-scrolling -->
 	<script type="text/javascript" src="js/move-top.js"></script>

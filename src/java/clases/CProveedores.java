@@ -5,6 +5,9 @@
  */
 package clases;
 
+import modelo.DPersona;
+import modelo.DPersonas;
+
 /**
  *
  * @author Dennys
@@ -27,5 +30,11 @@ public class CProveedores {
     public CProveedores(String Valor[]){
         this.valor=Valor;
     }
-    
+
+    @Override
+    public String toString() {
+        CPersonas x=new DPersonas().buscar_id(valor[4]);
+        return valor[1]+" "+x;
+    }
+        
 }

@@ -5,20 +5,24 @@
  */
 package controlador;
 
+import clases.CImagen;
 import clases.CPersonas;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.DImagen;
 import modelo.DPersonas;
 
 /**
  *
  * @author WARREN
  */
+@MultipartConfig
 public class PersonasController extends HttpServlet {
 
     /**
@@ -38,23 +42,38 @@ public class PersonasController extends HttpServlet {
       response.addHeader("Location", "usuarios.jsp");
            DPersonas dp=new DPersonas();
            CPersonas cp=new CPersonas();
+           
+           CImagen ci=new CImagen();
+           DImagen di=new DImagen();
            String res="";
            RequestDispatcher rd=null;
             try{
                 for(int i=0;i<cp.clave.length;i++){
                     cp.valor[i]=request.getParameter(cp.clave[i]);
-                   out.println(cp.valor[i]);
                 }
                 if(request.getParameter("insertar")!=null){                   
+                    ci.imagen=request.getPart("foto").getInputStream();
+                    ci.nombre=cp.valor[2];
+                    ci.prioridad="1";
+                    ci.tipo="Persona";
+                    di.insertar(ci);
                     res=dp.insertar(cp);                  
-                    out.println(res);
+
                 }else 
                 if(request.getParameter("modificar")!=null){                   
                     res=dp.modificar(cp);                  
+                    ci.imagen=request.getPart("foto").getInputStream();
+                    ci.nombre=cp.valor[2];
+                    ci.prioridad="1";
+                    ci.tipo="Persona";
+                    if(di.existe(ci.nombre))di.eliminar(ci);
+                    di.insertar(ci);
+
   //                  out.println(res);
                 }else 
                 if(request.getParameter("eliminar")!=null){                   
                     res=dp.eliminar(cp);                  
+                   if(di.existe(ci.nombre))di.eliminar(ci);
     //                out.println(res);
                 }
                 

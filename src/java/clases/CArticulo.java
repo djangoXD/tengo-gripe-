@@ -32,7 +32,7 @@ public class CArticulo {
 
     @Override
     public String toString() {
-        return valor[0]+" "+valor[1]+" "+valor[2]+" "+valor[3]+" "+valor[4]+" "+valor[5];
+        return valor[1];
     }
 
 }

@@ -31,15 +31,11 @@ public class DArticulo implements Operaciones {
     private String url;
 
     public DArticulo() {
-        this.database="ferreteria";
-        this.tabla="articuloss";
-        this.url="127.0.0.1";
-    }
-
-    public DArticulo(String database, String tabla, String url) {
-        this.database = database;
-        this.tabla = tabla;
-        this.url = url;
+       ADcon gg=new ADcon();
+        this.database=gg.getDatabase();
+        this.tabla="articulo";
+        this.url=gg.getUrl();
+ 
     }
    
     
@@ -154,5 +150,38 @@ public class DArticulo implements Operaciones {
     public List<?> filtrar(String campo, String criterio) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+     public CArticulo buscar_id(String id){
+        String res="";
+        CArticulo x=new CArticulo();
+        ArrayList datos=new ArrayList();
+        MongoClient mongo=null;
+        try{
+             mongo=new MongoClient(url,27017);
+           }
+         catch(Exception err){
+             res=("Error");            
+         }
+        DB db=mongo.getDB(database);
+        DBCollection coll=db.getCollection(tabla);
+        BasicDBObject dato = new BasicDBObject();
+
+        DBObject id1 = new BasicDBObject("_id",new ObjectId(id) );
+
+        DBCursor cursor=coll.find(id1);
+        try{
+            while(cursor.hasNext()){               
+                       String k[]=new String[x.clave.length];
+  
+                BasicDBObject agg=(BasicDBObject)cursor.next();  
+                    for(int i=0;i<x.n;i++)
+                        k[i]=( agg.get(x.clave[i])!=null)?agg.get(x.clave[i]).toString():"";
+                    
+                    datos.add(new CArticulo(k));                                           
+            }
+        } finally{
+            cursor.close();
+        }                  
+        if(datos.size()==0)return new CArticulo();
+        return (CArticulo) datos.get(0);
+    }
 }

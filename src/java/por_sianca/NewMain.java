@@ -7,10 +7,27 @@ package por_sianca;
 
 import clases.CCategoria;
 import clases.CArticulo;
+import clases.CCompras;
+import clases.CCompras_detalle;
+import clases.CImagen;
+import clases.CUsuario;
 import clases.CVendedores;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
+import com.mongodb.MongoClient;
+import com.mongodb.gridfs.GridFS;
+import com.mongodb.gridfs.GridFSDBFile;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import modelo.DCategoria;
 import modelo.DArticulo;
+import modelo.DCompras;
+import modelo.DImagen;
+import modelo.DUsuario;
 import modelo.DVendedores;
 
 /**
@@ -23,8 +40,11 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-                ArrayList <CVendedores> cv=new DVendedores().consultar();
-                for(CVendedores x:cv)System.out.println(x);
+        CImagen g=new CImagen();
+        DImagen gd=new DImagen();
+        g.nombre=null;
+
+        System.out.println(        gd.existe("454d"));
     }
     
 }

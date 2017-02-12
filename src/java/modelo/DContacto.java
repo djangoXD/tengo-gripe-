@@ -30,16 +30,12 @@ public class DContacto implements Operaciones {
     private String url;
 
     public DContacto() {
-        this.database="ferreteria";
+       ADcon gg=new ADcon();
+        this.database=gg.getDatabase();
         this.tabla="contacto";
-        this.url="127.0.0.1";
-    }
+        this.url=gg.getUrl();
+     }
 
-    public DContacto(String database, String tabla, String url) {
-        this.database = database;
-        this.tabla = tabla;
-        this.url = url;
-    }
    
     
     @Override

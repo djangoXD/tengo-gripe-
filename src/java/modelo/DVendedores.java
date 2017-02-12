@@ -27,10 +27,11 @@ public class DVendedores implements Operaciones{
     private String url;
 
     public DVendedores() {
-        this.database="ferreteria";
+       ADcon gg=new ADcon();
+        this.database=gg.getDatabase();
         this.tabla="vendedores";
-        this.url="127.0.0.1";
-    }
+        this.url=gg.getUrl();
+     }
 
     public DVendedores(String database, String tabla, String url) {
         this.database = database;

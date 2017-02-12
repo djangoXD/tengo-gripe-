@@ -33,6 +33,22 @@ body a:hover{
 .header {
 	background: #252525;
 }
+.mymodal{
+    background: #252525;
+}
+.mymodal a{
+  color: #ffc400;
+  font-size: 16px;
+}
+.mymodal input[type="submit"]{
+	outline:none;
+	color:#fff;
+	font-size:18px;
+        weight:15%;
+	background:#ffc400;
+	border:1px solid #999;
+        align-self:center;
+}
 .navbar {
 	margin-bottom: 0;
 }
@@ -363,6 +379,46 @@ ul.callbacks_tabs.callbacks2_tabs.callbacks_here a:after{
 	-o-background-size:cover;
 	-ms-background-size:cover;
 	min-height:700px;
+}
+.banner-info3{
+	background:url(../images/banner5.jpg) no-repeat center 0px;
+	background-size:cover;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	-ms-background-size:cover;
+	min-height:500px;
+}
+.banner-info4{
+	background:url(../images/banner6.jpg) no-repeat center 0px;
+	background-size:cover;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	-ms-background-size:cover;
+	min-height:500px;
+}
+.banner-info5{
+	background:url(../images/banner7.jpg) no-repeat center;
+	background-size:cover;
+	-webkit-background-size:cover;
+	-moz-background-size:cover;
+	-o-background-size:cover;
+	-ms-background-size:cover;
+	min-height:500px;
+}
+.baner-w6text{
+	padding:2em;
+	width: inherit;
+	background:rgba(0, 0, 0, 0.71);
+	position:absolute;
+	top: 70%;
+	left: 14%;
+}
+.baner-w6text h3{
+	font-size:3em;
+	color:#fff;
+	margin:0;
 }
 .baner-w3text{
 	padding:2em;
@@ -768,7 +824,7 @@ p.aut {
 /*-- //contact --*/ 
 /*-- newsletter --*/
 .newsletter{
-	background:url(../images/banner2.jpg) no-repeat center fixed;
+	background:url(../images/banner3.jpg) no-repeat center fixed;
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -2014,12 +2070,18 @@ h2.typoh2{
 	.baner-w3text {
 		left: 10%; 
 	}
+        .baner-w6text {
+		left: 10%; 
+	}
 	.banner-bottom-grids {
 		left: 8%;
 	}
 }
 @media (max-width:1366px){ 
 	.baner-w3text {
+	  left:8%;
+	}
+        .baner-w6text {
 	  left:8%;
 	}
 	.banner-bottom-grids {
@@ -2032,7 +2094,14 @@ h2.typoh2{
 		left: 5%; 
 		top: 23%;
 	}
-	.banner-info,.banner-info1,.banner-info2{
+        .baner-w6text {
+		left: 5%; 
+		top: 45%;
+	}
+        .banner-info3, .banner-info4, .banner-info5{
+            min-height: 400px;
+        }
+	.banner-info,.banner-info1, .banner-info2{
 		min-height:600px;
 	}
 	.banner-bottom-grids {
@@ -2424,7 +2493,13 @@ h2.typoh2{
 	.baner-w3text {
 	  top: 18%;
 	}
-	.banner-info, .banner-info1, .banner-info2 {
+        .baner-w6text {
+            top: 45%;
+	}
+        .banner-info3, .banner-info4, .banner-info5{
+            min-height: 300px;
+        }
+	.banner-info, .banner-info1, .banner-info2{
 		min-height: 330px;
 	}
 	.banner-bottom-grd h4 {
@@ -2614,6 +2689,9 @@ h2.typoh2{
 	.banner-bottom-grd {
 		padding: 0.6em 1em;
 	}
+        .baner-w6text  h3{
+            ffont-size: 1.5em;
+	}
 	.baner-w3text h3 {
 		font-size: 1.5em;
 	}
@@ -2623,6 +2701,10 @@ h2.typoh2{
 	.baner-w3text p {
 		font-size: 0.9em;
 	} 
+        .baner-w6text {
+		left: 7%;
+		top: 45%;
+	}
 	.baner-w3text {
 		left: 7%;
 		top: 21%;
@@ -2644,7 +2726,7 @@ h2.typoh2{
 	.banner-bottom-grd p {
 		margin: 0.6em 0 0;
 	}
-	.banner-info, .banner-info1, .banner-info2 {
+	.banner-info, .banner-info1, .banner-info2,.banner-info3, .banner-info4, .banner-info5 {
 		min-height: 220px;
 	}
 	.get-in-grid-left {
@@ -2829,10 +2911,13 @@ h2.typoh2{
 	} 
 }
 @media (max-width: 414px){
-	.banner-info, .banner-info1, .banner-info2 {
+	.banner-info, .banner-info1, .banner-info2,.banner-info3, .banner-info4, .banner-info5 {
 		min-height: 200px;
 	}
 	.baner-w3text h3{
+	  font-size: 1.8em;
+	}
+        .baner-w6text h3{
 	  font-size: 1.8em;
 	}
 	.baner-w3text {
@@ -2958,7 +3043,7 @@ h2.typoh2{
 		left: 5%;
 		width: 67%;
 	}
-	.banner-info, .banner-info1, .banner-info2 {
+	.banner-info, .banner-info1, .banner-info2,.banner-info3, .banner-info4, .banner-info5 {
 		min-height: 185px;
 	}
 	.banner-bottom-grid,.welcome-grid,.news-grid,.news-grid-left,.our-advantages-grid,.history-agileleft,

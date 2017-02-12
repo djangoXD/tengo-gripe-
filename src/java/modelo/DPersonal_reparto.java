@@ -27,14 +27,15 @@ public class DPersonal_reparto implements Operaciones{
     private String url;
 
     public DPersonal_reparto() {
-        this.database="ferreteria";
-        this.tabla="personal_reparto";
-        this.url="127.0.0.1";
-    }
+              ADcon gg=new ADcon();
+        this.database=gg.getDatabase();
+        this.tabla=gg.getTabla();
+        this.url=gg.getUrl();
+  }
 
     public DPersonal_reparto(String database, String tabla, String url) {
         this.database = database;
-        this.tabla = tabla;
+        this.tabla = "personal_reparto";
         this.url = url;
     }
    

@@ -1,4 +1,5 @@
 
+<%@page import="modelo.DImagen"%>
 <%@page import="clases.CPersonas"%>
 <%@page import="modelo.DPersonas"%>
 <%@page import="java.util.ArrayList"%>
@@ -10,7 +11,7 @@
         var table = $('#personas').DataTable( {
         "columnDefs": [
             {
-                "targets": [ 1  ],
+                "targets": [ 0 ],
                 "visible": false,
                 "searchable": false
             }
@@ -28,7 +29,7 @@
                 document.getElementById("per5").value=data[5];
                 document.getElementById("per6").value=data[6];
                 document.getElementById("per7").value=data[7];
-                document.getElementById("per8").value=data[8];
+
                 $('#modal_modificar_persona').modal('show');
             } );
     } );
@@ -63,11 +64,24 @@
                     DPersonas d1=new DPersonas();
                     ArrayList<CPersonas> datos=d1.consultar();
                     CPersonas x=new CPersonas();
+                    DImagen imagen=new DImagen();
                 for(CPersonas p: datos){
                    out.print("<tr>");
                    for(int i=0;i<x.n;i++){
                       out.print("<td>"+p.valor[i]+"</td>");
-                   }
+                   } 
+                   if(imagen.existe(p.valor[2])){
+                   %>
+                                <td>
+                                    <img name="warren" width="80" height="80" src="gg.jsp?imagen=<%=p.valor[2]%>">
+                                </td>
+                                    <%
+                    }else{%>
+                                <td>
+                                    <img name="warren" width="80" height="80" src="images/gg.png">
+                                </td>  
+                                <%} 
+
                    out.print("</tr>");                   
                 }
                 %>
@@ -86,15 +100,20 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-        <form method="post" action="PersonasController">
+        <form method="post" action="PersonasController" enctype="multipart/form-data">
             <div class="modal-body">
-
-                  <div class="form-group">
+                 <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon">Tipo Documento</span>
-                      <input type="text" class="form-control" name="tipo_documento" id="idper1" required/>
+                      <select class="form-control" name="tipo_documento" id="con3" required>
+                              <option value="DNI"> DNI</option>
+                              <option value="VISA"> VISA </option>
+                              <option value="OTROS"> OTROS</option>
+                      </select>
+
                     </div>
-                  </div>
+                  </div>       
+                 
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon">Nro Documento</span>
@@ -116,27 +135,54 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon">Fecha Nacimiento</span>
-                      <input type="text" class="form-control" name="fecha_nacimiento" id="idper5"/>
+                      <input type="date" class="form-control" name="fecha_nacimiento" id="idper5"/>
                     </div>
                   </div>
-                  <div class="form-group">
+                <div class="form-group">
                     <div class="input-group">
-                      <span class="input-group-addon">Sexo</span>
-                      <input type="text" class="form-control" name="sexo" id="idper6"/>
+                      <span class="input-group-addon">Tipo Documento</span>
+                      <select class="form-control" name="sexo" id="idper6" required>
+                              <option value="FEMENINO"> FEMENINO</option>
+                              <option value="MASCULINO">MASCULINO </option>
+                              <option value="HIBRIDO"> HIBRIDO</option>
+                      </select>
+
                     </div>
-                  </div>
+                  </div>       
+ 
+
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon">Email</span>
                       <input type="text" class="form-control" name="email" id="idper7"/>
                     </div>
-                  </div>
+                  </div>1
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon">Foto</span>
-                      <input type="text" class="form-control" name="foto" id="idper8"/>
+                      <input type="file" class="form-control" name="foto" id="files"/>
                     </div>
-                  </div>                
+                  </div>       
+                  <output id="list"></output>
+        
+        <script>
+		  function archivo(evt) {
+			var files = evt.target.files; 
+			for (var i = 0,f = files[i]; i<5; i++) {
+			  if (!f.type.match('image.*')) continue;			 		
+			  var reader = new FileReader();		
+			  reader.onload = (function(theFile) {
+				return function(e) {
+        				 document.getElementById("list").innerHTML = ['<img class="img-rounded" alt="Cinque Terre" width="304" height="236"  src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+
+				};
+			  })(f);		
+			  reader.readAsDataURL(f);
+			}
+		  }
+		
+		  document.getElementById('files').addEventListener('change', archivo, false);
+        	</script>
             </div>
             <div class="modal-footer">
               <button  type="text" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -157,7 +203,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-        <form method="post" action="PersonasController">
+        <form method="post" action="PersonasController" enctype="multipart/form-data">
 
           <div class="modal-body">
 
@@ -208,26 +254,11 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon">Foto</span>
-                      <input type="text" class="form-control" name="foto" id="per8"/>
+                      <input type="file" class="form-control" name="foto" id="per7"/>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon">Foto</span>
-                      <input type="submit"  class="form-control" onclick="this.form.action='ContactoController';" id="per9" value="contacto" />
-                    </div>
-                  </div>
-                
-                        <input id="imagen" name="input4[]" type="file" multiple class="file-loading">
-                        <script>
-                        $(document).on('ready', function() {
-                            $("#imagen").fileinput({
-                                showCaption: false,
-                                 showUpload: false,
-                                 browseLabel: "Imagen",
-                            });
-                        });
-                        </script>
+            
+                  
             <div class="modal-footer">
               <button  type="text" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
               <button  type="submit" class="btn btn-primary" name="modificar" >Modificar</button>

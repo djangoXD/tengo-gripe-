@@ -26,10 +26,11 @@ public class DUsuario implements Operaciones{
     private String url;
 
     public DUsuario() {
-        this.database="ferreteria";
+       ADcon gg=new ADcon();
+        this.database=gg.getDatabase();
         this.tabla="usuario";
-        this.url="127.0.0.1";
-    }
+        this.url=gg.getUrl();
+     }
 
     public DUsuario(String database, String tabla, String url) {
         this.database = database;
@@ -181,4 +182,38 @@ public class DUsuario implements Operaciones{
         }                  
         return (CUsuario) datos.get(0);
     }
+    public boolean verifiar(String id,String con){
+            String res="";
+        CUsuario x=new CUsuario();
+        ArrayList datos=new ArrayList();
+        MongoClient mongo=null;
+        try{
+             mongo=new MongoClient(url,27017);
+           }
+         catch(Exception err){
+             res=("Error");            
+         }
+        DB db=mongo.getDB(database);
+        DBCollection coll=db.getCollection(tabla);
+        BasicDBObject dato = new BasicDBObject();
+        DBObject id1 = new BasicDBObject("usuario",id ).append("contraseña", con);
+
+        DBCursor cursor=coll.find(id1);
+        try{
+            while(cursor.hasNext()){               
+                       String k[]=new String[x.clave.length];
+  
+                BasicDBObject agg=(BasicDBObject)cursor.next();  
+                    for(int i=0;i<x.n;i++)
+                        k[i]=( agg.get(x.clave[i])!=null)?agg.get(x.clave[i]).toString():"";
+                    
+                    datos.add(new CUsuario(k));                                           
+            }
+        } finally{
+            cursor.close();
+        }                  
+        if(datos.size()==0)return false;
+        else
+            return true;
+    } 
 }

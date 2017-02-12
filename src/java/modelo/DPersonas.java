@@ -31,16 +31,12 @@ public class DPersonas implements Operaciones {
     private String url;
 
     public DPersonas() {
-        this.database="ferreteria";
+       ADcon gg=new ADcon();
+        this.database=gg.getDatabase();
         this.tabla="personas";
-        this.url="127.0.0.1";
-    }
+        this.url=gg.getUrl();
+     }
 
-    public DPersonas(String database, String tabla, String url) {
-        this.database = database;
-        this.tabla = tabla;
-        this.url = url;
-    }
    
     
     @Override

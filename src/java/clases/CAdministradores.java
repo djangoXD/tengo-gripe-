@@ -5,6 +5,8 @@
  */
 package clases;
 
+import modelo.DPersonas;
+
 /**
  *
  * @author WARREN
@@ -28,6 +30,8 @@ public class CAdministradores {
 
     @Override
     public String toString() {
-   return valor[1]+" "+valor[2]; }
+        CPersonas x=new DPersonas().buscar_id(valor[2]);
+        return valor[1]+" "+x;
+    }
     
 }

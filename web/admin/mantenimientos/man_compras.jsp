@@ -1,3 +1,8 @@
+<%@page import="modelo.DAdministradores"%>
+<%@page import="clases.CAdministradores"%>
+<%@page import="clases.CPersonas"%>
+<%@page import="modelo.DProveedores"%>
+<%@page import="clases.CProveedores"%>
 <%@page import="clases.CCompras"%>
 <%@page import="modelo.DCompras"%>
 <%@page import="java.util.ArrayList"%>
@@ -23,7 +28,6 @@
                 document.getElementById("com0").value=data[0];
                 document.getElementById("com1").value=data[1];
                 document.getElementById("com2").value=data[2];
-                document.getElementById("com3").value=data[3];
                 $('#modal_modificar_compras').modal('show');
             } );
     } );
@@ -45,19 +49,26 @@
 						<th>Id</th>
 						<th>Fecha Compra</th>
 						<th>Fecha Entrega</th>	
-                                                <th>Id Proveedor</th>
+                                                <th>Proveedor</th>
+                                                <th>Administrador</th>
 					</tr>
 				</thead>
 				<tbody>
                 <%
                     DCompras compc=new DCompras();
                     ArrayList<CCompras> con_datos=compc.consultar();
-                    CCompras compc1=new CCompras();
+                    int n =new CCompras().n;
                 for(CCompras p: con_datos){
                    out.print("<tr>");
-                   for(int i=0;i<compc1.n;i++){
+                   for(int i=0;i<n-2;i++){
                       out.print("<td>"+p.valor[i]+"</td>");
                    }
+                   CProveedores per1=new  DProveedores().buscar_id(p.valor[n-2]);
+                   out.print("<td>"+per1.toString()+"</td>");
+
+                   CAdministradores admi1=new DAdministradores().buscar_id(p.valor[n-1]);
+                   out.print("<td>"+admi1.toString()+"</td>");
+
                    out.print("</tr>");                   
                 }
                 %>
@@ -90,14 +101,39 @@
                       <span class="input-group-addon">Fecha Entrega</span>
                       <input type="text" class="form-control" name="fecha_entrega" id="idcom2" required/>
                     </div>
-                  </div>
+                  </div>    
                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon">Id Proveedor</span>
-                      <input type="text" class="form-control" name="id_proveedor" id="idcom3" required/>
-                    </div>
-                  </div>
+                        <div class="input-group">
+                          <span class="input-group-addon">Proveedores</span>
+                          <select class="form-control" name="id_proveedor" id="idusu4" required>
+                              <%
+                              ArrayList<CProveedores> datos_proveedores=new DProveedores().consultar();
+                              for(CProveedores x:datos_proveedores){
+                                  %>
+                                  <option value="<%=x.valor[0]%>"> <%=x.toString()%></option>
+                              <%
+                              }
+                              %>
+                          </select>
 
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon">Administradores</span>
+                          <select class="form-control" name="id_administrador" id="idusu4" required>
+                              <%
+                              ArrayList<CAdministradores> datos_administradores=new DAdministradores().consultar();
+                              for(CAdministradores x:datos_administradores){
+                                  %>
+                                  <option value="<%=x.valor[0]%>"> <%=x.toString()%></option>
+                              <%
+                              }
+                              %>
+                          </select>
+
+                        </div>
+                      </div>
                  
             </div>
             <div class="modal-footer">
@@ -139,12 +175,38 @@
                     </div>
                   </div>
                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon">Id Proveedor</span>
-                      <input type="text" class="form-control" name="id_proveedor" id="com3" required/>
-                    </div>
-                  </div>
+                        <div class="input-group">
+                          <span class="input-group-addon">Proveedores</span>
+                          <select class="form-control" name="id_proveedor" id="idusu4" required>
+                              <%
+                              datos_proveedores=new DProveedores().consultar();
+                              for(CProveedores x:datos_proveedores){
+                                  %>
+                                  <option value="<%=x.valor[0]%>"> <%=x.toString()%></option>
+                              <%
+                              }
+                              %>
+                          </select>
 
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon">Administradores</span>
+                          <select class="form-control" name="id_administrador" id="idusu4" required>
+                              <%
+                              datos_administradores=new DAdministradores().consultar();
+                              for(CAdministradores x:datos_administradores){
+                                  %>
+                                  <option value="<%=x.valor[0]%>"> <%=x.toString()%></option>
+                              <%
+                              }
+                              %>
+                          </select>
+
+                        </div>
+                      </div>
+                 
             
             <div class="modal-footer">
               <button  type="text" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

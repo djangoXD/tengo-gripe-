@@ -19,10 +19,9 @@ public class CPersonas {
     "fecha_nacimiento",
     "sexo",
     "email",
-    "foto"
             };
 
-    public int n=9;
+    public int n=8;
     public String valor[];
     
     public CPersonas(){     

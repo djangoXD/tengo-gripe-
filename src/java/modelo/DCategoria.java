@@ -31,16 +31,11 @@ public class DCategoria implements Operaciones {
     private String url;
 
     public DCategoria() {
-        this.database="ferreteria";
+       ADcon gg=new ADcon();
+        this.database=gg.getDatabase();
         this.tabla="categoria";
-        this.url="127.0.0.1";
-    }
-
-    public DCategoria(String database, String tabla, String url) {
-        this.database = database;
-        this.tabla = tabla;
-        this.url = url;
-    }
+        this.url=gg.getUrl();
+     }
    
     
     @Override

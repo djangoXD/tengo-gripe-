@@ -14,10 +14,11 @@ public class CCompras {
     "_id",
     "fecha_compra",
     "fecha_entrega",
-    "id_proveedor"
+    "id_proveedor",
+    "id_administrador"
             };
 
-    public int n=4;
+    public int n=5;
     public String valor[];
     
     public CCompras(){        
@@ -26,4 +27,10 @@ public class CCompras {
     public CCompras(String Valor[]){
         this.valor=Valor;
     }
+
+    @Override
+    public String toString() {
+        return valor[0];
+    }
+    
 }
