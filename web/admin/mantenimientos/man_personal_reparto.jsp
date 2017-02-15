@@ -24,8 +24,6 @@
                 var data = table.row( this ).data();
                 document.getElementById("con0").value=data[0];
                 document.getElementById("con1").value=data[1];
-
-
                 $('#modal_modificar_personal_reparto').modal('show');
             } );
     } );
@@ -46,7 +44,6 @@
 					<tr>
 						<th>Id</th>
 						<th>Estado</th>
-                                                <th>persona</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -56,22 +53,16 @@
                     int n =new CPersonal_reparto().n;
                 for(CPersonal_reparto p: con_datos){
                    out.print("<tr>");
-                   for(int i=0;i<n-1;i++){
+                   for(int i=0;i<n;i++){
                       out.print("<td>"+p.valor[i]+"</td>");
                    }
-                   CPersonas per1=new DPersonas().buscar_id(p.valor[n-1]);
-                   out.print("<td>"+per1.toString()+"</td>");
-
-                   out.print("</tr>");                   
-
-
+                   out.print("</tr>");
                 }
                 %>
 				</tbody>
 			</table>
-                        </div>
-
-                     </div>
+  </div>
+</div>
 
 <div class="modal fade" id="modal_insertar_personal_reparto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -91,23 +82,6 @@
                       <input type="text" class="form-control" name="estado" id="idcon1" required/>
                     </div>
                   </div>
-
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon">Id Persona</span>
-                      <select class="form-control" name="id_persona" id="idusu4" required>
-                          <%
-                          ArrayList<CPersonas> datos_personas=new DPersonas().consultar();
-                          for(CPersonas x:datos_personas){
-                              %>
-                              <option value="<%=x.valor[0]%>"> <%=x.toString()%></option>
-                          <%
-                          }
-                          %>
-                      </select>
-
-                    </div>
-                  </div> 
             </div>
             <div class="modal-footer">
               <button  type="text" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -134,37 +108,20 @@
 
             <input type="text" class="form-control hide" name="_id" id="con0" required/>
 
-                    
+
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon">Estado</span>
                       <input type="text" class="form-control" name="estado" id="con1" required/>
                     </div>
                   </div>
-                 <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon">Id Persona</span>
-                      <select class="form-control" name="id_persona" id="con3" required>
-                          <%
-                          datos_personas=new DPersonas().consultar();
-                          for(CPersonas x:datos_personas){
-                              %>
-                              <option value="<%=x.valor[0]%>"> <%=x.toString()%></option>
-                          <%
-                          }
-                          %>
-                      </select>
-
-                    </div>
-                  </div>            
             <div class="modal-footer">
               <button  type="text" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
               <button  type="submit" class="btn btn-primary" name="modificar" >Modificar</button>
               <button  type="submit" class="btn btn-danger" name="eliminar">Eliminar</button>
             </div>
     </div>
-                    </form>
+      </form>
 
   </div>
 </div>
-                                			

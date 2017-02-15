@@ -15,14 +15,13 @@ import modelo.DPersonas;
 public class CVendedores {
         public String clave[]={
     "_id",
-    "estado",
-    "id_persona",
+    "estado"
         };
 
-    public int n=3;
+    public int n=2;
     public String valor[];
-    
-    public CVendedores(){        
+
+    public CVendedores(){
         valor=new String[n];
     }
     public CVendedores(String Valor[]){
@@ -33,5 +32,5 @@ public class CVendedores {
     public String toString() {
         return (new DPersonas().buscar_id(valor[n-1])).toString();
     }
-    
+
 }

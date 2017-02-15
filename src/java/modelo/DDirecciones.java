@@ -55,6 +55,9 @@ public class DDirecciones implements Operaciones{
                datos.append(x.clave[i], x.valor[i]);
            }          
            coll.insert(datos);      
+                       ObjectId id = (ObjectId)datos.get( "_id" );
+            res=id.toString();
+
         return res;
        }
 
@@ -145,5 +148,36 @@ public class DDirecciones implements Operaciones{
     @Override
     public List<?> filtrar(String campo, String criterio) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    public ArrayList existe(String id,int num){
+        String res="";
+        CDirecciones x=new CDirecciones();
+        
+        MongoClient mongo=null;
+        try{
+             mongo=new MongoClient(url,27017);
+           }
+         catch(Exception err){
+             res=("Error");            
+         }
+        DB db=mongo.getDB(database);
+        DBCollection coll=db.getCollection(tabla);
+        DBObject id1 = new BasicDBObject(x.clave[num],id );
+        DBCursor cursor=coll.find(id1);
+        ArrayList datos=new ArrayList();
+        try{
+            while(cursor.hasNext()){               
+                       String k[]=new String[x.clave.length];
+  
+                BasicDBObject agg=(BasicDBObject)cursor.next();  
+                    for(int i=0;i<x.n;i++)
+                        k[i]=( agg.get(x.clave[i])!=null)?agg.get(x.clave[i]).toString():"";
+                    
+                    datos.add(new CDirecciones(k));                                           
+            }
+        } finally{
+            cursor.close();
+        }                  
+        return datos;
     }
 }

@@ -59,6 +59,9 @@ public class DPersonas implements Operaciones {
                datos.append(x.clave[i], x.valor[i]);
            }          
            coll.insert(datos);      
+                       ObjectId id = (ObjectId)datos.get( "_id" );
+            res=id.toString();
+
         return res;
        }
 
@@ -66,6 +69,10 @@ public class DPersonas implements Operaciones {
     public String eliminar(Object o) {
         CPersonas x=(CPersonas)o;
         String res="";
+        if(new DDirecciones().existe(x.valor[0], 5).size()!=0)return " error tiene direcciones";
+        if(new DContacto().existe(x.valor[0], 3).size()!=0)return " error tiene contacto";
+        if(new DUsuario().existe(x.valor[0], 4).size()!=0)return " error tiene usuario";
+
         MongoClient mongo=null;
            try{
                 mongo=new MongoClient(url,27017);
@@ -183,5 +190,37 @@ public class DPersonas implements Operaciones {
         }                  
         if(datos.size()==0)return new CPersonas();
         return (CPersonas) datos.get(0);
+    }
+   
+    public ArrayList existe(String id,int num){
+        String res="";
+        CPersonas x=new CPersonas();
+        
+        MongoClient mongo=null;
+        try{
+             mongo=new MongoClient(url,27017);
+           }
+         catch(Exception err){
+             res=("Error");            
+         }
+        DB db=mongo.getDB(database);
+        DBCollection coll=db.getCollection(tabla);
+        DBObject id1 = new BasicDBObject(x.clave[num],id );
+        DBCursor cursor=coll.find(id1);
+        ArrayList datos=new ArrayList();
+        try{
+            while(cursor.hasNext()){               
+                       String k[]=new String[x.clave.length];
+  
+                BasicDBObject agg=(BasicDBObject)cursor.next();  
+                    for(int i=0;i<x.n;i++)
+                        k[i]=( agg.get(x.clave[i])!=null)?agg.get(x.clave[i]).toString():"";
+                    
+                    datos.add(new CPersonas(k));                                           
+            }
+        } finally{
+            cursor.close();
+        }                  
+        return datos;
     }
 }

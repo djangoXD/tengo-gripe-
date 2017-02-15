@@ -68,14 +68,10 @@ public class ImagenesController extends HttpServlet {
                 im.nombre=a1;
                 im.prioridad=a2;
                 im.tipo=a3;
-            
+
             DImagen dm=new DImagen();
             dm.insertar(im);
-                
-           
 
-           
-        
         }
         catch( Exception e){
             System.out.println(e.getMessage());

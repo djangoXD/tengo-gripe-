@@ -58,7 +58,9 @@
 					</tr>
 				</thead>
 				<tbody>
+
                 <%
+                    
                     DVentas_detalle contac=new DVentas_detalle();
                     ArrayList<CVentas_detalle> con_datos=contac.consultar();
                     int n =new CVentas_detalle().n;

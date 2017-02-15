@@ -29,13 +29,13 @@ public class DPersonal_reparto implements Operaciones{
     public DPersonal_reparto() {
               ADcon gg=new ADcon();
         this.database=gg.getDatabase();
-        this.tabla=gg.getTabla();
+        this.tabla="personal_reparto";
         this.url=gg.getUrl();
   }
 
     public DPersonal_reparto(String database, String tabla, String url) {
         this.database = database;
-        this.tabla = "personal_reparto";
+        this.tabla = "personalr";
         this.url = url;
     }
    
@@ -59,7 +59,10 @@ public class DPersonal_reparto implements Operaciones{
            for(int i=1  ;i<x.n;i++){
                datos.append(x.clave[i], x.valor[i]);
            }          
-           coll.insert(datos);      
+           coll.insert(datos);   
+                       ObjectId id = (ObjectId)datos.get( "_id" );
+            res=id.toString();
+
         return res;
        }
 
@@ -122,15 +125,11 @@ public class DPersonal_reparto implements Operaciones{
            }
          catch(Exception err){
              res=("Error");            
-         }
-
-
+        }
         DB db=mongo.getDB(database);
-
-
         DBCollection coll=db.getCollection(tabla);
-        BasicDBObject dato = new BasicDBObject();
         DBCursor cursor=coll.find();
+        
         try{
             while(cursor.hasNext()){               
                        String k[]=new String[x.clave.length];
@@ -184,5 +183,31 @@ public class DPersonal_reparto implements Operaciones{
         }                  
         if(datos.size()==0)return new CPersonal_reparto();
         return (CPersonal_reparto) datos.get(0);
+    }
+            public boolean existe(String id){
+        String res="";
+        CPersonal_reparto x=new CPersonal_reparto();
+        MongoClient mongo=null;
+        try{
+             mongo=new MongoClient(url,27017);
+           }
+         catch(Exception err){
+             res=("Error");            
+         }
+        DB db=mongo.getDB(database);
+        DBCollection coll=db.getCollection(tabla);
+        DBObject id1 = new BasicDBObject(x.clave[0],id );
+        DBCursor cursor=coll.find(id1);
+        int k=0;
+        try{
+            while(cursor.hasNext()){               
+                k++;
+                cursor.next();
+            }
+        } finally{
+            cursor.close();
+        }                          
+        if(k==0)return false;else
+        return true;
     }
 }

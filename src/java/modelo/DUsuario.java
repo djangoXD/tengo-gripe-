@@ -14,6 +14,7 @@ import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.bson.types.ObjectId;
 
 /**
@@ -56,9 +57,17 @@ public class DUsuario implements Operaciones{
            coll=db.getCollection(tabla);            
            BasicDBObject datos = new BasicDBObject();           
            for(int i=1  ;i<x.n;i++){
-               datos.append(x.clave[i], x.valor[i]);
+               if(i==2){
+                   datos.append(x.clave[i],DigestUtils.md5Hex(x.valor[i]));
+               }
+               else{
+                   datos.append(x.clave[i], x.valor[i]);
+               }
            }          
            coll.insert(datos);      
+                       ObjectId id = (ObjectId)datos.get( "_id" );
+            res=id.toString();
+
         return res;
        }
 
@@ -104,8 +113,12 @@ public class DUsuario implements Operaciones{
             
             DBObject datos = new BasicDBObject();
             for(int i=1;i<x.n;i++){
-                datos.put(x.clave[i], x.valor[i]);
-            }            
+               if(i==2){
+                   datos.put(x.clave[i],DigestUtils.md5Hex(x.valor[i]));
+               }
+               else{
+                   datos.put(x.clave[i], x.valor[i]);
+               }            }            
            coll.update(id1,datos);
         return res;
     }
@@ -164,7 +177,7 @@ public class DUsuario implements Operaciones{
         DB db=mongo.getDB(database);
         DBCollection coll=db.getCollection(tabla);
         BasicDBObject dato = new BasicDBObject();
-        DBObject id1 = new BasicDBObject("_id",id );
+        DBObject id1 = new BasicDBObject("_id",new ObjectId( id ));
 
         DBCursor cursor=coll.find(id1);
         try{
@@ -182,7 +195,7 @@ public class DUsuario implements Operaciones{
         }                  
         return (CUsuario) datos.get(0);
     }
-    public boolean verifiar(String id,String con){
+    public ArrayList verifiar(String id,String con){
             String res="";
         CUsuario x=new CUsuario();
         ArrayList datos=new ArrayList();
@@ -196,7 +209,7 @@ public class DUsuario implements Operaciones{
         DB db=mongo.getDB(database);
         DBCollection coll=db.getCollection(tabla);
         BasicDBObject dato = new BasicDBObject();
-        DBObject id1 = new BasicDBObject("usuario",id ).append("contraseña", con);
+        DBObject id1 = new BasicDBObject("usuario",id ).append("contrasena",DigestUtils.md5Hex(con));
 
         DBCursor cursor=coll.find(id1);
         try{
@@ -212,8 +225,36 @@ public class DUsuario implements Operaciones{
         } finally{
             cursor.close();
         }                  
-        if(datos.size()==0)return false;
-        else
-            return true;
+        return datos;
     } 
+    public ArrayList existe(String id,int num){
+        String res="";
+        CUsuario x=new CUsuario();
+        MongoClient mongo=null;
+        try{
+             mongo=new MongoClient(url,27017);
+           }
+         catch(Exception err){
+             res=("Error");            
+         }
+        DB db=mongo.getDB(database);
+        DBCollection coll=db.getCollection(tabla);
+        DBObject id1 = new BasicDBObject(x.clave[num],id );
+        DBCursor cursor=coll.find(id1);
+        ArrayList datos=new ArrayList();
+        try{
+            while(cursor.hasNext()){               
+                       String k[]=new String[x.clave.length];
+  
+                BasicDBObject agg=(BasicDBObject)cursor.next();  
+                    for(int i=0;i<x.n;i++)
+                        k[i]=( agg.get(x.clave[i])!=null)?agg.get(x.clave[i]).toString():"";
+                    
+                    datos.add(new CUsuario(k));                                           
+            }
+        } finally{
+            cursor.close();
+        }                  
+        return datos;
+    }
 }

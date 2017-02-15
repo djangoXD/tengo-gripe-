@@ -104,9 +104,9 @@
                           <select class="form-control" name="id_persona" id="idusu4" required>
                               <%
                               ArrayList<CPersonas> datos_personas=new DPersonas().consultar();
-                              for(CPersonas x:datos_personas){
+                              for(CPersonas xs:datos_personas){
                                   %>
-                                  <option value="<%=x.valor[0]%>"> <%=x.toString()%></option>
+                                  <option value="<%=xs.valor[0]%>"> <%=xs.toString()%></option>
                               <%
                               }
                               %>
@@ -159,9 +159,9 @@
                       <select class="form-control" name="id_persona" id="con3" required>
                           <%
                           datos_personas=new DPersonas().consultar();
-                          for(CPersonas x:datos_personas){
+                          for(CPersonas xs:datos_personas){
                               %>
-                              <option value="<%=x.valor[0]%>"> <%=x.toString()%></option>
+                              <option value="<%=xs.valor[0]%>"> <%=xs.toString()%></option>
                           <%
                           }
                           %>

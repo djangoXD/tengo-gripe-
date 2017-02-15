@@ -6,13 +6,12 @@
 package modelo;
 
 import clases.CAdministradores;
-import clases.CAdministradores;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
+import com.mongodb.MongoClient; 
 import java.util.ArrayList;
 import java.util.List;
 import org.bson.types.ObjectId;
@@ -55,13 +54,19 @@ public class DAdministradores implements Operaciones{
                datos.append(x.clave[i], x.valor[i]);
            }          
            coll.insert(datos);      
+            ObjectId id = (ObjectId)datos.get( "_id" );
+            res=id.toString();
         return res;
        }
 
     @Override
     public String eliminar(Object o) {
-        CAdministradores x=(CAdministradores)o;
+     
+        CAdministradores x=(CAdministradores)o;        
+        if(new DCompras().existe(x.valor[0], 4))return " error tiene compras";
+     
         String res="";
+        
         MongoClient mongo=null;
            try{
                 mongo=new MongoClient(url,27017);
@@ -69,15 +74,15 @@ public class DAdministradores implements Operaciones{
             catch(Exception err){
                res=("Error");            
             }
-           
-           
            DB db=mongo.getDB(database);           
            DBCollection coll=db.getCollection(tabla);
 
            BasicDBObject fin = new BasicDBObject();
            fin.put("_id",new ObjectId(x.valor[0] ));
-           coll.remove(fin);
-        return res;   
+               coll.remove(fin);
+               
+                return res;
+           
     }
 
     @Override
@@ -180,4 +185,32 @@ public class DAdministradores implements Operaciones{
         if(datos.size()==0)return new CAdministradores();
         return (CAdministradores) datos.get(0);
     }
+    public boolean existe(String id,int num){
+        String res="";
+        CAdministradores x=new CAdministradores();
+     
+        MongoClient mongo=null;
+        try{
+             mongo=new MongoClient(url,27017);
+           }
+         catch(Exception err){
+             res=("Error");            
+         }
+        DB db=mongo.getDB(database);
+        DBCollection coll=db.getCollection(tabla);
+        DBObject id1 = new BasicDBObject(x.clave[num],id );
+        DBCursor cursor=coll.find(id1);
+        int k=0;
+        try{
+            while(cursor.hasNext()){               
+                k++;
+                cursor.next();
+            }
+        } finally{
+            cursor.close();
+        }                          
+        if(k==0)return false;else
+        return true;
+    } 
+     
 }

@@ -38,11 +38,11 @@ public class PersonasController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-                response.setStatus(307); //this makes the redirection keep your requesting method as is.
-      response.addHeader("Location", "usuarios.jsp");
+//      response.setStatus(307); //this makes the redirection keep your requesting method as is.
+//      response.addHeader("Location", "usuarios.jsp");
            DPersonas dp=new DPersonas();
            CPersonas cp=new CPersonas();
-           
+
            CImagen ci=new CImagen();
            DImagen di=new DImagen();
            String res="";
@@ -51,17 +51,21 @@ public class PersonasController extends HttpServlet {
                 for(int i=0;i<cp.clave.length;i++){
                     cp.valor[i]=request.getParameter(cp.clave[i]);
                 }
-                if(request.getParameter("insertar")!=null){                   
+                if(request.getParameter("insertar")!=null){
                     ci.imagen=request.getPart("foto").getInputStream();
                     ci.nombre=cp.valor[2];
                     ci.prioridad="1";
                     ci.tipo="Persona";
                     di.insertar(ci);
-                    res=dp.insertar(cp);                  
+                    res=dp.insertar(cp);
 
-                }else 
-                if(request.getParameter("modificar")!=null){                   
-                    res=dp.modificar(cp);                  
+                }else
+                if(request.getParameter("modificar")!=null){
+                    CPersonas x=new DPersonas().buscar_id(cp.valor[0]);
+                    cp.valor[8]=x.valor[8];
+                    cp.valor[9]=x.valor[9];
+                    res=dp.modificar(cp);
+
                     ci.imagen=request.getPart("foto").getInputStream();
                     ci.nombre=cp.valor[2];
                     ci.prioridad="1";
@@ -70,15 +74,17 @@ public class PersonasController extends HttpServlet {
                     di.insertar(ci);
 
   //                  out.println(res);
-                }else 
-                if(request.getParameter("eliminar")!=null){                   
-                    res=dp.eliminar(cp);                  
+                }else
+                if(request.getParameter("eliminar")!=null){
+                    res=dp.eliminar(cp);
                    if(di.existe(ci.nombre))di.eliminar(ci);
     //                out.println(res);
                 }
-                
+                request.getRequestDispatcher("arriba.jsp").include(request, response);
+                request.getRequestDispatcher("mantenimientos/man_personas.jsp").include(request, response);
+                request.getRequestDispatcher("abajo.jsp").include(request, response);
         }catch(Exception e){
-            
+
         }}
     }
 

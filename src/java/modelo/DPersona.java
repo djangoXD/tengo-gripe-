@@ -11,6 +11,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
+import com.mongodb.WriteConcern;
 import java.util.ArrayList;
 import java.util.List;
 import org.bson.types.ObjectId;
@@ -20,8 +21,8 @@ import org.bson.types.ObjectId;
  * @author WARREN
  */
 public class DPersona implements Operaciones{
-    private String database="ferreteria";
-    private String tabla="personas";
+    private String database="ferreteri";
+    private String tabla="person";
     private String url="127.0.0.1";
     @Override
     public String insertar(Object o) {
@@ -47,10 +48,10 @@ public class DPersona implements Operaciones{
            datos.append("nro_documento", p.getNro_documento());
            datos.append("email",p.getEmail());
            datos.append("sexo", p.getSexo());
-           
-           coll.insert(datos);
-      
-        return res;
+          
+             coll.insert(datos,new WriteConcern());
+             ObjectId id = (ObjectId)datos.get( "_id" );
+        return id.toString();
     }
 
     @Override

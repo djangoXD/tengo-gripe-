@@ -14,14 +14,13 @@ import modelo.DPersonas;
 public class CPersonal_reparto {
         public String clave[]={
     "_id",
-    "estado",
-    "id_persona",
+    "estado"
         };
 
-    public int n=3;
+    public int n=2;
     public String valor[];
-    
-    public CPersonal_reparto(){        
+
+    public CPersonal_reparto(){
         valor=new String[n];
     }
     public CPersonal_reparto(String Valor[]){
@@ -30,7 +29,7 @@ public class CPersonal_reparto {
 
     @Override
     public String toString() {
-        return (new DPersonas().buscar_id(valor[n-1])).toString();
+            return "";  
     }
-    
+
 }

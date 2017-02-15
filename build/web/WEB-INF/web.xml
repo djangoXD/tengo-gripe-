@@ -68,6 +68,14 @@
         <servlet-name>Imagengg</servlet-name>
         <servlet-class>controlador.Imagengg</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdminController</servlet-name>
+        <servlet-class>controlador.AdminController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VProveedorController</servlet-name>
+        <servlet-class>controlador.VProveedorController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PersonaController</servlet-name>
         <url-pattern>/PersonaController</url-pattern>
@@ -135,6 +143,14 @@
     <servlet-mapping>
         <servlet-name>Imagengg</servlet-name>
         <url-pattern>/admin/Imagengg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminController</servlet-name>
+        <url-pattern>/admin/AdminController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VProveedorController</servlet-name>
+        <url-pattern>/admin/VProveedorController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

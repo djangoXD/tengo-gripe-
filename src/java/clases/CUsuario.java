@@ -13,15 +13,14 @@ public class CUsuario {
 public String clave[]={
     "_id",
     "usuario",
-    "contraseña",
-    "permisos",
-    "id_persona"
+    "contrasena",
+    "permisos"  
             };
 
-    public int n=5;
+    public int n=4;
     public String valor[];
-    
-    public CUsuario(){        
+
+    public CUsuario(){
         valor=new String[n];
     }
     public CUsuario(String Valor[]){
@@ -30,8 +29,8 @@ public String clave[]={
 
     @Override
     public String toString() {
-        return valor[1];
+        return valor[1]+" "+valor[3];
     }
-    
-    
+
+
 }

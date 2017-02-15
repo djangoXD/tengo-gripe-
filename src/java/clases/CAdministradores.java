@@ -14,14 +14,13 @@ import modelo.DPersonas;
 public class CAdministradores {
         public String clave[]={
     "_id",
-    "estado",
-    "id_persona",
+    "estado"
         };
 
-    public int n=3;
+    public int n=2;
     public String valor[];
-    
-    public CAdministradores(){        
+
+    public CAdministradores(){
         valor=new String[n];
     }
     public CAdministradores(String Valor[]){
@@ -30,8 +29,8 @@ public class CAdministradores {
 
     @Override
     public String toString() {
-        CPersonas x=new DPersonas().buscar_id(valor[2]);
-        return valor[1]+" "+x;
+
+        return "ADMI"+valor[1];
     }
-    
+
 }

@@ -1,4 +1,11 @@
 
+<%@page import="modelo.DPersonal_reparto"%>
+<%@page import="modelo.DCliente"%>
+<%@page import="modelo.DVendedores"%>
+<%@page import="modelo.DProveedores"%>
+<%@page import="modelo.DAdministradores"%>
+<%@page import="clases.CUsuario"%>
+<%@page import="modelo.DUsuario"%>
 <%@page import="modelo.DImagen"%>
 <%@page import="clases.CPersonas"%>
 <%@page import="modelo.DPersonas"%>
@@ -29,11 +36,12 @@
                 document.getElementById("per5").value=data[5];
                 document.getElementById("per6").value=data[6];
                 document.getElementById("per7").value=data[7];
+                document.getElementById("per8").value=data[8];
+                document.getElementById("per9").value=data[9];
 
                 $('#modal_modificar_persona').modal('show');
             } );
     } );
-
 </script>
 
 
@@ -56,20 +64,34 @@
 						<th>Fecha Nacimiento</th>
 						<th>Sexo</th>
 						<th>Email</th>
+						<th>USUARIO</th>
+						<th>ENTIDAD</th>
 						<th>Foto</th>
 					</tr>
 				</thead>
 				<tbody>
-                <%
+
+                                    <%
+
+
                     DPersonas d1=new DPersonas();
                     ArrayList<CPersonas> datos=d1.consultar();
                     CPersonas x=new CPersonas();
                     DImagen imagen=new DImagen();
                 for(CPersonas p: datos){
                    out.print("<tr>");
-                   for(int i=0;i<x.n;i++){
+                   for(int i=0;i<x.n-2;i++){
                       out.print("<td>"+p.valor[i]+"</td>");
-                   } 
+                   }
+                    CUsuario gg=new DUsuario().buscar_id(p.valor[8]);
+                    out.print("<td>"+gg+"</td>");
+                    if(gg.valor[3].compareTo("ADMI")==0)out.print("<td>"+new DAdministradores().buscar_id(p.valor[9])+"</td>");else
+                    if(gg.valor[3].compareTo("PROVEEDOR")==0)out.print("<td>"+new DProveedores().buscar_id(p.valor[9])+"</td>");else
+                    if(gg.valor[3].compareTo("VENDEDOR")==0)out.print("<td>"+new DVendedores().buscar_id(p.valor[9])+"</td>");else
+                    if(gg.valor[3].compareTo("CLIENTE")==0)out.print("<td>"+new DCliente().buscar_id(p.valor[9])+"</td>");else     
+                    if(gg.valor[3].compareTo("PERSONAL_REPARTO")==0)out.print("<td>"+new DAdministradores().buscar_id(p.valor[9])+"</td>");
+                        
+                   
                    if(imagen.existe(p.valor[2])){
                    %>
                                 <td>
@@ -79,10 +101,10 @@
                     }else{%>
                                 <td>
                                     <img name="warren" width="80" height="80" src="images/gg.png">
-                                </td>  
-                                <%} 
+                                </td>
+                                <%}
 
-                   out.print("</tr>");                   
+                   out.print("</tr>");
                 }
                 %>
 				</tbody>
@@ -107,13 +129,13 @@
                       <span class="input-group-addon">Tipo Documento</span>
                       <select class="form-control" name="tipo_documento" id="con3" required>
                               <option value="DNI"> DNI</option>
-                              <option value="VISA"> VISA </option>
+                              <option value="VISA"> PASAPORTE </option>
                               <option value="OTROS"> OTROS</option>
                       </select>
 
                     </div>
-                  </div>       
-                 
+                  </div>
+
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon">Nro Documento</span>
@@ -148,39 +170,64 @@
                       </select>
 
                     </div>
-                  </div>       
- 
+                  </div>
+
 
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon">Email</span>
                       <input type="text" class="form-control" name="email" id="idper7"/>
                     </div>
-                  </div>1
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon">Usuario</span>
+                      <select class="form-control" name="id_usuario" id="idper8" onchange="">
+
+                          <%
+                            ArrayList<CUsuario> usu=new DUsuario().consultar();
+                            for(CUsuario xx:usu){
+                             %>
+                             <option value="<%=xx.valor[0]%>"><%=xx.toString()%></option>
+                          <%
+                            }
+                          %>
+
+                      </select>
+
+                    </div>
+                  </div>
+ 
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon">Entidad</span>
+                      <input type="text" class="form-control" name="id_entidad" id="idper9"/>
+                    </div>
+                  </div>
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon">Foto</span>
                       <input type="file" class="form-control" name="foto" id="files"/>
                     </div>
-                  </div>       
+                  </div>
                   <output id="list"></output>
-        
+
         <script>
 		  function archivo(evt) {
-			var files = evt.target.files; 
+			var files = evt.target.files;
 			for (var i = 0,f = files[i]; i<5; i++) {
-			  if (!f.type.match('image.*')) continue;			 		
-			  var reader = new FileReader();		
+			  if (!f.type.match('image.*')) continue;
+			  var reader = new FileReader();
 			  reader.onload = (function(theFile) {
 				return function(e) {
         				 document.getElementById("list").innerHTML = ['<img class="img-rounded" alt="Cinque Terre" width="304" height="236"  src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
 
 				};
-			  })(f);		
+			  })(f);
 			  reader.readAsDataURL(f);
 			}
 		  }
-		
+
 		  document.getElementById('files').addEventListener('change', archivo, false);
         	</script>
             </div>
@@ -236,7 +283,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon">Fecha Nacimiento</span>
-                      <input type="text" class="form-control" name="fecha_nacimiento" id="per5"/>
+                      <input type="date" class="form-control" name="fecha_nacimiento" id="per5"/>
                     </div>
                   </div>
                   <div class="form-group">
@@ -253,12 +300,26 @@
                   </div>
                   <div class="form-group">
                     <div class="input-group">
+                      <span class="input-group-addon">Usuario</span>
+                      <input type="text" class="form-control" name="id_usuario" id="per8" readonly="true" />
+
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-addon">Entidad</span>
+                      <input type="text" class="form-control" name="id_entidad" id="per9" readonly="true" />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="input-group">
                       <span class="input-group-addon">Foto</span>
                       <input type="file" class="form-control" name="foto" id="per7"/>
                     </div>
                   </div>
-            
-                  
+
+
             <div class="modal-footer">
               <button  type="text" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
               <button  type="submit" class="btn btn-primary" name="modificar" >Modificar</button>
@@ -269,4 +330,3 @@
 
   </div>
 </div>
-                                			

@@ -10,7 +10,7 @@ package clases;
  * @author WARREN
  */
 public class CPersonas {
-    public String clave[]={
+    public String clave[]={ 
     "_id",
     "tipo_documento",
     "nro_documento",
@@ -18,10 +18,12 @@ public class CPersonas {
     "apellidos",
     "fecha_nacimiento",
     "sexo",
-    "email",
+    "email",        
+    "id_usuario",
+    "id_entidad"
             };
 
-    public int n=8;
+    public int n=10;
     public String valor[];
     
     public CPersonas(){     

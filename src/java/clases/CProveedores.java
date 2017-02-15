@@ -17,14 +17,15 @@ public class CProveedores {
     "_id",
     "ruc",
     "razon_social",
-    "descripcion",
-    "id_persona"
+    "descripcion"
             };
+/*
 
-    public int n=5;
+*/
+    public int n=4;
     public String valor[];
-    
-    public CProveedores(){        
+
+    public CProveedores(){
         valor=new String[n];
     }
     public CProveedores(String Valor[]){
@@ -33,8 +34,7 @@ public class CProveedores {
 
     @Override
     public String toString() {
-        CPersonas x=new DPersonas().buscar_id(valor[4]);
-        return valor[1]+" "+x;
+        return valor[0]+" "+valor[1]+" "+valor[2]+" "+valor[3    ];
     }
-        
+
 }

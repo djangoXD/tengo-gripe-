@@ -35,8 +35,8 @@ public class ArticuloController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-                      response.setStatus(307); //this makes the redirection keep your requesting method as is.
-           response.addHeader("Location", "prueba.jsp");
+           //response.setStatus(307); //this makes the redirection keep your requesting method as is.
+           //response.addHeader("Location", "prueba.jsp");
            DArticulo dp=new DArticulo();
            CArticulo cp=new CArticulo();
            String res="";
@@ -44,29 +44,31 @@ public class ArticuloController extends HttpServlet {
             try{
                 for(int i=0;i<cp.clave.length;i++){
                     cp.valor[i]=request.getParameter(cp.clave[i]);
-                   
+
                }
                 out.println(cp);
-                if(request.getParameter("insertar")!=null){                   
-                    res=dp.insertar(cp);                  
+                if(request.getParameter("insertar")!=null){
+                    res=dp.insertar(cp);
                         out.println(res);
-                }else 
-                if(request.getParameter("modificar")!=null){                   
-                    res=dp.modificar(cp);                  
+                }else
+                if(request.getParameter("modificar")!=null){
+                    res=dp.modificar(cp);
                     out.println(res);
-                }else 
-                if(request.getParameter("eliminar")!=null){                   
-                    res=dp.eliminar(cp);                  
+                }else
+                if(request.getParameter("eliminar")!=null){
+                    res=dp.eliminar(cp);
                     out.println(res);
                 }
-                
+                request.getRequestDispatcher("arriba.jsp").include(request, response);
+                request.getRequestDispatcher("mantenimientos/man_articulo.jsp").include(request, response); 
+                request.getRequestDispatcher("abajo.jsp").include(request, response);
         }catch(Exception e){
             out.println(e.getMessage());
         }
-            
+
         }
     }
- 
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

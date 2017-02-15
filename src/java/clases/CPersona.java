@@ -111,5 +111,11 @@ public class CPersona {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
+    
     // </editor-fold>  
+
+    @Override
+    public String toString() {
+        return "CPersona{" + "id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", fecha_nacimiento=" + fecha_nacimiento + ", direccion=" + direccion + ", tipo_documento=" + tipo_documento + ", nro_documento=" + nro_documento + ", email=" + email + ", sexo=" + sexo + '}';
+    }
 }

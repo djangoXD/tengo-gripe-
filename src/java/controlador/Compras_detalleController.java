@@ -35,32 +35,35 @@ public class Compras_detalleController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
          try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-  
-                                response.setStatus(307); //this makes the redirection keep your requesting method as is.
-           response.addHeader("Location", "prueba.jsp");
+
+           //response.setStatus(307); //this makes the redirection keep your requesting method as is.
+           //response.addHeader("Location", "prueba.jsp");
            DCompras_detalle dp=new DCompras_detalle();
            CCompras_detalle cp=new CCompras_detalle();
            String res="";
            RequestDispatcher rd=null;
             try{
                 for(int i=0;i<cp.clave.length;i++){
-                    cp.valor[i]=request.getParameter(cp.clave[i]);                   
+                    cp.valor[i]=request.getParameter(cp.clave[i]);
                 }
-                
-                if(request.getParameter("insertar")!=null){                   
-                    res=dp.insertar(cp);                  
+
+                if(request.getParameter("insertar")!=null){
+                    res=dp.insertar(cp);
 //                    out.println(res);
-                }else 
-                if(request.getParameter("modificar")!=null){                   
-                    res=dp.modificar(cp);                  
+                }else
+                if(request.getParameter("modificar")!=null){
+                    res=dp.modificar(cp);
   //                  out.println(res);
-                }else 
-                if(request.getParameter("eliminar")!=null){                   
-                    res=dp.eliminar(cp);                  
+                }else
+                if(request.getParameter("eliminar")!=null){
+                    res=dp.eliminar(cp);
     //                out.println(res);
                 }
+                request.getRequestDispatcher("arriba.jsp").include(request, response);
+                request.getRequestDispatcher("mantenimientos/man_compras_detalle.jsp").include(request, response); 
+                request.getRequestDispatcher("abajo.jsp").include(request, response);
         }catch(Exception e){
-            
+
         }}
     }
 

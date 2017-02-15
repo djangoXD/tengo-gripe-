@@ -14,14 +14,13 @@ import modelo.DPersonas;
 public class CCliente {
         public String clave[]={
     "_id",
-    "estado",
-    "id_persona",
+    "estado"
         };
 
-    public int n=3;
+    public int n=2;
     public String valor[];
-    
-    public CCliente(){        
+
+    public CCliente(){
         valor=new String[n];
     }
     public CCliente(String Valor[]){
@@ -30,6 +29,6 @@ public class CCliente {
 
     @Override
     public String toString() {
-     return (new DPersonas().buscar_id(valor[n-1])).toString();
-    }    
+        return valor[0]+" "+valor[1];
+    }
 }

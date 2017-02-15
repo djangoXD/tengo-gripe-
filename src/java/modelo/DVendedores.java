@@ -60,12 +60,17 @@ public class DVendedores implements Operaciones{
                datos.append(x.clave[i], x.valor[i]);
            }          
            coll.insert(datos);      
+                       ObjectId id = (ObjectId)datos.get( "_id" );
+            res=id.toString();
+
         return res;
        }
 
     @Override
     public String eliminar(Object o) {
         CVendedores x=(CVendedores)o;
+        if(new DVentas().existe(x.valor[0], 5))return " error tiene ventas";
+
         String res="";
         MongoClient mongo=null;
            try{
@@ -184,5 +189,31 @@ public class DVendedores implements Operaciones{
         }                  
         if(datos.size()==0)return new CVendedores();
         return (CVendedores) datos.get(0);
+    }
+            public boolean existe(String id){
+        String res="";
+        CVendedores x=new CVendedores();
+        MongoClient mongo=null;
+        try{
+             mongo=new MongoClient(url,27017);
+           }
+         catch(Exception err){
+             res=("Error");            
+         }
+        DB db=mongo.getDB(database);
+        DBCollection coll=db.getCollection(tabla);
+        DBObject id1 = new BasicDBObject(x.clave[0],id );
+        DBCursor cursor=coll.find(id1);
+        int k=0;
+        try{
+            while(cursor.hasNext()){               
+                k++;
+                cursor.next();
+            }
+        } finally{
+            cursor.close();
+        }                          
+        if(k==0)return false;else
+        return true;
     }
 }

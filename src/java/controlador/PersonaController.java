@@ -33,8 +33,8 @@ public class PersonaController extends HttpServlet {
         throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           response.setStatus(307); //this makes the redirection keep your requesting method as is.
-           response.addHeader("Location", "prueba.jsp");
+//           response.setStatus(307); //this makes the redirection keep your requesting method as is.
+//           response.addHeader("Location", "prueba.jsp");
            DPersona dp=new DPersona();
            CPersona cp=new CPersona();
            String res="";
@@ -64,6 +64,7 @@ public class PersonaController extends HttpServlet {
                     res=dp.eliminar(cp);                  
                     out.println(res);
                 }
+                out.println();
         }catch(Exception e){}
             
         }

@@ -54,6 +54,9 @@ public class DCompras implements Operaciones{
                datos.append(x.clave[i], x.valor[i]);
            }          
            coll.insert(datos);      
+                       ObjectId id = (ObjectId)datos.get( "_id" );
+            res=id.toString();
+
         return res;
        }
 
@@ -61,6 +64,8 @@ public class DCompras implements Operaciones{
     public String eliminar(Object o) {
         CCompras x=(CCompras)o;
         String res="";
+        if(new DCompras_detalle().existe(x.valor[0], 4))return " error tiene compras";
+
         MongoClient mongo=null;
            try{
                 mongo=new MongoClient(url,27017);
@@ -178,6 +183,32 @@ public class DCompras implements Operaciones{
         }                  
         if(datos.size()==0)return new CCompras();
         return (CCompras) datos.get(0);
+    }
+    public boolean existe(String id,int num){
+        String res="";
+        CCompras x=new CCompras();
+        MongoClient mongo=null;
+        try{
+             mongo=new MongoClient(url,27017);
+           }
+         catch(Exception err){
+             res=("Error");            
+         }
+        DB db=mongo.getDB(database);
+        DBCollection coll=db.getCollection(tabla);
+        DBObject id1 = new BasicDBObject(x.clave[num],id );
+        DBCursor cursor=coll.find(id1);
+        int k=0;
+        try{
+            while(cursor.hasNext()){               
+                k++;
+                cursor.next();
+            }
+        } finally{
+            cursor.close();
+        }                          
+        if(k==0)return false;else
+        return true;
     }
       
 }

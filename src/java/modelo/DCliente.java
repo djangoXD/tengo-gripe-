@@ -55,6 +55,9 @@ public class DCliente implements Operaciones{
                datos.append(x.clave[i], x.valor[i]);
            }          
            coll.insert(datos);      
+            ObjectId id = (ObjectId)datos.get( "_id" );
+            res=id.toString();
+
         return res;
        }
 
@@ -62,6 +65,8 @@ public class DCliente implements Operaciones{
     public String eliminar(Object o) {
         CCliente x=(CCliente)o;
         String res="";
+        if(new DVentas().existe(x.valor[0], 5))return " error tiene ventas";
+
         MongoClient mongo=null;
            try{
                 mongo=new MongoClient(url,27017);
@@ -146,7 +151,8 @@ public class DCliente implements Operaciones{
     public List<?> filtrar(String campo, String criterio) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-        public CCliente buscar_id(String id){
+        
+    public CCliente buscar_id(String id){
         String res="";
         CCliente x=new CCliente();
         ArrayList datos=new ArrayList();
@@ -179,5 +185,31 @@ public class DCliente implements Operaciones{
         }                  
         if(datos.size()==0)return new CCliente();
         return (CCliente) datos.get(0);
+    }
+            public boolean existe(String id){
+        String res="";
+        CCliente x=new CCliente();
+        MongoClient mongo=null;
+        try{
+             mongo=new MongoClient(url,27017);
+           }
+         catch(Exception err){
+             res=("Error");            
+         }
+        DB db=mongo.getDB(database);
+        DBCollection coll=db.getCollection(tabla);
+        DBObject id1 = new BasicDBObject(x.clave[0],id );
+        DBCursor cursor=coll.find(id1);
+        int k=0;
+        try{
+            while(cursor.hasNext()){               
+                k++;
+                cursor.next();
+            }
+        } finally{
+            cursor.close();
+        }                          
+        if(k==0)return false;else
+        return true;
     }
 }

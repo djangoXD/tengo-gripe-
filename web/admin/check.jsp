@@ -1,3 +1,5 @@
+<%@page import="clases.CProveedores"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="modelo.DUsuario"%>
 <%@page import="clases.CUsuario"%>
 <%@ page session="true" %>
@@ -5,24 +7,36 @@
     String usuario = "";
     String clave = "";
  
-    if (request.getParameter("usuario") != null) {
+    if (request.getParameter("usuario") != null) 
         usuario = request.getParameter("usuario");
-    }
-    if (request.getParameter("clave") != null) {
+    
+    if (request.getParameter("clave") != null) 
         clave = request.getParameter("clave");
-    }
-        
-    if (new DUsuario().verifiar(usuario, clave)) {
+    
+   ArrayList <CUsuario> aux=    new DUsuario().verifiar(usuario, clave);
+    if (aux.size()!=0) {
+        CUsuario usu=aux.get(0);
         HttpSession sesionOk = request.getSession();
-
-%>
-<jsp:forward page="../admin/prueba.jsp" />
-<%
-
+        if(usu.valor[3].compareTo("ADMI")==0){            
+           response.sendRedirect("../admin/AdminController");
+        }else
+        if(usu.valor[3].compareTo("CLIENTE")==0){
+            response.sendRedirect("http://www.lineadecodigo.com/");
+        }else
+        if(usu.valor[3].compareTo("PROVEEDOR")==0){
+            response.sendRedirect("../admin/VProveedorController?waren='"+usu.valor[0]+"'");
+        }else
+        if(usu.valor[3].compareTo("VENDEDOR")==0){
+            response.sendRedirect("http://www.lineadecodigo.com/");
+        }else
+        if(usu.valor[3].compareTo("PERSONAL_REPARTO")==0){
+            response.sendRedirect("http://www.lineadecodigo.com/");
+        }else{
+            out.println(usu.valor[3]);
+        }
+        
 } else {
-%>
-<jsp:forward page="../index.html">
-    <jsp:param name="error" value="Usuario y/o clave incorrectos.<br>Vuelve a intentarlo."/>
-</jsp:forward>
-<%    }
+                    response.sendRedirect("../index.html");
+    }
+
 %>

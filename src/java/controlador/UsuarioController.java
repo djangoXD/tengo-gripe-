@@ -5,7 +5,14 @@
  */
 package controlador;
 
+import clases.CAdministradores;
+import clases.CCliente;
+import clases.CPersona;
+import clases.CPersonal_reparto;
+import clases.CPersonas;
+import clases.CProveedores;
 import clases.CUsuario;
+import clases.CVendedores;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -13,7 +20,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.DAdministradores;
+import modelo.DCliente;
+import modelo.DPersonal_reparto;
+import modelo.DPersonas;
+import modelo.DProveedores;
 import modelo.DUsuario;
+import modelo.DVendedores;
 
 /**
  *
@@ -26,8 +39,8 @@ public class UsuarioController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-                 response.setStatus(307); //this makes the redirection keep your requesting method as is.
-           response.addHeader("Location", "usuarios.jsp");
+           response.setStatus(307); //this makes the redirection keep your requesting method as is.
+           response.addHeader("Location", "prueba.jsp");
            DUsuario dp=new DUsuario();
            CUsuario cp=new CUsuario();
            String res="";
@@ -35,20 +48,48 @@ public class UsuarioController extends HttpServlet {
             try{
                 for(int i=0;i<cp.clave.length;i++){
                     cp.valor[i]=request.getParameter(cp.clave[i]);
-                   
                 }
-                if(request.getParameter("insertar")!=null){                   
-                    res=dp.insertar(cp);                  
-//                    out.println(res);
-                }else 
-                if(request.getParameter("modificar")!=null){                   
-                    res=dp.modificar(cp);                  
+                if(request.getParameter("insertar")!=null){
+                    
+                    CPersonas x=new CPersonas();
+                    if(cp.valor[3].compareTo("ADMI")==0){
+                        CAdministradores y=new CAdministradores();                        
+                        x.valor[9]=new DAdministradores().insertar(y);
+                        x.valor[8]=new DUsuario().insertar(cp);
+                    }else
+                    if(cp.valor[3].compareTo("PROVEEDOR")==0){
+                        CProveedores y=new CProveedores();                        
+                        x.valor[9]=new DProveedores().insertar(y);
+                        x.valor[8]=new DUsuario().insertar(cp);
+                    }else
+                    if(cp.valor[3].compareTo("CLIENTE")==0){
+                        CCliente y=new CCliente();                        
+                        x.valor[9]=new DCliente().insertar(y);
+                        x.valor[8]=new DUsuario().insertar(cp);
+                    }else
+                    if(cp.valor[3].compareTo("VENDEDOR")==0){
+                        CVendedores y=new CVendedores();                        
+                        x.valor[9]=new DVendedores().insertar(y);
+                        x.valor[8]=new DUsuario().insertar(cp);
+                    }else
+                    if(cp.valor[3].compareTo("PERSONAL_REPARTO")==0){
+                        CPersonal_reparto y=new CPersonal_reparto();                        
+                        x.valor[9]=new DPersonal_reparto().insertar(y);
+                        x.valor[8]=new DUsuario().insertar(cp);
+                    }
+                    new DPersonas().insertar(x);
+                }else
+                if(request.getParameter("modificar")!=null){
+                    res=dp.modificar(cp);
   //                  out.println(res);
-                }else 
-                if(request.getParameter("eliminar")!=null){                   
-                    res=dp.eliminar(cp);                  
+                }else
+                if(request.getParameter("eliminar")!=null){
+                    res=dp.eliminar(cp);
     //                out.println(res);
                 }
+//                request.getRequestDispatcher("arriba.jsp").include(request, response);
+ //               request.getRequestDispatcher("mantenimientos/man_usuario.jsp").include(request, response);
+  //              request.getRequestDispatcher("abajo.jsp").include(request, response);
             }catch(Exception e){}
         }
     }
