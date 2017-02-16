@@ -4,6 +4,7 @@
 
 <script>
     var clic = 1;
+    alert("esto ya no debe ir");
     function mos_man(){ 
         if(clic==1){
             document.getElementById("mantenimientos").style.display = "block";
