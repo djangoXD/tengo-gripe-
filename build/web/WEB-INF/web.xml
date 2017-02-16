@@ -69,12 +69,16 @@
         <servlet-class>controlador.Imagengg</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdminController</servlet-name>
-        <servlet-class>controlador.AdminController</servlet-class>
+        <servlet-name>VAdminController</servlet-name>
+        <servlet-class>controlador.VAdminController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>VProveedorController</servlet-name>
         <servlet-class>controlador.VProveedorController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VComprasAdmin</servlet-name>
+        <servlet-class>controlador.VComprasAdmin</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PersonaController</servlet-name>
@@ -145,12 +149,16 @@
         <url-pattern>/admin/Imagengg</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AdminController</servlet-name>
-        <url-pattern>/admin/AdminController</url-pattern>
+        <servlet-name>VAdminController</servlet-name>
+        <url-pattern>/admin/VAdminController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>VProveedorController</servlet-name>
         <url-pattern>/admin/VProveedorController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VComprasAdmin</servlet-name>
+        <url-pattern>/admin/VComprasAdmin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

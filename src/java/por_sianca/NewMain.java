@@ -54,7 +54,6 @@ public class NewMain {
 "12386321",
 "71052032",
 "74586345",};
-        
         for(int i=0;i<7;i++){
             for(int j=0;j<48;j++){
                 for(int k=0;k<medicos.length;k++){
@@ -75,6 +74,7 @@ public class NewMain {
                 }
             }
         }    
+        System.out.println("hola mundo");
     }
     
 }

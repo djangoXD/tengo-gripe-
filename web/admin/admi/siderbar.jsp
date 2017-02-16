@@ -1,84 +1,88 @@
-	<div class="sidebar" data-background-color="white" data-active-color="danger">
+<%@page import="clases.CUsuario"%>
+<%
+    CUsuario user = (CUsuario) request.getAttribute("usu");;
 
-    	<div class="sidebar-wrapper">
-            <div class="logo">
-                <a href="#" class="simple-text">
-                    Alpaca Fuxion
+%>
+<div class="sidebar" data-background-color="white" data-active-color="danger">
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="#" class="simple-text">Alpaca Fuxion</a>
+        </div>
+        <ul class="nav">
+            <li>
+                <a id="reportes" href="#">
+                    <i class="ti-panel"></i>
+                    <p>Reportes</p>
                 </a>
-            </div>
+            </li>
 
-            <ul class="nav">
-                    <li>
-                        <a id="reportes" href="#">
-                            <i class="ti-panel"></i>
-                            <p>Reportes</p>
-                        </a>
-                    </li>
-                <li class="active">
-                    <a href="usuarios.html">
-                        <i class="ti-user"></i>
-                        <p>Perfil de Usuario</p>
-                    </a>
-                </li>
-                <li>
+            <li class="active">
+                <a href="usuarios.html">
+                    <i class="ti-user"></i>
+                    <p>Perfil de Usuario <%=user%></p>
+                </a>
+            </li>
+            <li>
 
-                       <a onclick="mos_man()">
-                            <i class="ti-view-list-alt"></i>
-                            Mantenimientos
-                          <span class="caret"></span>
-                        </a>
-                    <div class="panel panel-warning " id="mantenimientos" style="display: none">
-                        <ul >
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_usuario.jsp');">Usuario</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_personas.jsp');">Persona</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_contacto.jsp');">Contactos</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_direcciones.jsp');">Direcciones</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_proveedores.jsp');">Proveedores</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_administradores.jsp');">Administradores</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_articulo.jsp');">Articulo</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_categoria.jsp');">Categoria</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_cliente.jsp');">Clientes</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_compras_detalle.jsp');">Compras Detalle</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_compras.jsp');">Compras</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_ventas_detalle.jsp');">Ventas Detalle</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_ventas.jsp');">Ventas</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_personal_reparto.jsp');">Personal Reparto</a></li>
-                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_vendedores.jsp');">Vendedores</a></li>
+                <a onclick="mos_man()">
+                    <i class="ti-view-list-alt"></i>
+                    Mantenimientos
+                    <span class="caret"></span>
+                </a>
+                <div class="panel panel-warning " id="mantenimientos" style="display: none">
+                    <ul >
+                        <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_usuario.jsp');">Usuario</a></li>
+                        <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_personas.jsp');">Persona</a></li>
+                        <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_contacto.jsp');">Contactos</a></li>
+                        <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_direcciones.jsp');">Direcciones</a></li>
+                        <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_proveedores.jsp');">Proveedores</a></li>
+                        <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_administradores.jsp');">Administradores</a></li>
+                        <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_articulo.jsp');">Articulo</a></li>
+                        <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_categoria.jsp');">Categoria</a></li>
+                        <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_cliente.jsp');">Clientes</a></li>
+                        <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_compras_detalle.jsp');">Compras Detalle</a></li>
+                        <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_compras.jsp');">Compras</a></li>
+                        <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_ventas_detalle.jsp');">Ventas Detalle</a></li>
+                        <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_ventas.jsp');">Ventas</a></li>
+                        <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_personal_reparto.jsp');">Personal Reparto</a></li>
+                        <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_vendedores.jsp');">Vendedores</a></li>
 
 
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href="javascript:Carga('pedido.jsp', 'info');">
-                        <i class="ti-text"></i>
-                        <p>Hacer pedido</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:Carga('venta.jsp', 'info');">
-                        <i class="ti-bell"></i>
-                        <p>Realizar Venta</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:Carga('producto.jsp', 'info');">
-                        <i class="ti-pencil-alt2"></i>
-                        <p>Mis Productos</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:Carga('mapa.jsp', 'info');">
-                        <i class="ti-map"></i>
-                        <p>Mapa</p>
-                    </a>
-                </li>
-		<li class="active-pro">
-                    <a href="javascript:Carga('material.jsp', 'info');">
-                        <i class="ti-export"></i>
-                        <p>Mis Materiales</p>
-                    </a>
-                </li>
-            </ul>
-    	</div>
+                    </ul>
+                </div>
+            </li>s    
+            <li>
+                <input type="hidden"  name="id_usuario" value="<%=user.valor[0]%>"> 
+                <a type href="VComprasAdmin?warren='<%=user.valor[0]%>'">
+                    <i class="ti-text"></i>
+                    <p>Hacer pedido</p>
+                </a>
+
+            </li>
+            <li>
+                <a href="javascript:Carga('venta.jsp', 'info');">
+                    <i class="ti-bell"></i>
+                    <p>Realizar Venta</p>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:Carga('producto.jsp', 'info');">
+                    <i class="ti-pencil-alt2"></i>
+                    <p>Mis Productos</p>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:Carga('mapa.jsp', 'info');">
+                    <i class="ti-map"></i>
+                    <p>Mapa</p>
+                </a>
+            </li>
+            <li class="active-pro">
+                <a href="javascript:Carga('material.jsp', 'info');">
+                    <i class="ti-export"></i>
+                    <p>Mis Materiales</p>
+                </a>
+            </li>
+        </ul>
     </div>
+</div>

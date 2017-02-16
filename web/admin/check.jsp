@@ -18,7 +18,7 @@
         CUsuario usu=aux.get(0);
         HttpSession sesionOk = request.getSession();
         if(usu.valor[3].compareTo("ADMI")==0){            
-           response.sendRedirect("../admin/AdminController");
+           response.sendRedirect("../admin/VAdminController?waren='"+usu.valor[0]+"'");
         }else
         if(usu.valor[3].compareTo("CLIENTE")==0){
             response.sendRedirect("http://www.lineadecodigo.com/");

@@ -5,18 +5,29 @@
  */
 package controlador;
 
+import clases.CAdministradores;
+import clases.CPersonas;
+import clases.CProveedores;
+import clases.CUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.DAdministradores;
+import modelo.DContacto;
+import modelo.DDirecciones;
+import modelo.DPersonas;
+import modelo.DProveedores;
+import modelo.DUsuario;
 
 /**
  *
  * @author WARREN
  */
-public class AdminController extends HttpServlet {
+public class VComprasAdmin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,10 +42,27 @@ public class AdminController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+                String id_usuario=request.getParameter("warren").toString().substring(1,25); 
+                
+                CUsuario usu=new DUsuario().buscar_id(id_usuario);
+                CPersonas per=(CPersonas) new DPersonas().existe(usu.valor[0],8).get(0);            
+                CAdministradores admi=(CAdministradores)new DAdministradores().buscar_id(per.valor[9]);
+
+                ArrayList con= new DContacto().existe(per.valor[0], 3);
+                ArrayList dir= new DDirecciones().existe(per.valor[0], 5);
+
+            
+                request.setAttribute("per", per);
+                request.setAttribute("usu", usu);
+                request.setAttribute("admi", admi);
+                request.setAttribute("con", con);
+                request.setAttribute("dir", dir);
+                
                 request.getRequestDispatcher("admi/head.jsp").include(request, response);
                 request.getRequestDispatcher("admi/siderbar.jsp").include(request, response);
                 request.getRequestDispatcher("admi/main_panel.jsp").include(request, response);
-               // request.getRequestDispatcher("usuarios.jsp").include(request, response); 
+                request.getRequestDispatcher("admi/compras.jsp").include(request, response); 
                 request.getRequestDispatcher("admi/abajo.jsp").include(request, response);
         }
     }
