@@ -59,13 +59,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</li>
 							<li class="hvr-bounce-to-bottom"><a href="#" onclick="$('#contenido').load('blog.html');">Conócenos</a></li>
 							<li class="hvr-bounce-to-bottom"><a href="#" onclick="$('#contenido').load('contact.html');">Contactanos</a></li>
-                                                      <li class="hvr-bounce-to-bottom">
-                                                          <a href="#" data-toggle="modal" data-target="#myModal4">
-                                                              <span class="glyphicon glyphicon-user">                                                                  
-                                                              </span>Inicias sesión
-                                                          </a>
-                                                      </li>
-						</ul>
+                                                        <li class="hvr-bounce-to-bottom"><a href="#" data-toggle="modal" data-target="#myModal4"><span class="glyphicon glyphicon-user"></span>Iniciar sesión</a></li>
+                                                        <li class="hvr-bounce-to-bottom"><a href="#" data-toggle="modal" data-target="#myModal5">Registrarse</a></li>
+
+                                                </ul>
 					</div><!-- //navbar-collapse -->
 				</nav>
 			</div>
@@ -97,10 +94,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                         <input id="password" type="password" class="form-control" name="clave" required>
                                                     </div>
                                                 </div>
-                                                <br>
                                                 <div class="sing-in">
                                                     <input type="submit" value="Iniciar sesión" >
-                                                                                                        <input type="submit" value="Registrarse" onclick="this.form.action='RegistrarController'">
                                                 </div>
                                         </form>
                                 </div>
@@ -110,6 +105,52 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 </div>
             </div>
         </div>
+        
+        <!-- //modal -->
+<div class="modal fade" id="myModal5" tabindex="-1" role="dialog" >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content modal-info">
+                    <div class="mymodal">
+                        <div class="modal-header">
+                            <label><a>Registrese con una nueva cuenta</a></label>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><br>
+                        </div>
+                        <div class="modal-body modal-spa">
+                            <div class="login-grids">
+                                <div class="login-right">
+                                        <form method="POST" action="admin/check.jsp">
+                                                <div class="collapse navbar-collapse nav-wil">
+                                                    <label for="text" class="col-md-4 control-label" ><a> Nombre usuario</a></label>
+                                                    <div class="col-md-6">
+                                                        <input id="email" type="text" class="form-control" maxlength="50" name="usuario" required autofocus>
+                                                    </div>
+                                                </div><br>
+                                                <div class="collapse navbar-collapse nav-wil">
+                                                    <label for="password" class="col-md-4 control-label"><a>Contraseña</a></label>
+                                                    <div class="col-md-6">
+                                                        <input id="password" type="password" class="form-control" name="clave" required>
+                                                    </div>
+                                                </div>
+                                                <div class="collapse navbar-collapse nav-wil">
+                                                    <label for="password" class="col-md-4 control-label"><a>Repita su contraseña</a></label>
+                                                    <div class="col-md-6">
+                                                        <input id="password" type="password" class="form-control" name="clave" required>
+                                                    </div>
+                                                </div>
+                                                <div class="sing-in">
+                                                    <input type="submit" value="Registrarse" >
+                                                </div>
+                                        </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
         <!-- //modal -->
         <div id="contenido">
             <!-- banner -->
@@ -431,8 +472,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script type="text/javascript" src="js/move-top.js"></script>
 	<script type="text/javascript" src="js/easing.js"></script>
 	<script type="text/javascript">
-
-            
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event){
 					event.preventDefault();
@@ -464,3 +503,4 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- //for bootstrap working -->
 </body>
 </html>
+    

@@ -47,7 +47,7 @@
 					<tr>
 						<th>Id</th>
 						<th>Usuario</th>
-						<th>ContraseÃ±a</th>
+						<th>Contraseña</th>
             <th>Permisos</th>
 					</tr>
 				</thead>
@@ -119,7 +119,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Opciones de cambio</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -139,7 +139,7 @@
                   </div>
                   <div class="form-group">
                     <div class="input-group">
-                      <span class="input-group-addon">ContraseÃ±a</span>
+                      <span class="input-group-addon">Contraseña</span>
                       <input type="text" class="form-control" name="contrasena" id="usu2" required/>
                     </div>
                   </div>
