@@ -186,6 +186,7 @@ public class DAdministradores implements Operaciones{
             cursor.close();
         }                  
         if(datos.size()==0)return new CAdministradores();
+	mongo.close();
         return (CAdministradores) datos.get(0);
     }
     public boolean existe(String id,int num){
