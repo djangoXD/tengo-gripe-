@@ -13,11 +13,10 @@ public class CCategoria {
     public String clave[]={
     "_id",
     "nombre",
-    "descripcion",
-    "id_proveedor"
+    "descripcion"
             };
 
-    public int n=4;
+    public int n=3;
     public String valor[];
     
     public CCategoria(){        
