@@ -189,6 +189,7 @@ public class DCategoria implements Operaciones {
             cursor.close();
         }                  
         if(datos.size()==0)return new CCategoria();
+	mongo.close();
         return (CCategoria) datos.get(0);
     }
         public boolean existe(String id){
