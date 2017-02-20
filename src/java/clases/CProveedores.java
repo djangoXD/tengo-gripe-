@@ -34,7 +34,7 @@ public class CProveedores {
 
     @Override
     public String toString() {
-        return valor[0]+" "+valor[1]+" "+valor[2]+" "+valor[3    ];
+        return "proveedor:"+valor[1]+" "+valor[2]+" "+valor[3];
     }
 
 }

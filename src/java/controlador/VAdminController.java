@@ -27,6 +27,11 @@ import modelo.DUsuario;
  */
 public class VAdminController extends HttpServlet {
 
+    CUsuario usu;
+    CPersonas per;
+    CAdministradores admi;
+    ArrayList con, dir;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -40,26 +45,43 @@ public class VAdminController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-                String id_usuario=request.getParameter("waren").toString().substring(1,25); 
-                
-                CUsuario usu=new DUsuario().buscar_id(id_usuario);
-                CPersonas per=(CPersonas) new DPersonas().existe(usu.valor[0],8).get(0);            
-                CAdministradores admi=(CAdministradores)new DAdministradores().buscar_id(per.valor[9]);
-                ArrayList con= new DContacto().existe(per.valor[0], 3);
-                ArrayList dir= new DDirecciones().existe(per.valor[0], 5);
+            String error = "bueno";
+            try {
+                if (request.getParameter("waren") != null) {
+                    String id_usuario = request.getParameter("waren").toString().substring(1, 25);
+                    usu = new DUsuario().buscar_id(id_usuario);
+                    per = (CPersonas) new DPersonas().existe(usu.valor[0], 8).get(0);
+                    admi = (CAdministradores) new DAdministradores().buscar_id(per.valor[9]);
+                    con = new DContacto().existe(per.valor[0], 3);
+                    dir = new DDirecciones().existe(per.valor[0], 5);
 
-            
-                request.setAttribute("per", per);
-                request.setAttribute("usu", usu);
-                request.setAttribute("admi", admi);
-                request.setAttribute("con", con);
-                request.setAttribute("dir", dir);
-                
-                request.getRequestDispatcher("admi/head.jsp").include(request, response);
-                request.getRequestDispatcher("admi/siderbar.jsp").include(request, response);
-                request.getRequestDispatcher("admi/main_panel.jsp").include(request, response);
-                request.getRequestDispatcher("admi/perfil.jsp").include(request, response); 
-                request.getRequestDispatcher("admi/abajo.jsp").include(request, response);}
+                    request.setAttribute("per_admi", per);
+                    request.setAttribute("usu_admi", usu);
+                    request.setAttribute("admi", admi);
+                    request.setAttribute("con", con);
+                    request.setAttribute("dir", dir);
+                    request.getRequestDispatcher("admi/head.jsp").include(request, response);
+                    request.getRequestDispatcher("admi/siderbar.jsp").include(request, response);
+                    request.getRequestDispatcher("admi/main_panel.jsp").include(request, response);
+                    request.getRequestDispatcher("admi/perfil.jsp").include(request, response);
+                    request.getRequestDispatcher("admi/abajo.jsp").include(request, response);
+                }else if(request.getParameter("yes")!=null){
+                    String val=request.getParameter("yes");
+                    request.setAttribute("per_admi", per);
+                    request.setAttribute("usu_admi", usu);
+                    request.setAttribute("admi", admi);
+                    request.setAttribute("con", con);
+                    request.setAttribute("dir", dir);
+                    if(val.compareTo("perfil")==0)
+                    request.getRequestDispatcher("admi/perfil.jsp").include(request, response);
+
+                }
+            } catch (Exception e) {
+                out.println(e.getMessage());
+                out.println(error);
+            }
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

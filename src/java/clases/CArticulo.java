@@ -14,7 +14,7 @@ public class CArticulo {
     "_id",
     "nombre",
     "descripcion",
-    "costo",
+        "costo",
     "stok",
     "material",
     "categoria"

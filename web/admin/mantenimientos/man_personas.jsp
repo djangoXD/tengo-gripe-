@@ -162,7 +162,7 @@
                   </div>
                 <div class="form-group">
                     <div class="input-group">
-                      <span class="input-group-addon">Tipo Documento</span>
+                      <span class="input-group-addon">Sexo</span>
                       <select class="form-control" name="sexo" id="idper6" required>
                               <option value="FEMENINO"> FEMENINO</option>
                               <option value="MASCULINO">MASCULINO </option>
@@ -176,7 +176,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon">Email</span>
-                      <input type="text" class="form-control" name="email" id="idper7"/>
+                      <input type="email" class="form-control" name="email" id="idper7"/>
                     </div>
                   </div>
                   <div class="form-group">

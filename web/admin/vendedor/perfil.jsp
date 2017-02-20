@@ -1,13 +1,13 @@
 <%@page import="clases.CDirecciones"%>
 <%@page import="clases.CContacto"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="clases.CAdministradores"%>
+<%@page import="clases.CVendedores"%>
 <%@page import="clases.CPersonas"%>
 <%@page import="clases.CUsuario"%>
 <%
-     CAdministradores pro=(CAdministradores)request.getAttribute("admi");
-     CPersonas per=(CPersonas)request.getAttribute("per_admi");
-     CUsuario usu=(CUsuario)request.getAttribute("usu_admi");;
+     CVendedores pro=(CVendedores)request.getAttribute("vend");
+     CPersonas per=(CPersonas)request.getAttribute("per_vend");
+     CUsuario usu=(CUsuario)request.getAttribute("usu_vend");;
      ArrayList<CContacto> con=(ArrayList)request.getAttribute("con");;
      ArrayList<CDirecciones> dir=(ArrayList)request.getAttribute("dir");;
  
@@ -79,7 +79,7 @@
                                 <ul class="list-unstyled team-members">
                                             <li>
                                                 <div class="row">
-                                                    <form action="VAdminController" method="post">                                                    
+                                                    <form action="VVendedorController" method="post">                                                    
                                                         <div class="col-xs-2">
                                                             <div class="avatar">
                                                                 <img src="assets/img/faces/face-0.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
@@ -111,7 +111,7 @@
                                     %>
                                             <li>
                                                 <div class="row">
-                                                    <form action="VAdminController" method="post">                                                    
+                                                    <form action="VVendedorController" method="post">                                                    
                                                         <div class="col-xs-2">
                                                             <div class="avatar">
                                                                 <img src="assets/img/faces/face-0.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
@@ -156,7 +156,7 @@
                                 <h4 class="title">Editar Usuario</h4>
                             </div>
                             <div class="content">
-                                <form action="VAdminController" method="post">
+                                <form action="VVendedorController" method="post">
                                     <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -263,7 +263,7 @@
                             <div class="content">
                                 <ul class="list-unstyled team-members">
                                     <li>
-                                                <form action="VAdminController" method="post" method="post">                                                    
+                                                <form action="VVendedorController" method="post" method="post">                                                    
                                                     <div class="row">
 
                                                             <div class="col-xs-2">
@@ -313,7 +313,7 @@
                                         for(CDirecciones x:dir){
                                     %>
                                             <li>
-                                                <form action="VAdminController" method="post">                                                    
+                                                <form action="VVendedorController" method="post">                                                    
                                                     <div class="row">
 
                                                              <div class="col-xs-2">

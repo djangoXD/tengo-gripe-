@@ -21,10 +21,10 @@ public class CVentas {
 
     public int n=6;
     public String valor[];
-    
-    public CVentas(){        
+    public CVentas(){
         valor=new String[n];
     }
+    
     public CVentas(String Valor[]){
         this.valor=Valor;
     }

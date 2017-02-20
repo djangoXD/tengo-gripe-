@@ -6,6 +6,7 @@
 package controlador;
 
 import clases.CAdministradores;
+import clases.CCarrito;
 import clases.CCliente;
 import clases.CPersona;
 import clases.CPersonal_reparto;
@@ -77,7 +78,8 @@ public class UsuarioController extends HttpServlet {
                         x.valor[9]=new DPersonal_reparto().insertar(y);
                         x.valor[8]=new DUsuario().insertar(cp);
                     }
-                    new DPersonas().insertar(x);
+                   
+                    String id=new DPersonas().insertar(x);
                 }else
                 if(request.getParameter("modificar")!=null){
                     res=dp.modificar(cp);

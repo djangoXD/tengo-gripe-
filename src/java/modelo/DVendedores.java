@@ -156,7 +156,7 @@ public class DVendedores implements Operaciones{
     public List<?> filtrar(String campo, String criterio) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-        public CVendedores buscar_id(String id){
+    public CVendedores buscar_id(String id){
         String res="";
         CVendedores x=new CVendedores();
         ArrayList datos=new ArrayList();

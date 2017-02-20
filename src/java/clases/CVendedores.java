@@ -30,7 +30,7 @@ public class CVendedores {
 
     @Override
     public String toString() {
-        return (new DPersonas().buscar_id(valor[n-1])).toString();
+        return "vendedor"+valor[1];
     }
 
 }

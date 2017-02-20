@@ -14,7 +14,7 @@
 <%
     CPersonas per_admi = (CPersonas) request.getAttribute("per_admi");
     CUsuario usu_admi = (CUsuario) request.getAttribute("usu_admi");;
-    
+    out.println(per_admi);
     CPersonas per_prov = (CPersonas) request.getAttribute("per_prov");
     CUsuario usu_prov = (CUsuario) request.getAttribute("usu_prov");
     CProveedores prov = (CProveedores) request.getAttribute("prov");
@@ -46,7 +46,6 @@
             ]
         });
         var table2 = $('#articulos').DataTable();
-        
         $('#example tbody').on('click', 'tr', function () {
             var data = table.row(this).data();
             $.post('carrito2', {

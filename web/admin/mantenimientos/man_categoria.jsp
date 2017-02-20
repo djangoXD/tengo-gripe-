@@ -1,4 +1,4 @@
-
+    
 <%@page import="modelo.DPersonas"%>
 <%@page import="clases.CPersonas"%>
 <%@page import="clases.CCategoria"%>

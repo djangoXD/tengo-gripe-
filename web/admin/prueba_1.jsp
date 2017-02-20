@@ -1,37 +1,72 @@
-
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<html lang="en">
+<html>
 <head>
-	<meta charset="utf-8">
-	<link rel="shortcut icon" type="image/ico" >
-	<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
-	<title>Responsive example - Bootstrap styling</title>
+<script>
+var contLin = 3;
+function agregar() {
+	var tr, td;
 
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/responsive.bootstrap.css">
-
-	<script type="text/javascript" language="javascript" src="js/jquery.js">	</script>
-        <script src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
-	<script type="text/javascript" language="javascript" src="js/dataTables.bootstrap.js"></script>
-	<script type="text/javascript" language="javascript" src="js/dataTables.responsive.js">	</script>
-	<script type="text/javascript" language="javascript" src="js/responsive.bootstrap.js"></script>
-
-        <link href="css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
-        <script src="js/fileinput.min.js" type="text/javascript"></script>
-
-
-
+	tr = document.all.tabla1.insertRow();
+	td = tr.insertCell();
+	td.innerHTML = "<select id='sel" + contLin + "'>" +
+	               "<option>1" +
+	               "<option>2" +
+	               "<option>3";
+	td = tr.insertCell();
+	td.innerHTML = "<input type='text' id='t" + contLin + "1' value='t" + contLin + "1'>";
+	td = tr.insertCell();
+	td.innerHTML = "<input type='text' id='t" + contLin + "2' value='t" + contLin + "2'>";
+	contLin++;
+}
+function borrarUltima() {
+	ultima = document.all.tabla.rows.length - 1;
+	document.all.tabla.deleteRow(ultima);
+	contLin--;
+}
+</script>
 </head>
- <body>
-     <div>
-         <%@include file="mantenimientos/man_personas.jsp"%>         
-     </div>
-     <div>
-         <%@include file="mantenimientos/man_contacto.jsp"%>
-     </div>
-
- </body>
+<body>
+<table id="tabla" border=1>
+	<tr>
+		<td><select id="sel1">
+			<option>1
+			<option>2
+			<option>3
+		</td>
+		<td><input type="text" id="t11" value="t11"></td>
+		<td><input type="text" id="t12" value="t12"></td>
+	</tr>
+	<tr>
+		<td><select id="sel2">
+			<option>1
+			<option>2
+			<option>3
+		</td>
+		<td><input type="text" id="t21" value="t21"></td>
+		<td><input type="text" id="t22" value="t22"></td>
+	</tr>
+</table>
+    <table id="tabla1" border=1>
+	<tr>
+		<td><select id="sel1">
+			<option>1
+			<option>2
+			<option>3
+		</td>
+		<td><input type="text" id="t11" value="t11"></td>
+		<td><input type="text" id="t12" value="t12"></td>
+	</tr>
+	<tr>
+		<td><select id="sel2">
+			<option>1
+			<option>2
+			<option>3
+		</td>
+		<td><input type="text" id="t21" value="t21"></td>
+		<td><input type="text" id="t22" value="t22"></td>
+	</tr>
+</table>
+<br>
+<input type="button" value="Agregar" onclick="agregar()">
+<input type="button" value="Borrar ultima" onclick="borrarUltima()">
+</body>
 </html>

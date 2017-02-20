@@ -8,7 +8,7 @@ package clases;
 /**
  *
  * @author Dennys
- */
+     */
 public class CCompras {
     public String clave[]={
     "_id",
@@ -30,7 +30,7 @@ public class CCompras {
 
     @Override
     public String toString() {
-        return valor[0];
+        return valor[0]+" "+valor[1]+" "+valor[2]+" "+valor[3]+" "+valor[4];
     }
     
 }

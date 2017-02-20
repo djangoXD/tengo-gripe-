@@ -15,7 +15,7 @@ public class ADcon {
     private String url;
 
     public ADcon() {
-        this.database="alpaca";
+        this.database="b1";
         this.url="127.0.0.1";
     }
 

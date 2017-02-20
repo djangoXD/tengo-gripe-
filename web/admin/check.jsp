@@ -27,7 +27,7 @@
             response.sendRedirect("../admin/VProveedorController?waren='"+usu.valor[0]+"'");
         }else
         if(usu.valor[3].compareTo("VENDEDOR")==0){
-            response.sendRedirect("http://www.lineadecodigo.com/");
+            response.sendRedirect("../admin/VVendedorController?waren='"+usu.valor[0]+"'");
         }else
         if(usu.valor[3].compareTo("PERSONAL_REPARTO")==0){
             response.sendRedirect("http://www.lineadecodigo.com/");
