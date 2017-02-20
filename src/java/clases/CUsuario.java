@@ -14,7 +14,7 @@ public String clave[]={
     "_id",
     "usuario",
     "contrasena",
-    "permisos"  
+    "permisos"
             };
 
     public int n=4;

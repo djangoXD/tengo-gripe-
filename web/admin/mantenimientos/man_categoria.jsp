@@ -1,4 +1,6 @@
     
+<%@page import="modelo.DProveedores"%>
+<%@page import="clases.CProveedores"%>
 <%@page import="modelo.DPersonas"%>
 <%@page import="clases.CPersonas"%>
 <%@page import="clases.CCategoria"%>
@@ -46,7 +48,8 @@
 					<tr>
 						<th>Id</th>
 						<th>Nombre</th>
-						<th>Descripcion</th>	
+                                                <th>Descripcion</th>
+                                                <th>Proveedor</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -93,6 +96,25 @@
                       <input type="text" class="form-control" name="descripcion" id="idcon2" required/>
                     </div>
                   </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        
+                      </select>                        
+                      <span class="input-group-addon">Proveedor</span>
+                      <select class="form-control" name="id_proveedor" id="idcon3" onchange="">
+                          <%
+                            ArrayList<CProveedores> prov=new DProveedores().consultar();
+                            for(CProveedores xx:prov){
+                          %>
+                            <option value="<%=xx.valor[0]%>"><%=xx.toString()%></option>
+                          <%
+                            }
+                          %>
+                      </select>
+                      
+                      
+                    </div>
+                  </div>
 
 
             </div>
@@ -134,6 +156,12 @@
                       <input type="text" class="form-control" name="descripcion" id="con2" required/>
                     </div>
                   </div>
+                <div class="form-group">
+                        <div class="input-group">
+                          <span class="input-group-addon">Proveedor</span>
+                          <input type="text" class="form-control" name="id_proveedor" id="con3" required/>
+                        </div>
+                      </div>
 
             <div class="modal-footer">
               <button  type="text" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

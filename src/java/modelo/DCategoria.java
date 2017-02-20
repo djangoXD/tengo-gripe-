@@ -52,8 +52,8 @@ public class DCategoria implements Operaciones {
             }           
            DB db=mongo.getDB(database);                      
            DBCollection coll;
-           coll=db.getCollection(tabla);            
-           BasicDBObject datos = new BasicDBObject();           
+           coll=db.getCollection(tabla);
+           BasicDBObject datos = new BasicDBObject();
            for(int i=1  ;i<x.n;i++){
                datos.append(x.clave[i], x.valor[i]);
            }          
