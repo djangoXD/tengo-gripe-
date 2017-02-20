@@ -100,6 +100,10 @@
         <servlet-name>RegistrarController</servlet-name>
         <servlet-class>controlador.RegistrarController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VClienteController</servlet-name>
+        <servlet-class>controlador.VClienteController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PersonaController</servlet-name>
         <url-pattern>/PersonaController</url-pattern>
@@ -199,6 +203,10 @@
     <servlet-mapping>
         <servlet-name>RegistrarController</servlet-name>
         <url-pattern>/RegistrarController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VClienteController</servlet-name>
+        <url-pattern>/admin/VClienteController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
