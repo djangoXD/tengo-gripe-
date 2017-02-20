@@ -257,7 +257,7 @@
                     <div class="form-group">
                     <div class="input-group">
                        <span class="input-group-addon">Tipo Documento</span>
-                       <select class="form-control" name="tipo_documento" id="con3" required>
+                       <select class="form-control" name="tipo_documento" id="per1" required>
                               <option value="DNI"> DNI</option>
                               <option value="PASAPORTE"> PASAPORTE </option>
                               <option value="OTROS"> OTROS</option>

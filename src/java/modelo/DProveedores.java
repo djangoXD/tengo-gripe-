@@ -190,6 +190,7 @@ public class DProveedores implements Operaciones {
             cursor.close();
         }                  
         if(datos.size()==0)return new CProveedores();
+	mongo.close();
         return (CProveedores) datos.get(0);
     }
    

@@ -6,20 +6,24 @@
 package controlador;
 
 import clases.CArticulo;
+import clases.CImagen;
 import static java.awt.SystemColor.window;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.DArticulo;
+import modelo.DImagen;
 
 /**
  *
  * @author WARREN
  */
+@MultipartConfig
 public class ArticuloController extends HttpServlet {
 
     /**
@@ -42,14 +46,22 @@ public class ArticuloController extends HttpServlet {
            String res="";
            RequestDispatcher rd=null;
             try{
+                CImagen ci=new CImagen();
+                DImagen di=new DImagen();
+
                 for(int i=0;i<cp.clave.length;i++){
                     cp.valor[i]=request.getParameter(cp.clave[i]);
 
                }
                 out.println(cp);
                 if(request.getParameter("insertar")!=null){
-                    res=dp.insertar(cp);
-                        out.println(res);
+                    res=dp.insertar(cp);                    
+                    ci.imagen=request.getPart("foto").getInputStream();
+                    ci.nombre=res;
+                    ci.prioridad="1";
+                    ci.tipo="Persona";
+                    di.insertar(ci);
+                    out.println(res);                    
                 }else
                 if(request.getParameter("modificar")!=null){
                     res=dp.modificar(cp);

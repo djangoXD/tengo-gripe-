@@ -173,6 +173,7 @@ public class DImagen implements Operaciones{
 
         if(k==0)return false;
         else
+            mongo.close();
             return true;
     }
     @Override

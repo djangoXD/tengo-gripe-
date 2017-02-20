@@ -101,6 +101,8 @@ public class DPersonas implements Operaciones {
                 mongo=new MongoClient(url,27017);
               }
             catch(Exception err){
+
+
                 res=("Error");            
             }
                         

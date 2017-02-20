@@ -1,4 +1,5 @@
 
+<%@page import="modelo.DImagen"%>
 <%@page import="modelo.DCategoria"%>
 <%@page import="clases.CCategoria"%>
 <%@page import="modelo.DPersonas"%>
@@ -56,6 +57,7 @@
                                                 <th>Stock</th>
                                                 <th>Material</th>
                                                 <th>Categoria</th>
+                                                <th>Imagen</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -70,6 +72,17 @@
                    }
                    CCategoria cat1=new DCategoria().buscar_id(p.valor[n-1]);
                    out.print("<td>"+cat1.toString()+"</td>");
+                   if(new DImagen().existe(p.valor[2])){
+                   %>
+                                <td>
+                                    <img name="warren" width="80" height="80" src="gg.jsp?imagen=<%=p.valor[2]%>">
+                                </td>
+                                    <%
+                    }else{%>
+                                <td>
+                                    <img name="warren" width="80" height="80" src="images/gg.png">
+                                </td>
+                                <%}
 
                    out.print("</tr>");                   
                 }
@@ -89,7 +102,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-        <form method="post" action="ArticuloController">
+        <form method="post" action="ArticuloController" enctype="multipart/form-data">
             <div class="modal-body">
 
                   <div class="form-group">
@@ -138,7 +151,7 @@
 
                     </div>
                   </div>   
-                
+                  <input type="file" name="foto" value="escoguer foto">
 
             </div>
             <div class="modal-footer">
