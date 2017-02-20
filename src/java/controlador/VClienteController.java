@@ -5,10 +5,10 @@
  */
 package controlador;
 
-import clases.CVendedores;
+import clases.CAdministradores;
+import clases.CCliente;
 import clases.CPersonas;
 import clases.CUsuario;
-import clases.CVendedores;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -16,7 +16,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.DVendedores;
+import modelo.DAdministradores;
+import modelo.DCliente;
 import modelo.DContacto;
 import modelo.DDirecciones;
 import modelo.DPersonas;
@@ -26,10 +27,10 @@ import modelo.DUsuario;
  *
  * @author WARREN
  */
-public class VVendedorController extends HttpServlet {
+public class VClienteController extends HttpServlet {
     CUsuario usu;
     CPersonas per;
-    CVendedores vend;
+    CCliente cliente;
     ArrayList con, dir;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,40 +45,30 @@ public class VVendedorController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-                        String error = "bueno";
+            String error = "";
             try {
                 if (request.getParameter("waren") != null) {
                     String id_usuario = request.getParameter("waren").toString().substring(1, 25);
                     usu = new DUsuario().buscar_id(id_usuario);
                     per = (CPersonas) new DPersonas().existe(usu.valor[0], 8).get(0);
-                    vend = (CVendedores) new DVendedores().buscar_id(per.valor[9]);
+                    cliente =(CCliente)new DCliente().buscar_id(per.valor[9]);
                     con = new DContacto().existe(per.valor[0], 3);
                     dir = new DDirecciones().existe(per.valor[0], 5);
-
-                    request.setAttribute("per_vend", per);
-                    request.setAttribute("usu_vend", usu);
-                    request.setAttribute("vend", vend);
+                    
+                    request.setAttribute("per_admi", per);
+                    request.setAttribute("usu_admi", usu);
+                    request.setAttribute("admi", cliente);
                     request.setAttribute("con", con);
                     request.setAttribute("dir", dir);
-                    request.getRequestDispatcher("vendedor/head.jsp").include(request, response);
-                    request.getRequestDispatcher("vendedor/siderbar.jsp").include(request, response);
-                    request.getRequestDispatcher("vendedor/main_panel.jsp").include(request, response);
-                    request.getRequestDispatcher("vendedor/perfil.jsp").include(request, response);
-                    request.getRequestDispatcher("vendedor/abajo.jsp").include(request, response);
-                }else if(request.getParameter("yes")!=null){
-                    String val=request.getParameter("yes");
-                    request.setAttribute("per_vend", per);
-                    request.setAttribute("usu_vend", usu);
-                    request.setAttribute("vend", vend);
-                    request.setAttribute("con", con);
-                    request.setAttribute("dir", dir);
-                    if(val.compareTo("perfil")==0)
-                    request.getRequestDispatcher("vend/perfil.jsp").include(request, response);
+                    
+                    request.getRequestDispatcher("cliente/head.jsp").include(request, response);
+                    request.getRequestDispatcher("cliente/siderbar.jsp").include(request, response);
+                    request.getRequestDispatcher("cliente/main_panel.jsp").include(request, response);
+                    request.getRequestDispatcher("cliente/perfil.jsp").include(request, response);
+                    request.getRequestDispatcher("cliente/abajo.jsp").include(request, response);
                 }
             } catch (Exception e) {
                 out.println(e.getMessage());
-                out.println(error);
             }
         }
     }
