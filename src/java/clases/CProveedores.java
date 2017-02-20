@@ -19,9 +19,7 @@ public class CProveedores {
     "razon_social",
     "descripcion"
             };
-/*
-
-*/
+    
     public int n=4;
     public String valor[];
 
@@ -34,7 +32,7 @@ public class CProveedores {
 
     @Override
     public String toString() {
-        return "PROVEEDOR "+valor[2];
+        return ("PROVEED"+valor[2]+valor[3]);
     }
 
 }
