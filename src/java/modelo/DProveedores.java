@@ -61,7 +61,7 @@ public class DProveedores implements Operaciones {
            coll.insert(datos);      
                        ObjectId id = (ObjectId)datos.get( "_id" );
             res=id.toString();
-
+        mongo.close();
         return res;
        }
 
@@ -86,6 +86,7 @@ public class DProveedores implements Operaciones {
            BasicDBObject fin = new BasicDBObject();
            fin.put("_id",new ObjectId(x.valor[0] ));
            coll.remove(fin);
+        mongo.close();
         return res;   
     }
 
@@ -112,6 +113,7 @@ public class DProveedores implements Operaciones {
                 datos.put(x.clave[i], x.valor[i]);
             }            
            coll.update(id1,datos);
+        mongo.close();
         return res;
     }
 
@@ -148,6 +150,7 @@ public class DProveedores implements Operaciones {
         } finally{
             cursor.close();
         }                  
+        mongo.close();
         return datos;
       }
 
@@ -220,6 +223,7 @@ public class DProveedores implements Operaciones {
         } finally{
             cursor.close();
         }                  
+        mongo.close();
         return datos;
     }
 }

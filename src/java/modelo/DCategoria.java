@@ -60,7 +60,7 @@ public class DCategoria implements Operaciones {
            coll.insert(datos);      
                        ObjectId id = (ObjectId)datos.get( "_id" );
             res=id.toString();
-
+            mongo.close();
         return res;
        }
 
@@ -85,6 +85,7 @@ public class DCategoria implements Operaciones {
            BasicDBObject fin = new BasicDBObject();
            fin.put("_id",new ObjectId(x.valor[0] ));
            coll.remove(fin);
+        mongo.close();
         return res;   
     }
 
@@ -111,6 +112,7 @@ public class DCategoria implements Operaciones {
                 datos.put(x.clave[i], x.valor[i]);
             }            
            coll.update(id1,datos);
+        mongo.close();
         return res;
     }
 
@@ -146,7 +148,8 @@ public class DCategoria implements Operaciones {
             }
         } finally{
             cursor.close();
-        }                  
+        }   
+        mongo.close();               
         return datos;
       }
 
@@ -186,6 +189,7 @@ public class DCategoria implements Operaciones {
             cursor.close();
         }                  
         if(datos.size()==0)return new CCategoria();
+	mongo.close();
         return (CCategoria) datos.get(0);
     }
         public boolean existe(String id){
@@ -212,6 +216,7 @@ public class DCategoria implements Operaciones {
             cursor.close();
         }                          
         if(k==0)return false;else
+        mongo.close();
         return true;
     }
 }

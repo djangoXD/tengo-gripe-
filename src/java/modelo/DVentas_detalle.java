@@ -67,6 +67,7 @@ public class DVentas_detalle implements Operaciones {
                        ObjectId id = (ObjectId)datos.get( "_id" );
             res=id.toString();
 
+	mongo.close();
         return res;
        }
 
@@ -89,6 +90,7 @@ public class DVentas_detalle implements Operaciones {
            BasicDBObject fin = new BasicDBObject();
            fin.put("_id",new ObjectId(x.valor[0] ));
            coll.remove(fin);
+	mongo.close();
         return res;   
     }
 
@@ -115,6 +117,7 @@ public class DVentas_detalle implements Operaciones {
                 datos.put(x.clave[i], x.valor[i]);
             }            
            coll.update(id1,datos);
+	mongo.close();
         return res;
     }
 
@@ -151,6 +154,7 @@ public class DVentas_detalle implements Operaciones {
         } finally{
             cursor.close();
         }                  
+	mongo.close();
         return datos;
       }
 
@@ -216,6 +220,7 @@ public class DVentas_detalle implements Operaciones {
             cursor.close();
         }                          
         if(k==0)return false;else
+	mongo.close();
         return true;
     }
 }

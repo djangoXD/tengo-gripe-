@@ -64,7 +64,7 @@ public class DImagen implements Operaciones{
             DBObject id1 = new BasicDBObject("filename",x.nombre );
             DBObject datos = new BasicDBObject("$set", new BasicDBObject("prioridad", x.prioridad).append("tipo", x.tipo));
             coll.update(id1,datos);
-
+        mongo.close();
         return res;
        }
 
@@ -88,6 +88,7 @@ public class DImagen implements Operaciones{
            
             GridFS fsArchivo = new GridFS(db, "arcGrande");  //creando coleccion llamada archivosGrandes
             fsArchivo.remove(fin);
+        mongo.close();
         return res;   
     }
 
@@ -110,7 +111,7 @@ public class DImagen implements Operaciones{
                     append("tipo", x.tipo)).
                     append("filename",x.nombre);
             coll.update(id1,datos);
-           
+        mongo.close();   
         return res;
     }
 
@@ -140,7 +141,7 @@ public class DImagen implements Operaciones{
                     x.prioridad =  dato.get("prioridad")==null?"":dato.get("prioridad").toString();
                     datos.add(x);                    
                 }
-
+        mongo.close();
         return datos;
       }
     public boolean existe(String filename){

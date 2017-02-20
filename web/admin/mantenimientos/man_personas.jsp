@@ -64,8 +64,8 @@
 						<th>Fecha Nacimiento</th>
 						<th>Sexo</th>
 						<th>Email</th>
-						<th>USUARIO</th>
-						<th>ENTIDAD</th>
+						<th>Usuario</th>
+						<th>Entidad</th>
 						<th>Foto</th>
 					</tr>
 				</thead>
@@ -117,7 +117,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">INSERTAR</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -129,7 +129,7 @@
                       <span class="input-group-addon">Tipo Documento</span>
                       <select class="form-control" name="tipo_documento" id="con3" required>
                               <option value="DNI"> DNI</option>
-                              <option value="VISA"> PASAPORTE </option>
+                              <option value="PASAPORTE"> PASAPORTE </option>
                               <option value="OTROS"> OTROS</option>
                       </select>
 
@@ -139,7 +139,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon">Nro Documento</span>
-                      <input type="text" class="form-control" name="nro_documento" id="idper2" required/>
+                      <input type="text" class="form-control" name="nro_documento"  maxlength="8" id="idper2" required/>
                     </div>
                   </div>
                   <div class="form-group">
@@ -164,14 +164,12 @@
                     <div class="input-group">
                       <span class="input-group-addon">Sexo</span>
                       <select class="form-control" name="sexo" id="idper6" required>
-                              <option value="FEMENINO"> FEMENINO</option>
-                              <option value="MASCULINO">MASCULINO </option>
-                              <option value="HIBRIDO"> HIBRIDO</option>
+                              <option value="FEMENINO">F</option>
+                              <option value="MASCULINO">M</option>
                       </select>
 
                     </div>
                   </div>
-
 
                   <div class="form-group">
                     <div class="input-group">
@@ -246,7 +244,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Modificar</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -259,8 +257,12 @@
 
                     <div class="form-group">
                     <div class="input-group">
-                      <span class="input-group-addon">Tipo Documento</span>
-                      <input type="text" class="form-control" name="tipo_documento" id="per1" required/>
+                       <span class="input-group-addon">Tipo Documento</span>
+                       <select class="form-control" name="tipo_documento" id="con3" required>
+                              <option value="DNI"> DNI</option>
+                              <option value="PASAPORTE"> PASAPORTE </option>
+                              <option value="OTROS"> OTROS</option>
+                      </select>
                     </div>
                   </div>
                   <div class="form-group">

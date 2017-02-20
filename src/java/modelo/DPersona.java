@@ -51,6 +51,7 @@ public class DPersona implements Operaciones{
           
              coll.insert(datos,new WriteConcern());
              ObjectId id = (ObjectId)datos.get( "_id" );
+        mongo.close();
         return id.toString();
     }
 
@@ -73,6 +74,7 @@ public class DPersona implements Operaciones{
            BasicDBObject fin = new BasicDBObject();
            fin.put("_id",new ObjectId( p.getId()));
            coll.remove(fin);
+        mongo.close();
         return res;   
     }
 
@@ -105,6 +107,7 @@ public class DPersona implements Operaciones{
             .append("sexo", p.getSexo());
 
            coll.update(id1,datos);
+        mongo.close();
         return res;
     }
 
@@ -146,7 +149,8 @@ public class DPersona implements Operaciones{
             }
         } finally{
             cursor.close();
-        }                  
+        } 
+        mongo.close();                 
         return datos;
     }
     
