@@ -47,7 +47,7 @@
 					<tr>
 						<th>Id</th>
 						<th>Usuario</th>
-						<th>ContraseÃ±a</th>
+						<th>Contraseña</th>
             <th>Permisos</th>
 					</tr>
 				</thead>
@@ -89,7 +89,7 @@
                   </div>
                   <div class="form-group">
                     <div class="input-group">
-                      <span class="input-group-addon">ContraseÃ±a</span>
+                      <span class="input-group-addon">Contraseña</span>
                       <input type="text" class="form-control" name="contrasena" id="idusu2" required/>
                     </div>
                   </div>
