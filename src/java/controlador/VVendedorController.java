@@ -74,7 +74,6 @@ public class VVendedorController extends HttpServlet {
                     request.setAttribute("dir", dir);
                     if(val.compareTo("perfil")==0)
                     request.getRequestDispatcher("vend/perfil.jsp").include(request, response);
-
                 }
             } catch (Exception e) {
                 out.println(e.getMessage());

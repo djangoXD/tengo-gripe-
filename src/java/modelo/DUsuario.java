@@ -67,7 +67,7 @@ public class DUsuario implements Operaciones{
            coll.insert(datos);      
                        ObjectId id = (ObjectId)datos.get( "_id" );
             res=id.toString();
-
+        mongo.close();
         return res;
        }
 
@@ -90,6 +90,7 @@ public class DUsuario implements Operaciones{
            BasicDBObject fin = new BasicDBObject();
            fin.put("_id",new ObjectId(x.valor[0] ));
            coll.remove(fin);
+        mongo.close();
         return res;   
     }
 
@@ -120,6 +121,7 @@ public class DUsuario implements Operaciones{
                    datos.put(x.clave[i], x.valor[i]);
                }            }            
            coll.update(id1,datos);
+        mongo.close();
         return res;
     }
 
@@ -138,24 +140,22 @@ public class DUsuario implements Operaciones{
 
 
         DB db=mongo.getDB(database);
-
-
         DBCollection coll=db.getCollection(tabla);
         BasicDBObject dato = new BasicDBObject();
         DBCursor cursor=coll.find();
         try{
             while(cursor.hasNext()){               
                        String k[]=new String[x.clave.length];
-  
                 BasicDBObject agg=(BasicDBObject)cursor.next();  
                     for(int i=0;i<x.n;i++)
-                        k[i]=( agg.get(x.clave[i])!=null)?agg.get(x.clave[i]).toString():"";
-                    
+                        k[i]=( agg.get(x.clave[i])!=null)?agg.get(x.clave[i]).toString():"";                    
                     datos.add(new CUsuario(k));                                           
             }
         } finally{
             cursor.close();
         }                  
+        
+        mongo.close();
         return datos;
       }
 
@@ -225,6 +225,7 @@ public class DUsuario implements Operaciones{
         } finally{
             cursor.close();
         }                  
+        mongo.close();
         return datos;
     } 
     public ArrayList existe(String id,int num){
@@ -255,6 +256,7 @@ public class DUsuario implements Operaciones{
         } finally{
             cursor.close();
         }                  
+        mongo.close();
         return datos;
     }
 }

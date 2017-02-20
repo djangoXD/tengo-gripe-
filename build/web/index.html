@@ -59,7 +59,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</li>
 							<li class="hvr-bounce-to-bottom"><a href="#" onclick="$('#contenido').load('blog.html');">Conócenos</a></li>
 							<li class="hvr-bounce-to-bottom"><a href="#" onclick="$('#contenido').load('contact.html');">Contactanos</a></li>
-              <li class="hvr-bounce-to-bottom"><a href="#" data-toggle="modal" data-target="#myModal4"><span class="glyphicon glyphicon-user"></span>Inicias sesión</a></li>
+                                                      <li class="hvr-bounce-to-bottom">
+                                                          <a href="#" data-toggle="modal" data-target="#myModal4">
+                                                              <span class="glyphicon glyphicon-user">                                                                  
+                                                              </span>Inicias sesión
+                                                          </a>
+                                                      </li>
 						</ul>
 					</div><!-- //navbar-collapse -->
 				</nav>
@@ -92,8 +97,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                                         <input id="password" type="password" class="form-control" name="clave" required>
                                                     </div>
                                                 </div>
+                                                <br>
                                                 <div class="sing-in">
                                                     <input type="submit" value="Iniciar sesión" >
+                                                                                                        <input type="submit" value="Registrarse" onclick="this.form.action='RegistrarController'">
                                                 </div>
                                         </form>
                                 </div>
@@ -424,6 +431,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script type="text/javascript" src="js/move-top.js"></script>
 	<script type="text/javascript" src="js/easing.js"></script>
 	<script type="text/javascript">
+
+            
 			jQuery(document).ready(function($) {
 				$(".scroll").click(function(event){
 					event.preventDefault();
