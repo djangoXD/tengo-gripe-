@@ -48,7 +48,7 @@ public class VClienteController extends HttpServlet {
             String error = "";
             try {
                 if (request.getParameter("waren") != null) {
-                    String id_usuario = request.getParameter("waren").toString().substring(1, 25);
+                    String id_usuario = request.getParameter("waren");
                     usu = new DUsuario().buscar_id(id_usuario);
                     per = (CPersonas) new DPersonas().existe(usu.valor[0], 8).get(0);
                     cliente =(CCliente)new DCliente().buscar_id(per.valor[9]);

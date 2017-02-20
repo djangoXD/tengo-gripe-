@@ -185,6 +185,7 @@ public class DCompras implements Operaciones{
             cursor.close();
         }                  
         if(datos.size()==0)return new CCompras();
+	mongo.close();
         return (CCompras) datos.get(0);
     }
     public boolean existe(String id,int num){

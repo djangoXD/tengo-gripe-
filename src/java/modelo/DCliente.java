@@ -145,7 +145,8 @@ public class DCliente implements Operaciones{
             }
         } finally{
             cursor.close();
-        }                  
+        }
+	mongo.close();                  
         return datos;
       }
 
