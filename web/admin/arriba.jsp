@@ -90,6 +90,7 @@
                           <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_ventas.jsp');">Ventas</a></li>
                           <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_personal_reparto.jsp');">Personal Reparto</a></li>
                           <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_vendedores.jsp');">Vendedores</a></li>
+                          <li><a id="man_per" href="#" onclick="$('#info').load('mantenimientos/man_proveedor_categoria.jsp');">Proveedor Categoria</a></li>
 
 
                         </ul>

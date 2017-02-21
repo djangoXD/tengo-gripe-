@@ -97,7 +97,7 @@
                     </div>
                   </div>
                   </div>
-            </div>
+            
             <div class="modal-footer">
               <button  type="text" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
               <button  type="submit" class="btn btn-primary" name="insertar">Insertar</button>
