@@ -7,6 +7,7 @@ package modelo;
 
 import clases.CArticulo;
 import clases.CArticulo;
+import clases.CArticulo;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -193,9 +194,11 @@ public class DArticulo implements Operaciones {
         if(datos.size()==0)return new CArticulo();
         return (CArticulo) datos.get(0);
     }
-    public boolean existe(String id,int num){
+   
+    public ArrayList existe(String id,int num){
         String res="";
         CArticulo x=new CArticulo();
+        
         MongoClient mongo=null;
         try{
              mongo=new MongoClient(url,27017);
@@ -207,17 +210,21 @@ public class DArticulo implements Operaciones {
         DBCollection coll=db.getCollection(tabla);
         DBObject id1 = new BasicDBObject(x.clave[num],id );
         DBCursor cursor=coll.find(id1);
-        int k=0;
+        ArrayList datos=new ArrayList();
         try{
             while(cursor.hasNext()){               
-                k++;
-                cursor.next();
+                       String k[]=new String[x.clave.length];
+  
+                BasicDBObject agg=(BasicDBObject)cursor.next();  
+                    for(int i=0;i<x.n;i++)
+                        k[i]=( agg.get(x.clave[i])!=null)?agg.get(x.clave[i]).toString():"";
+                    
+                    datos.add(new CArticulo(k));                                           
             }
         } finally{
             cursor.close();
-        }                          
-        if(k==0)return false;else
+        }                  
         mongo.close();
-        return true;
+        return datos;
     }
 }

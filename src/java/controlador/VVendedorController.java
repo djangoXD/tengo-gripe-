@@ -66,14 +66,23 @@ public class VVendedorController extends HttpServlet {
                     request.getRequestDispatcher("vendedor/perfil.jsp").include(request, response);
                     request.getRequestDispatcher("vendedor/abajo.jsp").include(request, response);
                 }else if(request.getParameter("yes")!=null){
+                    
                     String val=request.getParameter("yes");
                     request.setAttribute("per_vend", per);
                     request.setAttribute("usu_vend", usu);
                     request.setAttribute("vend", vend);
                     request.setAttribute("con", con);
                     request.setAttribute("dir", dir);
-                    if(val.compareTo("perfil")==0)
-                    request.getRequestDispatcher("vend/perfil.jsp").include(request, response);
+                    
+                    
+                    if(val.compareTo("perfil")==0){
+                        out.println("perfil2222---------");
+                        request.getRequestDispatcher("vendedor/perfil.jsp").include(request, response);
+                    }
+                    if(val.compareTo("ventas")==0){
+                        out.println("perfil-    --------");
+                        request.getRequestDispatcher("vendedor/ventas.jsp").include(request, response);
+                    }
                 }
             } catch (Exception e) {
                 out.println(e.getMessage());

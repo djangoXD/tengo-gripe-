@@ -46,6 +46,8 @@
 
 
     <h1> Mantenimiento Personas</h1>
+    <input list="browsers" name="browser">
+
     <div class="panel panel-body">
         <div class="btn-group">
             <button id="insertar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_insertar_persona">

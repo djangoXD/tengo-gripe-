@@ -34,42 +34,35 @@
                 
             </li>
             <li>
-                <a href="javascript:Carga('venta.jsp', 'info');">
+                <a href="#" onclick="cargarp('ventas');">
                     <i class="ti-bell"></i>
                     <p>Realizar Venta</p>
                 </a>
             </li>
             <li>
                 <input type="hidden"  name="id_usuario" value="<%=user.valor[0]%>"> 
-                <a onclick="mos_man('ventass')">
+                <a href="ventago()">
                     <i class="ti-text"></i>
                     <p>Realizar Venta</p>
-                </a>
-                <div class="panel panel-warning " id="ventass" >
-                    <ul >
-                        <%
-
-                            ArrayList<CCliente> datos=new DCliente().consultar();
-                            for(CCliente v:datos){
-                                String val=v.valor[0]+" "+user.valor[0];
-                        %>
-                        <li><a id="man_per" href="VVentasVendedor?val=<%=val%>"><%=v%></a></li>
-                        <%
-                            }
-                        %>
-                    </ul>
-                </div>
+                </a>                
             </li>
         </ul>
     </div>
 </div>
                     <script type="text/javascript" language="javascript" >
     function cargarp(value){
-            $.post('VAdminController', {
+            $.post('VVendedorController', {
                 yes: value
             }, function (responseText) {
                 $('#info').html(responseText);
             });        
     };    
+    function ventago(){
+            $.post('VVendedorController', {
+                id: value
+            }, function (responseText) {
+                $('#info').html(responseText);
+            });       
+    };
 </script>
                     <div id="gginfo"></div>

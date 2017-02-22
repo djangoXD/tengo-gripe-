@@ -72,10 +72,10 @@
                    }
                    CCategoria cat1=new DCategoria().buscar_id(p.valor[n-1]);
                    out.print("<td>"+cat1.toString()+"</td>");
-                   if(new DImagen().existe(p.valor[2])){
+                   if(new DImagen().existe(p.valor[0])){
                    %>
                                 <td>
-                                    <img name="warren" width="80" height="80" src="gg.jsp?imagen=<%=p.valor[2]%>">
+                                    <img name="warren" width="80" height="80" src="gg.jsp?imagen=<%=p.valor[0]%>">
                                 </td>
                                     <%
                     }else{%>

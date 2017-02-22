@@ -104,6 +104,14 @@
         <servlet-name>VClienteController</servlet-name>
         <servlet-class>controlador.VClienteController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>buscar_cliente</servlet-name>
+        <servlet-class>controlador.buscar_cliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>cargar_moda</servlet-name>
+        <servlet-class>controlador.cargar_moda</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>PersonaController</servlet-name>
         <url-pattern>/PersonaController</url-pattern>
@@ -207,6 +215,14 @@
     <servlet-mapping>
         <servlet-name>VClienteController</servlet-name>
         <url-pattern>/admin/VClienteController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>buscar_cliente</servlet-name>
+        <url-pattern>/admin/buscar_cliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>cargar_moda</servlet-name>
+        <url-pattern>/cargar_moda</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

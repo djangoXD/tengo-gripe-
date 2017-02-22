@@ -68,7 +68,7 @@ public class DCategoria implements Operaciones {
     public String eliminar(Object o) {
         CCategoria x=(CCategoria)o;
         String res="";
-        if(new DArticulo().existe(x.valor[0], 6))return " error tiene articulo";
+        if(new DArticulo().existe(x.valor[0], 6).size()!=0)return " error tiene articulo";
 
         MongoClient mongo=null;
            try{

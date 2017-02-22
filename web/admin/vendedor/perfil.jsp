@@ -54,7 +54,7 @@
                                 </div>
                                 <p class="description text-center">
                                     "Alpaca Fuxion"
-                                </p>
+                                    </p>
                             </div>
                             <hr>
                             <div class="text-center">
