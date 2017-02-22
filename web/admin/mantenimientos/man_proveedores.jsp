@@ -63,9 +63,7 @@
                    out.print("<tr>");
                    for(int i=0;i<n;i++){
                       out.print("<td>"+p.valor[i]+"</td>");
-                   }
-
-                   
+                   }  
                    out.print("</tr>");                   
                 }
                 %>

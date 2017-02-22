@@ -33,6 +33,7 @@ public class CProveedores {
     @Override
     public String toString() {
         return ("PROVEED"+valor[2]+valor[3]);
+
     }
 
 }

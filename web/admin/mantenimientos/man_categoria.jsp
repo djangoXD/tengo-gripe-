@@ -50,6 +50,7 @@
 						<th>Nombre</th>
                                                 <th>Descripcion</th>
                                                 <th>Proveedor</th>
+                                                
 					</tr>
 				</thead>
 				<tbody>
@@ -118,6 +119,7 @@
 
 
             </div>
+
             <div class="modal-footer">
               <button  type="text" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
               <button  type="submit" class="btn btn-primary" name="insertar">Insertar</button>

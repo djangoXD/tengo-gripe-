@@ -52,10 +52,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <ul class="nav navbar-nav">
                                 <li class="hvr-bounce-to-bottom active"><a href="index.html">Inicio</a></li>
                                 <li><a href="#" class="dropdown-toggle hvr-bounce-to-bottom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Moda<span class="caret"></span></a>
-                                    <ul class="dropdown-menu" id="menu">                                                                    							
+                                    <ul class="dropdown-menu" id="menu">
                                         <script>
                                             function enviar(h1) {
-                                                alert(h1);
                                                 $.post('cargar_moda', {
                                                     moda: h1,
                                                 }, function (responseText) {
@@ -68,7 +67,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             ArrayList<CCategoria> datos_categoria = new DCategoria().consultar();
                                             for (CCategoria x : datos_categoria) {
                                         %>
-                                        <li class="hvr-bounce-to-bottom"><a href="#" id="idmoda" onclick="enviar('<%=x.valor[0]%>')"> <div id="ggg"><%=x.toString()%></div></a></li>
+                                            <li class="hvr-bounce-to-bottom"><a href="#" id="idmoda" onclick="enviar('<%=x.valor[0]%>')"><%=x.toString()%></div></a></li>
                                             <%
                                                 }
                                             %>
@@ -78,7 +77,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <li class="hvr-bounce-to-bottom"><a href="#" onclick="$('#contenido').load('contact.html');">Contactanos</a></li>
                                 <li class="hvr-bounce-to-bottom">
                                     <a href="#" data-toggle="modal" data-target="#myModal4">
-                                        <span class="glyphicon glyphicon-user">                                                                  
+                                        <span class="glyphicon glyphicon-user">
                                         </span>Inicias sesión
                                     </a>
                                 </li>
@@ -274,7 +273,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="news">
                 <div class="container">
                     <h3>Noticias y Eventos</h3>
-                    <p class="news-wthreetext">Actividades nacionales e internacionales de moda en la que la 
+                    <p class="news-wthreetext">Actividades nacionales e internacionales de moda en la que la
                         tienda estara presente</p>
                     <div class="news-agileinfo">
                         <div class="col-md-6 news-grid">
@@ -366,8 +365,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </li>
                             <li>
                                 <div class="customer-grid">
-                                    <p> Me gusta mucho poder ver las nuevas novedades de la tienda atravez de 
-                                        su sitio web, e ir a comprarlas inmediatamentes, siempre contestan las 
+                                    <p> Me gusta mucho poder ver las nuevas novedades de la tienda atravez de
+                                        su sitio web, e ir a comprarlas inmediatamentes, siempre contestan las
                                         llamadas y contestan rapidamente los correos, lo recomiendo.</p>
                                     <h4>Williumson</h4>
                                 </div>

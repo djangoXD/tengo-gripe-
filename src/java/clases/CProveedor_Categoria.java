@@ -7,31 +7,27 @@ package clases;
 
 /**
  *
- * @author WARREN
+ * @author Dennys
  */
-public class CCategoria {
+public class CProveedor_Categoria {
     public String clave[]={
     "_id",
-    "nombre",
-    "descripcion",
-    "id_proveedor"
-
+    "idproveedor",
+    "idcategoria"
             };
 
-    public int n=4;
+    public int n=3;
     public String valor[];
     
-    public CCategoria(){        
+    public CProveedor_Categoria(){        
         valor=new String[n];
     }
-    public CCategoria(String Valor[]){
+    public CProveedor_Categoria(String Valor[]){
         this.valor=Valor;
     }
 
     @Override
     public String toString() {
-        return valor[1];
+        return "P_C: "+valor[1]+" "+valor[2];
     }
-
-    
 }

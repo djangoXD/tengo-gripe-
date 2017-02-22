@@ -229,7 +229,8 @@
 		  }
 
 		  document.getElementById('files').addEventListener('change', archivo, false);
-        	</script>
+       </script>
+       
             </div>
             <div class="modal-footer">
               <button  type="text" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
